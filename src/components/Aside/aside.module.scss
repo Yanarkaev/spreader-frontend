@@ -1,0 +1,81 @@
+.dashboard {
+  width: 256px;
+  height: 700px;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+}
+
+.mySelf {
+  width: 200px;
+  height: 46px;
+  display: flex;
+  justify-content: space-between;
+}
+.MyPhoto {
+  border-radius: 50%;
+  width: 46px;
+  height: 46px;
+}
+
+.nameAndEmail{
+  width: 146px;
+height: 44px;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+}
+.doska {
+  display: flex;
+  width: 208px;
+  height: 20px;
+  align-items: center;
+}
+.tasks {
+  display: flex;
+  width: 208px;
+  height: 20px;
+  align-items: center;
+}
+.email {
+  display: flex;
+  width: 208px;
+  height: 20px;
+  align-items: center;
+}
+
+.contacts {
+  display: flex;
+  width: 208px;
+  height: 20px;
+  align-items: center;
+}
+.chat {
+  display: flex;
+  width: 208px;
+  height: 20px;
+  align-items: center;
+}
+.deals {
+  display: flex;
+  width: 208px;
+  height: 20px;
+  align-items: center;
+}
+
+.settings {
+  display: flex;
+  width: 208px;
+  height: 20px;
+  align-items: center;
+}
