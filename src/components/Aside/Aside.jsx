@@ -1,3 +1,4 @@
+=======
 import React from "react";
 import style from   './aside.module.scss'
 import MyPhoto from '../../assets/Aside/MyPhoto.png'
@@ -48,4 +49,6 @@ const Aside = () => {
     );
 };
 
+export default Aside;
+=======
 export default Aside;
