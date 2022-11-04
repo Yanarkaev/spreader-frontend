@@ -1,6 +1,6 @@
 import React from 'react';
 import Aside from '../Aside/Aside';
-import styles from "./main.module.scss"
+// import styles from "./main.module.scss"
 
 const Main = () => {
     return (

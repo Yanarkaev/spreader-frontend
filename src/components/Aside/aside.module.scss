@@ -1,10 +1,10 @@
 .dashboard {
   width: 256px;
   height: 700px;
-  border: 1px solid black;
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-shadow: 0 0 19px 0 rgba(107, 103, 103, 0.5);
 }
 
 header {
@@ -12,13 +12,17 @@ header {
   height: 60px;
   display: flex;
   align-items: center;
+  border-bottom: 1px solid #ebeff2;
+  justify-content: center;
 }
 
 .mySelf {
   width: 200px;
   height: 46px;
   display: flex;
+  margin-top: 28px;
   justify-content: space-between;
+  align-items: center;
 }
 .MyPhoto {
   border-radius: 50%;
@@ -26,56 +30,105 @@ header {
   height: 46px;
 }
 
-.nameAndEmail{
+.nameAndEmail {
   width: 146px;
-height: 44px;
+  height: 44px;
 }
 
 .menu {
   display: flex;
   flex-direction: column;
+  margin-top: 40px;
+  width: 100%;
+  align-items: inherit;
 }
 .doska {
   display: flex;
   width: 208px;
-  height: 20px;
+  height: 40px;
   align-items: center;
+  justify-content: space-between;
 }
 .tasks {
   display: flex;
   width: 208px;
-  height: 20px;
+  height: 40px;
+  justify-content: space-between;
+
   align-items: center;
 }
 .email {
   display: flex;
   width: 208px;
-  height: 20px;
+  height: 40px;
+  justify-content: space-between;
   align-items: center;
+  color: #90A0B7;
+  font-size: 11px;
 }
 
 .contacts {
   display: flex;
   width: 208px;
-  height: 20px;
+  justify-content: space-between;
+
+  height: 40px;
   align-items: center;
 }
 .chat {
   display: flex;
   width: 208px;
-  height: 20px;
+  justify-content: space-between;
+  height: 30px;
   align-items: center;
 }
 .deals {
   display: flex;
   width: 208px;
-  height: 20px;
+  justify-content: space-between;
+
+  height: 40px;
   align-items: center;
+}
+
+button {
+  width: 174px;
+  height: 70%;
+  display: flex;
+  font-size: 13px;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: 0.4s;
+}
+button:hover {
+  color: #109cf1;
+}
+.line {
+  width: 256px;
+  height: 3px;
+  margin-top: 21px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid #ebeff2;
 }
 
 .settings {
   display: flex;
   width: 208px;
-  height: 20px;
+  height: 40px;
+  margin-top: 21px;
   align-items: center;
+  justify-content: space-between;
+}
+
+.img {
+  width: 20px;
+  height: 20px;
+}
+
+.names{
+  font-size: 14px;
 }

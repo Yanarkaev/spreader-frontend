@@ -1,12 +1,12 @@
 import React from "react";
 import style from "./aside.module.scss";
-import chatIcon from "../../assets/Aside/chatIcon.svg"
-import contactsIcon from "../../assets/Aside/contactsIcon.svg"
-import dashboardIcon from "../../assets/Aside/dashboardIcon.svg"
-import emailIcon from "../../assets/Aside/emailIcon.svg"
-import settingsIcon from "../../assets/Aside/settingsIcon.svg"
-import tasksIcon from "../../assets/Aside/tasksIcon.svg"
-import dealsIcon from "../../assets/Aside/dealsIcon.svg"
+import chat from "../../assets/Aside/chatIcon.svg";
+import contacts from "../../assets/Aside/contactsIcon.svg";
+import doska from "../../assets/Aside/dashboardIcon.svg";
+import email from "../../assets/Aside/emailIcon.svg";
+import settings from "../../assets/Aside/settingsIcon.svg";
+import tasks from "../../assets/Aside/tasksIcon.svg";
+import deals from "../../assets/Aside/dealsIcon.svg";
 
 const Aside = () => {
   return (
@@ -19,33 +19,36 @@ const Aside = () => {
             <div className={style.email}>iznor@gmail.com</div>
           </div>
         </div>
+
         <main className={style.menu}>
           <div className={style.doska}>
-            <img src={dashboardIcon} alt="i" /> Доска
+            <img src={doska} className="img" alt="i" />
+            <button>Доска</button>
           </div>
           <div className={style.tasks}>
-            <img src={tasksIcon} alt="i" />
-            Задания
+            <img src={tasks} className="img" alt="i" />
+            <button>Задания</button>
           </div>
           <div className={style.email}>
-            <img src={emailIcon} alt="i" />
-            Email
+            <img src={email} className="img" alt="i" />
+            <button>Email</button>
           </div>
           <div className={style.contacts}>
-            <img src={contactsIcon} alt="i" />
-            Контакты
+            <img src={contacts} className="img" alt="i" />
+            <button>Контакты</button>
           </div>
           <div className={style.chat}>
-            <img src={chatIcon} alt="i" />
-            Чат
+            <img src={chat} className="img" alt="i" />
+            <button>Чат</button>
           </div>
           <div className={style.deals}>
-            <img src={dealsIcon} alt="i" />
-            Сделки
+            <img src={deals} className="img" alt="i" />
+            <button>Сделки</button>
           </div>
           <div className={style.line}></div>
           <div className={style.settings}>
-            <img src={settingsIcon} alt="i" /> Настройки
+            <img src={settings} alt="i" />
+            <button>Настройки</button>
           </div>
         </main>
       </div>
