@@ -26,27 +26,22 @@ const Aside = () => {
             <button>Доска</button>
           </div>
           <div className={style.tasks}>
-            {" "}
             <img src={tasks} className="img" alt="i" />
             <button>Задания</button>
           </div>
           <div className={style.email}>
-            {" "}
             <img src={email} className="img" alt="i" />
             <button>Email</button>
           </div>
           <div className={style.contacts}>
-            {" "}
             <img src={contacts} className="img" alt="i" />
             <button>Контакты</button>
           </div>
           <div className={style.chat}>
-            {" "}
             <img src={chat} className="img" alt="i" />
             <button>Чат</button>
           </div>
           <div className={style.deals}>
-            {" "}
             <img src={deals} className="img" alt="i" />
             <button>Сделки</button>
           </div>
