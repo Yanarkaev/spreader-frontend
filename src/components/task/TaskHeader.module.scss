@@ -1,0 +1,47 @@
+.container {
+    width: 100%;
+    .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        button {
+            font-weight: 600;
+            font-size: 13px;
+            line-height: 20px;
+            text-align: center;
+            letter-spacing: 0.01em;
+            color: #FFFFFF;
+            width: 100px;
+            height: 40px;
+            background: #f11010;
+            box-shadow: 0px 4px 10px rgba(241, 16, 16, 0.24);
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            &:hover {
+                background: #ba0404;;
+                transition: .1s linear;
+            }
+        }
+        .time {
+            font-size: 20px;
+            margin-right: 20px;
+        }
+        .taskNumber {
+            display: inline;
+        }      
+    }
+    .timeModal {
+        padding: 10px;
+        box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.564);
+        width:fit-content;
+        text-align: center;
+        li {
+            padding: 5px;
+            list-style: none;
+            border-bottom: 1px solid #70768379;
+            color: #707683;
+        }
+    }
+}
+

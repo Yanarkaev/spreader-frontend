@@ -1,10 +1,13 @@
 import React from "react";
 import s from "./Dashboard.module.scss";
 import DashboardHeader from "./DashboardHeader";
+import Department from "./Department";
 function Dashboard() {
   return (
     <div className={s.container}>
       <DashboardHeader />
+
+      <Department />
       <div className={s.tableContainer}>
         <table className={s.table}>
           <tr className={s.tableTr}>
