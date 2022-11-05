@@ -29,7 +29,7 @@ const Signin = () => {
   return (
     <div className={styles.formWrapper}>
       {/* <Lines /> */}
-      <form action="" onSubmit={handleSignin}>
+      <form action="" onSubmit={handleSignin} className={error && styles.formError}>
       {error && <div className={`${styles.status} ${styles.error}`}>{error}</div>}
       {loading && <div className={`${styles.status} ${styles.loading}`}>loading</div>}
       <input

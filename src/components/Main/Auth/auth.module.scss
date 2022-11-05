@@ -4,6 +4,9 @@
   margin: 0 auto;
   position: relative;
 
+  .formError{
+    animation: shake 0.2s ease-in-out 0s 2;
+  }
   
   form {
     position: absolute;
@@ -98,4 +101,11 @@
       }
     }
   }
+}
+
+@keyframes shake {
+  0% { margin-left: 0rem; }
+  25% { margin-left: 0.3rem; }
+  75% { margin-left: -0.3rem; }
+  100% { margin-left: 0rem; }
 }
