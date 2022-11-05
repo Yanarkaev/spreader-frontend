@@ -3,6 +3,8 @@
   max-width: 500px;
   margin: 0 auto;
   position: relative;
+
+  
   form {
     position: absolute;
     width: 100%;
@@ -11,6 +13,21 @@
     align-items: center;
     top: 200px;
 
+    .status{
+      position: absolute;
+      top: -30px;
+      font-weight: 500;
+    }
+
+    .loading{
+      color: rgb(0, 70, 103);
+    }
+
+    .error{
+      color: rgb(255, 80, 80);
+
+    }
+  
     input {
       width: 100%;
       border: 0;
@@ -46,8 +63,39 @@
       }
     }
 
+    .disabled{
+      background-color: #C2CFE0;
+      cursor: no-drop;
+
+      &:hover {
+        background-color: #C2CFE0;
+      }
+    }
+
     .authQues{
       margin-top: 30px;
+      font-weight: 500;
+    }
+
+
+    p{
+      display: flex;
+      width: 100%;
+      justify-content: space-around;
+      font-weight: 500;
+      font-size: 20px;
+
+    }
+    select{
+      width: 80%;
+      border: 0;
+      font-size: 20px;
+
+      option{
+        border: 0;
+        font-size: 18px;
+        padding: 15px;
+      }
     }
   }
 }

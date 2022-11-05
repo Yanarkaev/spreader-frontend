@@ -1,5 +1,5 @@
 import React from 'react';
-import Auth from '../Main/Auth/Auth';
+import Auth from '../Main/Auth/Signin';
 import styles from "./header.module.scss"
 
 const Header = () => {

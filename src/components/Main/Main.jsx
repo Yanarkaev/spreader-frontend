@@ -1,11 +1,16 @@
 import React from 'react';
 import Aside from '../Aside/Aside';
-import styles from "./main.module.scss"
+import Signup from './Auth/Signup';
+import Signin from './Auth/Signin';
+import { Route, Routes } from 'react-router-dom';
 
 const Main = () => {
     return (
         <div>
-            <Aside />
+            <Routes>
+                <Route path='spreader/signin' element={<Signin />} />
+                <Route path='spreader/signup' element={<Signup />} />
+            </Routes>
         </div>
     );
 };
