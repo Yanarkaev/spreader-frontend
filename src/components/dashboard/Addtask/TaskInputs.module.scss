@@ -65,7 +65,8 @@
     } 
     .time {
         input {
-           
+            display: block;
+            width: 100px;
             padding: 5px 10px;
             border: 1px solid #109CF1;   
             border-radius: 10px;
@@ -87,9 +88,8 @@
     }
 }
 .flex {
-
+ 
     display: flex;
     justify-content: space-around;
-    align-items: center;
     margin-top: 50px;
 }

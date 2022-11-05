@@ -28,7 +28,11 @@ function TaskInputs() {
         </div>
         <div className={s.time}>
           <span>Время исполнения</span>
-          <input placeholder="Время.." type="time" />
+          <input placeholder="Время.." type="number" />
+        </div>
+        <div className={s.time}>
+          <span>Баллы</span>
+          <input placeholder="Баллы.." type="number" />
         </div>
         <div className={s.user}>
           <span>Пользователь</span>
