@@ -1,7 +1,7 @@
-*{
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 body {
     background: #E5E5E5;
@@ -15,4 +15,11 @@ body {
 
     
     font-family: 'Montserrat', sans-serif;
+
+.app {
+  width: 100%;
+  max-width: 1420px;
+  margin: 0 auto;
+  height: 100px;
+  font-family: "Montserrat", sans-serif;
 }
