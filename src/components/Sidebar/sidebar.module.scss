@@ -1,0 +1,75 @@
+.sidebar {
+  background-color: #fff;
+  width: 20%;
+  padding: 0 30px 10px;
+  position: relative;
+  font-weight: 500;
+
+  .logo {
+    padding: 10px 0;
+    height: 60px;
+    border-bottom: 1px solid #000;
+  }
+
+  .profile {
+    margin: 25px 0 45px 0;
+  }
+
+  .sidebarItemsWrapper {
+   
+    .sidebarItem {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: 0.1s;
+
+      &:last-child{
+        position: relative;
+        margin-top: 40px;
+        &::before{
+            content: "";
+            width: 100%;
+            position: absolute;
+            height: 1px;
+            background-color: rgb(221, 221, 221);
+            left: 0;
+            top: -20px;
+        }
+      }
+  
+      .iconStroke, .iconFill{
+        transition: .1s;
+      }
+      &:hover {
+        color: #109cf1;
+        .iconStroke{
+            stroke: #109cf1;
+        }
+        .iconFill{
+            fill: #109cf1;
+        }
+      }
+
+      span {
+        margin-left: 15px;
+      }
+
+      .signInBtn{
+        padding: 10px 25px;
+        border: 1px solid #109cf1;
+        color: #109cf1;
+        border-radius: 4px;
+        transition: .2s;
+        text-decoration: none;
+        margin: 0 auto;
+
+        &:hover{
+            background-color: #109cf1;
+            color: #fff;
+        }
+      }
+    }
+  }
+}
