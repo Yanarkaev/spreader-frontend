@@ -35,31 +35,31 @@ export const signup = createAsyncThunk(
 );
 
 export const signin = createAsyncThunk(
-    "auth/signIn",
-    async ({ login, password }, thunkAPI) => {
-      try {
-        const res = await fetch("/spreader/login", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ login, password }),
-        });
-  
-        const data = await res.json();
+  "auth/signIn",
+  async ({ login, password }, thunkAPI) => {
+    try {
+      const res = await fetch("/spreader/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ login, password }),
+      });
 
-        if (data.error) {
-          return thunkAPI.rejectWithValue(data.error);
-        }
-  
-        localStorage.setItem("token", data);
-  
-        return thunkAPI.fulfillWithValue(data);
-      } catch (error) {
-        return thunkAPI.rejectWithValue(error);
+      const data = await res.json();
+
+      if (data.error) {
+        return thunkAPI.rejectWithValue(data.error);
       }
+
+      localStorage.setItem("token", data);
+
+      return thunkAPI.fulfillWithValue(data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
     }
-  );
+  }
+);
 
 export const authSlice = createSlice({
   name: "auth",
@@ -68,6 +68,29 @@ export const authSlice = createSlice({
     setError: (state, action) => {
       state.error = null;
     },
+
+    decodePayload: (state, action) => {
+      if (!localStorage.getItem("token")) {
+        return true;
+      }
+      let base64Url = localStorage.getItem("token").split(".")[1];
+      let base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+      let jsonPayload = decodeURIComponent(
+        window
+          .atob(base64)
+          .split("")
+          .map(function (c) {
+            return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
+          })
+          .join("")
+      );
+      state.payload = JSON.parse(jsonPayload);
+    },
+
+    logOut: (state, action) => {
+        localStorage.removeItem("token");
+        state.token = null
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -101,5 +124,5 @@ export const authSlice = createSlice({
   },
 });
 
-export const { setError } = authSlice.actions;
+export const { setError, decodePayload, logOut } = authSlice.actions;
 export default authSlice.reducer;
