@@ -37,21 +37,29 @@ const Sidebar = () => {
 
       <div className={styles.sidebarItemsWrapper}>
         <div className={styles.sidebarItem}>
-          <DashboardIcon stroke="#C2CFE0" className={styles.iconStroke} />
-          <span>Все задачи</span>
+          <Link to="spreader/dashboard">
+            <DashboardIcon stroke="#C2CFE0" className={styles.iconStroke} />
+            <span>Все задачи</span>
+          </Link>
         </div>
         <div className={styles.sidebarItem}>
-          <TasksIcon stroke="#C2CFE0" className={styles.iconStroke} />
-          <span>Мои задачи</span>
+          <Link>
+            <TasksIcon stroke="#C2CFE0" className={styles.iconStroke} />
+            <span>Мои задачи</span>
+          </Link>
         </div>
         <div className={styles.sidebarItem}>
-          <DealsIcon stroke="#C2CFE0" className={styles.iconStroke} />
-          <span>Отчеты</span>
+          <Link>
+            <DealsIcon stroke="#C2CFE0" className={styles.iconStroke} />
+            <span>Отчеты</span>
+          </Link>
         </div>
-        {payload && payload.role === "ADMIN" && (
+        {token && payload && payload.role === "ADMIN" && (
           <div className={styles.sidebarItem}>
-            <ContactsIcon stroke="#C2CFE0" className={styles.iconStroke} />
-            <span>Админка</span>
+            <Link to="/spreader/admin">
+              <ContactsIcon stroke="#C2CFE0" className={styles.iconStroke} />
+              <span>Админка</span>
+            </Link>
           </div>
         )}
 
