@@ -4,6 +4,7 @@
   padding: 0 30px 10px;
   position: relative;
   font-weight: 500;
+  overflow: hidden;
 
   .logo {
     padding: 10px 0;
@@ -16,39 +17,48 @@
   }
 
   .sidebarItemsWrapper {
-   
+    width: 200px;
     .sidebarItem {
-      display: flex;
-      align-items: center;
       margin-bottom: 20px;
       cursor: pointer;
       font-size: 14px;
       transition: 0.1s;
+      display: flex;
+      align-items: center;
 
-      &:last-child{
+      a {
+        color: inherit;
+        text-decoration: inherit;
+        display: flex;
+        align-items: center;
+      }
+
+      &:last-child {
         position: relative;
         margin-top: 40px;
-        &::before{
-            content: "";
-            width: 100%;
-            position: absolute;
-            height: 1px;
-            background-color: rgb(221, 221, 221);
-            left: 0;
-            top: -20px;
+        &::before {
+          content: "";
+          width: 100%;
+          position: absolute;
+          height: 1px;
+          background-color: rgb(221, 221, 221);
+          left: 0;
+          top: -20px;
         }
       }
-  
-      .iconStroke, .iconFill{
-        transition: .1s;
+
+      .iconStroke,
+      .iconFill {
+        transition: 0.1s;
+        width: 40px;
       }
       &:hover {
         color: #109cf1;
-        .iconStroke{
-            stroke: #109cf1;
+        .iconStroke {
+          stroke: #109cf1;
         }
-        .iconFill{
-            fill: #109cf1;
+        .iconFill {
+          fill: #109cf1;
         }
       }
 
@@ -56,18 +66,18 @@
         margin-left: 15px;
       }
 
-      .signInBtn{
+      .signInBtn {
         padding: 10px 25px;
         border: 1px solid #109cf1;
         color: #109cf1;
         border-radius: 4px;
-        transition: .2s;
+        transition: 0.2s;
         text-decoration: none;
         margin: 0 auto;
 
-        &:hover{
-            background-color: #109cf1;
-            color: #fff;
+        &:hover {
+          background-color: #109cf1;
+          color: #fff;
         }
       }
     }

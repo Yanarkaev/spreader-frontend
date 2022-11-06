@@ -1,51 +1,79 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import s from "./Dashboard.module.scss";
 import img from "../../assets/Dashboard/Polygon.svg";
 import AddTask from "./Addtask/AddTask";
+import { useDispatch, useSelector } from "react-redux";
+import { getBranches } from "./../../app/features/branches/branchesSlice";
+import { sortByBranch } from "../../app/features/tasks/tasksSlice";
+
 function Department() {
-  const [opened, isOpened] = useState(false);
+  const [opened, setOpened] = useState(false);
   const [openTask, setOpenTask] = useState(false);
+
+  const payload = useSelector((state) => state.auth.payload);
+  const token = useSelector((state) => state.auth.token);
+  const branches = useSelector((state) => state.branches.branches);
+  const sortBranch = useSelector((state) => state.tasks.sortBranch);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getBranches());
+  }, [dispatch]);
+
   const handleOpenAddTask = () => {
     setOpenTask(!openTask);
   };
   const handleCLick = () => {
-    isOpened(!opened);
+    setOpened(!opened);
   };
   const handleOpen = () => {
-    isOpened(!opened);
+    setOpened(!opened);
   };
+
+  const handleSortByBranch = (branchId) => {
+    // setSortByBranch(branch);
+    dispatch(sortByBranch(branchId));
+    setOpened(!opened);
+  };
+
   return (
     <>
-      <div className={s.Department}>
-        <div>
-          <span>
-            Фильтр по отделам:{" "}
-            <span onClick={handleOpen} className={s.textBlue}>
-              Все
+      {token && payload && payload.role === "ADMIN" && (
+        <div className={s.Department}>
+          <div>
+            <span>
+              Фильтр по отделам:
+              <span onClick={handleOpen} className={s.textBlue}>
+                {sortBranch === "all" ? "Все" : sortBranch.name}
+              </span>
             </span>
-          </span>
-          <img onClick={handleCLick} src={img} alt="logo" />
-        </div>
-        <div>
-          <button onClick={handleOpenAddTask} className={s.btn}>
-            Добавить задачу
-          </button>
-          {openTask && (
-            <AddTask openTask={openTask} setOpenTask={setOpenTask} />
-          )}
-        </div>
-
-        {opened ? (
-          <div className={s.modal}>
-            <ul>
-              <li>Отделллл - 1</li>
-              <li>Отделллл - 2</li>
-              <li>Отделл - 3</li>
-              <li>Отделллл - 4</li>
-            </ul>
+            <img onClick={handleCLick} src={img} alt="logo" />
           </div>
-        ) : null}
-      </div>
+          <div>
+            <button onClick={handleOpenAddTask} className={s.btn}>
+              Добавить задачу
+            </button>
+            {openTask && (
+              <AddTask openTask={openTask} sortByBranch={sortByBranch} />
+            )}
+          </div>
+
+          {opened ? (
+            <div className={s.modal}>
+              <ul>
+                <li onClick={() => handleSortByBranch("all")}>Все</li>
+                {branches.map((item) => {
+                  return (
+                    <li onClick={() => handleSortByBranch(item)} key={item._id}>
+                      {item.name}
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          ) : null}
+        </div>
+      )}
     </>
   );
 }
