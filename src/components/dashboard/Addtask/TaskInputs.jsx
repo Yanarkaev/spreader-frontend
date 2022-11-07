@@ -1,11 +1,49 @@
 import React from "react";
 import s from "./TaskInputs.module.scss";
+import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
+import { getBranches } from "./../../../app/features/branches/branchesSlice";
+import { useEffect } from "react";
+import { addTask } from "../../../app/features/tasks/tasksSlice";
 function TaskInputs() {
+  const dispatch = useDispatch();
+  const branches = useSelector((state) => state.branches.branches);
+
+  const [title, setTitle] = useState("");
+  const [text, setText] = useState("");
+  const [branch, setBranch] = useState("Все");
+  const [time, setTime] = useState("");
+  const [points, setPoints] = useState("");
+  const [user, setUser] = useState("");
+
+  const inputsFilled = title && text && time && points;
+  const sw = undefined;
+
+  useEffect(() => {
+    dispatch(getBranches());
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch()
+  })
+
+  const handleAddTask = () => {
+    dispatch(addTask({ title, text, branchId: branch, time, points }));
+  };
+
   return (
     <div className={s.container}>
       <div className={s.title}>
-        <input placeholder="Введите название" type="text" />
+        <input
+          placeholder="Введите название"
+          type="text"
+          value={title}
+          onChange={(e) =>
+            e.target.value[0] !== " " && setTitle(e.target.value)
+          }
+        />
       </div>
+
       <div className={s.text}>
         <textarea
           placeholder="Опишите задачу..."
@@ -13,37 +51,65 @@ function TaskInputs() {
           id=""
           cols="30"
           rows="10"
-        ></textarea>
-        {/* <input placeholder="Опишите задачу" type="text" /> */}
+          value={text}
+          onChange={(e) => e.target.value[0] !== " " && setText(e.target.value)}
+        />
       </div>
+
       <div className={s.flex}>
         <div className={s.department}>
           <span>Выберите отдел</span>
-          <select name="Отдел" id="">
-            <option value="">Все</option>
-            <option value="">Бухгалтерия</option>
-            <option value="">АХО</option>
-            <option value="">Все</option>
+          <select
+            name="Отдел"
+            value={branch}
+            onChange={(e) => setBranch(e.target.value)}
+          >
+            <option value={"Все"}>Все</option>
+            {branches.map((item) => {
+              return <option value={item._id}>{item.name}</option>;
+            })}
           </select>
         </div>
         <div className={s.time}>
           <span>Время исполнения</span>
-          <input placeholder="Время.." type="number" />
+          <input
+            placeholder="Время..."
+            type="number"
+            value={time}
+            onChange={(e) =>
+              e.target.value[0] !== " " && setTime(e.target.value)
+            }
+            min="5"
+          />
         </div>
         <div className={s.time}>
           <span>Баллы</span>
-          <input placeholder="Баллы.." type="number" />
+          <input
+            placeholder="Баллы... "
+            type="number"
+            value={points}
+            onChange={(e) => setPoints(e.target.value)}
+            min="5"
+          />
         </div>
-        <div className={s.user}>
-          <span>Пользователь</span>
-          <select name="Юзер" id="">
-            <option value="">Юзер1</option>
-            <option value="">Юзер2</option>
-            <option value="">Юзер3</option>
-          </select>
-        </div>
+        {branch !== "Все" && (
+          <div className={s.user}>
+            <span>Пользователь</span>
+            <select name="" id="">
+              <option value="">Юзер1</option>
+              <option value="">Юзер2</option>
+              <option value="">Юзер3</option>
+            </select>
+          </div>
+        )}
       </div>
-      <button className={s.btn}>Создать Задачу</button>
+      <button
+        disabled={!inputsFilled}
+        className={`${s.btn} ${!inputsFilled && s.btnDisabled}`}
+        onClick={handleAddTask}
+      >
+        Создать Задачу
+      </button>
     </div>
   );
 }
