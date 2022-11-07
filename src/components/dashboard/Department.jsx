@@ -31,24 +31,23 @@ function Department() {
   };
 
   const handleSortByBranch = (branchId) => {
-    // setSortByBranch(branch);
     dispatch(sortByBranch(branchId));
     setOpened(!opened);
   };
 
   return (
     <>
-      {token && payload && payload.role === "ADMIN" && (
-        <div className={s.Department}>
-          <div>
-            <span>
-              Фильтр по отделам:
-              <span onClick={handleOpen} className={s.textBlue}>
-                {sortBranch === "all" ? "Все" : sortBranch.name}
-              </span>
+      <div className={s.Department}>
+        <div>
+          <span>
+            Фильтр по отделам:
+            <span onClick={handleOpen} className={s.textBlue}>
+              {sortBranch === "all" ? " Все" : " " + sortBranch.name}
             </span>
-            <img onClick={handleCLick} src={img} alt="logo" />
-          </div>
+          </span>
+          <img onClick={handleCLick} src={img} alt="logo" />
+        </div>
+        {token && payload && payload.role === "ADMIN" && (
           <div>
             <button onClick={handleOpenAddTask} className={s.btn}>
               Добавить задачу
@@ -57,23 +56,22 @@ function Department() {
               <AddTask openTask={openTask} sortByBranch={sortByBranch} />
             )}
           </div>
-
-          {opened ? (
-            <div className={s.modal}>
-              <ul>
-                <li onClick={() => handleSortByBranch("all")}>Все</li>
-                {branches.map((item) => {
-                  return (
-                    <li onClick={() => handleSortByBranch(item)} key={item._id}>
-                      {item.name}
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-          ) : null}
-        </div>
-      )}
+        )}
+        {opened && (
+          <div className={s.modal}>
+            <ul>
+              <li onClick={() => handleSortByBranch("all")}>Все</li>
+              {branches.map((item) => {
+                return (
+                  <li onClick={() => handleSortByBranch(item)} key={item._id}>
+                    {item.name}
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        )}
+      </div>
     </>
   );
 }
