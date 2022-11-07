@@ -17,7 +17,7 @@ function Dashboard() {
         return item;
       }
 
-      return item.branchId._id === sortBranch._id;
+      return item.branchId?._id === sortBranch._id;
     })
   );
   const loading = useSelector((state) => state.tasks.loading);
@@ -39,7 +39,7 @@ function Dashboard() {
               <th>№</th>
               <th>Название</th>
               <th>Отдел</th>
-              <th>Статус</th>
+              <th>Время</th>
               <th>Баллы</th>
               <th>Дата публикации</th>
             </tr>
@@ -56,10 +56,14 @@ function Dashboard() {
                   <tr className={s.taskTr} key={item._id}>
                     <td>{index + 1}</td>
                     <td>{item.title}</td>
-                    <td>{item.branchId.name}</td>
-                    <td>{item.status}</td>
+                    <td>
+                      {item.branchId === "Все" || item.branchId === undefined
+                        ? "Все"
+                        : item.branchId.name}
+                    </td>
+                    <td>{item.time}</td>
                     <td>{item.points}</td>
-                    <td>{item.createdAt.split("T")[0]}</td>
+                    <td>{item.createdAt?.split("T")[0]}</td>
                   </tr>
                 );
               })
