@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 
 import s from "./TaskHeader.module.scss";
 
@@ -11,6 +12,7 @@ function TaskHeader({
   reason,
   setReason,
 }) {
+  const task = useSelector((state) => state.tasks.task);
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => {
@@ -24,7 +26,7 @@ function TaskHeader({
   };
 
   localStorage.setItem(
-    "timer", // прописать id задачи
+    `${task._id}`, // прописать id задачи
     JSON.stringify({ minutes, seconds, isCounting })
   );
 
