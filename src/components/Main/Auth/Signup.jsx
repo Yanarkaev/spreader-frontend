@@ -37,12 +37,12 @@ const Signup = () => {
 
   const hadnleLogin = (e) => {
     setLogin(e.target.value);
-    dispatch(setError());
+    // dispatch(setError());
   };
 
   const hadnlePassword = (e) => {
     setPassword(e.target.value);
-    dispatch(setError());
+    // dispatch(setError());
   };
 
   const handleBranch = (e) => {

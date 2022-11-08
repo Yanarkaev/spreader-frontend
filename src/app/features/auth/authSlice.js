@@ -66,6 +66,7 @@ export const authSlice = createSlice({
   initialState,
   reducers: {
     setError: (state, action) => {
+      console.log(state);
       state.error = null;
     },
 
@@ -87,10 +88,10 @@ export const authSlice = createSlice({
       state.payload = JSON.parse(jsonPayload);
     },
 
-    logOut: (state, action) => {
-        localStorage.removeItem("token");
-        state.token = null
-    }
+    // logOut: (state, action) => {
+    //     localStorage.removeItem("token");
+    //     state.token = null;
+    // }
   },
   extraReducers: (builder) => {
     builder

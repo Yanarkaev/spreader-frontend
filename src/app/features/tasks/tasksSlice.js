@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   tasks: [],
+  task: [],
   loading: false,
   error: null,
   sortBranch: "all",
@@ -17,6 +18,19 @@ export const getTasks = createAsyncThunk("tasks/fetch", async (_, thunkAPI) => {
     thunkAPI.rejectWithValue(error);
   }
 });
+
+export const getTaskById = createAsyncThunk(
+  "tasks/getById",
+  async (id, thunkAPI) => {
+    try {
+      const res = await fetch(`/spreader/tasks/${id}`);
+      console.log(res);
+      return res.json();
+    } catch (error) {
+      thunkAPI.rejectWithValue(error);
+    }
+  }
+);
 
 export const addTask = createAsyncThunk(
   "tasks/add",
@@ -78,6 +92,10 @@ export const tasksSlice = createSlice({
       .addCase(addTask.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
+      })
+      // ==
+      .addCase(getTaskById.fulfilled, (state, action) => {
+        state.task = action.payload;
       });
   },
 });

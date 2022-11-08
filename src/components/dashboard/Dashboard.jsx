@@ -4,9 +4,11 @@ import DashboardHeader from "./DashboardHeader";
 import Department from "./Department";
 import { useDispatch, useSelector } from "react-redux";
 import { getTasks } from "./../../app/features/tasks/tasksSlice";
+import { Link, useParams } from "react-router-dom";
 
 function Dashboard() {
   const sortBranch = useSelector((state) => state.tasks.sortBranch);
+  const { taskId } = useParams();
 
   const tasks = useSelector((state) =>
     state.tasks.tasks.filter((item) => {
@@ -55,7 +57,10 @@ function Dashboard() {
                 return (
                   <tr className={s.taskTr} key={item._id}>
                     <td>{index + 1}</td>
-                    <td>{item.title}</td>
+                    <td>
+                      <Link to={item._id}>{item.title}</Link>
+                    </td>
+
                     <td>
                       {item.branchId === "Все" || item.branchId === undefined
                         ? "Все"

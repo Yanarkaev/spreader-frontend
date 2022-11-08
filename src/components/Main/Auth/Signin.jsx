@@ -9,6 +9,8 @@ const Signin = () => {
   const loading = useSelector((state) => state.auth.loading);
   const dispatch = useDispatch();
 
+  const [message, setMessage] = useState(error)
+
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
 
@@ -19,13 +21,17 @@ const Signin = () => {
 
   const handleLogin = (e) => {
     setLogin(e.target.value);
-    dispatch(setError());
+    // if (error) {
+    //   setMessage(null)
+    // }
+    // dispatch(setError());
   };
   const hadnlePassword = (e) => {
     setPassword(e.target.value);
-    dispatch(setError());
+  
+    // dispatch(setError());
   };
-
+console.log(error)
   return (
     <div className={styles.formWrapper}>
       <form
