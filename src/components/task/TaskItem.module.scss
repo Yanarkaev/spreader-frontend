@@ -1,0 +1,52 @@
+.container {
+    width: 100%;
+    padding: 0 30px;
+    margin-top: 20px;
+    background-color: #fff;
+    padding: 10px 0;
+    .Admin{
+        display: flex;
+        align-items: center;
+        margin: 20px auto;
+        width: fit-content;
+        .adminName {
+            font-style: normal;
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 21px;
+            color: #192A3E;
+            
+        }
+        .adminMail {
+            font-weight: 500;
+            font-size: 15px;
+            line-height: 16px;
+            letter-spacing: 0.01em;
+            color: #707683;
+
+        }
+        span {
+            display: block;
+            margin-left: 10px;
+        }
+        .AdminLogo{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+        img {
+            height: 100%;
+            transform: translate(-10px,0);                       
+        }
+    }
+    .task {
+        width: 85%;
+        margin: 0 auto;
+        .taskName {
+            text-align: center;
+            color:#334D6E;
+            margin-bottom: 20px;
+        }
+    }
+}

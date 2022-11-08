@@ -1,0 +1,31 @@
+.container {
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 30px;
+    .takeToWork {
+        background: #109CF1;
+        box-shadow: 0px 4px 10px rgba(16, 156, 241, 0.24);
+        border: none;
+        border-radius: 4px;
+        padding: 10px 25px;
+        color: #fff;
+        cursor: pointer;
+        &:hover {
+            background: #016fb3;
+            transition: .1s linear;
+        }
+    }
+    .close {
+        background: red;
+        box-shadow: 0px 4px 10px rgba(16, 156, 241, 0.24);
+        border: none;
+        border-radius: 4px;
+        padding: 10px 25px;
+        color: #fff;
+        cursor: pointer;
+        &:hover {
+            background: rgb(182, 0, 0);
+            transition: .1s linear;
+        }
+    }
+}
