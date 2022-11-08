@@ -30,7 +30,7 @@ export const addTask = createAsyncThunk(
         body: JSON.stringify({
           title: title,
           text: text,
-          userId: userId,
+          userId: userId === "" ? undefined : userId,
           branchId: branchId === "Все" ? undefined : branchId,
           points: points,
           time: time,

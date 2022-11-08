@@ -5,9 +5,11 @@ import { useState } from "react";
 import { getBranches } from "./../../../app/features/branches/branchesSlice";
 import { useEffect } from "react";
 import { addTask } from "../../../app/features/tasks/tasksSlice";
+import { getUsers } from "./../../../app/features/users/usersSlice";
 function TaskInputs() {
   const dispatch = useDispatch();
   const branches = useSelector((state) => state.branches.branches);
+  const users = useSelector((state) => state.users.users);
 
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
@@ -17,18 +19,14 @@ function TaskInputs() {
   const [user, setUser] = useState("");
 
   const inputsFilled = title && text && time && points;
-  const sw = undefined;
 
   useEffect(() => {
     dispatch(getBranches());
+    dispatch(getUsers());
   }, [dispatch]);
 
-  useEffect(() => {
-    dispatch()
-  })
-
   const handleAddTask = () => {
-    dispatch(addTask({ title, text, branchId: branch, time, points }));
+    dispatch(addTask({ title, text, branchId: branch, time, points, userId: user }));
   };
 
   return (
@@ -95,10 +93,14 @@ function TaskInputs() {
         {branch !== "Все" && (
           <div className={s.user}>
             <span>Пользователь</span>
-            <select name="" id="">
-              <option value="">Юзер1</option>
-              <option value="">Юзер2</option>
-              <option value="">Юзер3</option>
+            <select value={user} onChange={(e) => setUser(e.target.value)}>
+              {
+                users.map((item) => {
+                  if(item.branchId._id === branch){
+                    return <option value={item._id}>{item.login}</option>
+                  }
+                })
+              }
             </select>
           </div>
         )}
