@@ -4,20 +4,31 @@ import TaskHeader from "./TaskHeader";
 import TaskItem from "./TaskItem";
 import { getPadTime } from "../../helpers/getPadTime";
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getTaskById } from "../../app/features/tasks/tasksSlice";
 
 function Task() {
+  const { taskId } = useParams();
+  const task = useSelector((state) => state.tasks.task);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getTaskById(taskId));
+  }, [dispatch]);
+
   //====================================  Таймер  =========================================//
   const timer = JSON.parse(localStorage.getItem("timer"));
 
   const [timeLeft, setTimeLeft] = useState(
-    (Number(timer?.minutes) || 130) * 60 + (Number(timer?.seconds) || 0)
+    (Number(timer?.minutes) || +task.time) * 60 + (Number(timer?.seconds) || 0)
   );
 
   // ssaas?.isCounting || false
   const [isCounting, setIsCounting] = useState(
     timer?.isCounting === "false" ? true : false
   );
-  console.log(timer, timeLeft);
+
   let minutes = getPadTime(Math.floor(timeLeft / 60));
   let seconds = getPadTime(timeLeft - minutes * 60);
 
