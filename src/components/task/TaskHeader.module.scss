@@ -4,6 +4,14 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+        position: relative;
+        height: 60px;
+        background-color: #FFFFFF;
+        padding: 0 30px;
+        .taskDescription {
+            display: flex;
+            align-items: center;
+        }
         button {
             font-weight: 600;
             font-size: 13px;
@@ -24,23 +32,63 @@
             }
         }
         .time {
-            font-size: 20px;
+            color: #334D6E;
+            font-size: 30px;
             margin-right: 20px;
+            font-weight: 600;
         }
         .taskNumber {
-            display: inline;
+            margin-left: 10px;
+            font-weight: 600;
+            color: #192A3E;
+            
         }      
     }
     .timeModal {
         padding: 10px;
-        box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.564);
+        box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.329);
+        border-radius: 4px;
         width:fit-content;
         text-align: center;
+        position: absolute;
+        z-index: 20;
+        background-color: #fff;
+        right: 56px;
+        top: 70px;
+        .reason  {
+            font-size: 14px;
+            
+            padding: 0 0 10px 0;
+            color:red;
+            font-weight: 600;
+            display: block;
+            &::after {
+                content: '';
+                width: 50%;
+                height: 1px;
+                background-color: #000000;
+                margin: 5px auto;
+                display: block;
+
+            }
+        }
         li {
-            padding: 5px;
+            padding: 10px 15px;
             list-style: none;
+            text-align: start;
             border-bottom: 1px solid #70768379;
             color: #707683;
+            cursor: pointer;
+            transition: .1s linear;
+
+            &:last-child{
+                border-bottom: 0;
+            }
+            &:hover {
+                color: #109CF1;
+            background-color: rgba(192, 192, 192, 0.529);
+
+            }
         }
     }
 }

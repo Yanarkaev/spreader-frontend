@@ -1,0 +1,70 @@
+.parent {
+    width: 60%;
+    margin: 0 auto;
+.container {
+    width: 100%;
+    min-height: 200px;
+    max-height: 500px;
+    background-color: #E5E5E5;
+    border-radius: 4px;
+    margin: 20px auto 0 auto;
+    padding: 10px;
+    .taskState {
+        display: flex;
+        .stateIcon{
+            span {
+                margin-right: 10px;
+                text-align: center;
+                color: #fff;
+                font-size: 14px;
+                padding: 5px;
+                background: red;
+                border-radius: 4px;
+                font-weight: 500;
+                line-height: 16px;
+                font-size: 11px;
+                letter-spacing: 0.02em;
+                text-align: center;
+
+            }
+            .inWork{
+                text-align: center;
+                color: #fff;
+                font-size: 14px;
+                padding: 5px;
+                background: #2ED47A;
+                border-radius: 4px;
+                font-weight: 500;
+                line-height: 16px;
+                font-size: 11px;
+                letter-spacing: 0.02em;
+                text-align: center;
+            }
+        
+        }
+        .stateReason {
+            .reasonText {
+                font-weight: 500;
+                line-height: 16px;
+                font-size: 12px;
+                letter-spacing: 0.02em;
+                color: red;
+            }
+        }
+    }
+
+    .messages {
+        margin-top: 20px;
+        padding: 10px;
+        .messageText {
+            padding: 10px;
+            font-size: 14px;
+            background-color: #109CF1;
+            width: fit-content;
+            color:#fff;
+            border-radius: 0 7px 7px 7px;
+            margin-bottom: 10px;
+        }
+    }
+}
+}
