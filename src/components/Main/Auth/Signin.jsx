@@ -24,12 +24,12 @@ const Signin = () => {
     // if (error) {
     //   setMessage(null)
     // }
-    // dispatch(setError());
+    dispatch(setError());
   };
   const hadnlePassword = (e) => {
     setPassword(e.target.value);
   
-    // dispatch(setError());
+    dispatch(setError());
   };
 console.log(error)
   return (

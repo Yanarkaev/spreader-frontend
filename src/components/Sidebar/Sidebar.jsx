@@ -21,13 +21,13 @@ const Sidebar = () => {
       id: 2,
       name: "Мои задачи",
       link: "/spreader/tasks",
-      taskIcon: TasksIcon
+      taskIcon: TasksIcon,
     },
     {
       id: 3,
       name: "Отчеты",
       link: "/spreader/report",
-      taskIcon: DealsIcon
+      taskIcon: DealsIcon,
     },
   ];
 
@@ -36,7 +36,9 @@ const Sidebar = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(decodePayload());
+    if (token) {
+      dispatch(decodePayload());
+    }
   }, [token]);
 
   const handleLogOut = () => {
@@ -58,7 +60,7 @@ const Sidebar = () => {
           return (
             <div className={styles.sidebarItem}>
               <NavLink to={item.link}>
-                <item.taskIcon stroke="#C2CFE0" className={styles.iconStroke}/>
+                <item.taskIcon stroke="#C2CFE0" className={styles.iconStroke} />
                 <span>{item.name}</span>
               </NavLink>
             </div>

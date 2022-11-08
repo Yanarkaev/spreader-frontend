@@ -1,6 +1,6 @@
 import React from "react";
 import s from "./TaskItem.module.scss";
-import img from "../../assets/admin/Admin.jpg";
+import img from "../../assets/Admin/Admin.jpg";
 import TaskMessage from "./TaskMessage";
 import TaskButtons from "./TaskButtons";
 import { useParams } from "react-router-dom";
@@ -10,7 +10,7 @@ import { getTaskById } from "../../app/features/tasks/tasksSlice";
 function TaskItem({ isCounting, setIsCounting, reasons, reason, setReason }) {
   // const { taskId } = useParams();
   const task = useSelector((state) => state.tasks.task);
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   // useEffect(() => {
   //   dispatch(getTaskById(taskId));
