@@ -106,6 +106,7 @@ export const authSlice = createSlice({
         state.loading = false;
         state.error = action.payload;
       })
+//===
       .addCase(signin.pending, (state, action) => {
         state.loading = true;
         state.error = null;

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./auth.module.scss";
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from "react-redux";
 import { setError, signin } from "../../../app/features/auth/authSlice";
 
 const Signin = () => {
@@ -14,10 +14,10 @@ const Signin = () => {
 
   const handleSignin = (e) => {
     e.preventDefault();
-    dispatch(signin({login, password}))
-  } 
+    dispatch(signin({ login, password }));
+  };
 
-  const hadnleLogin = (e) => {
+  const handleLogin = (e) => {
     setLogin(e.target.value);
     dispatch(setError());
   };
@@ -28,15 +28,22 @@ const Signin = () => {
 
   return (
     <div className={styles.formWrapper}>
-      {/* <Lines /> */}
-      <form action="" onSubmit={handleSignin} className={error && styles.formError}>
-      {error && <div className={`${styles.status} ${styles.error}`}>{error}</div>}
-      {loading && <div className={`${styles.status} ${styles.loading}`}>loading</div>}
-      <input
+      <form
+        action=""
+        onSubmit={handleSignin}
+        className={error && styles.formError}
+      >
+        {error && (
+          <div className={`${styles.status} ${styles.error}`}>{error}</div>
+        )}
+        {loading && (
+          <div className={`${styles.status} ${styles.loading}`}>loading</div>
+        )}
+        <input
           type="text"
           placeholder="Логин"
           value={login}
-          onChange={hadnleLogin}
+          onChange={handleLogin}
         />
         <input
           type="password"

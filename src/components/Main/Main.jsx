@@ -17,7 +17,7 @@ const Main = () => {
                 <Route path='spreader/signup' element={<Signup />} />
                 <Route path='spreader/dashboard' element={<Dashboard />} />
             </Routes>
-            <Task />
+            {/* <Task /> */}
         </div>
     );
 };
