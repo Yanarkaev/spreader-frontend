@@ -11,6 +11,7 @@ function TaskHeader({
   reasons,
   reason,
   setReason,
+  setClick,
 }) {
   const task = useSelector((state) => state.tasks.task);
   const [open, setOpen] = useState(false);
@@ -23,25 +24,25 @@ function TaskHeader({
     setIsCounting(false);
     setReason(index);
     setOpen(!open);
+    setClick(true);
   };
 
   localStorage.setItem(
-    `${task._id}`, // прописать id задачи
+    `${task._id}`,
     JSON.stringify({ minutes, seconds, isCounting })
   );
 
-  // const timer = JSON.parse(localStorage.getItem("timer"));
-
   const handleStart = () => {
     setIsCounting(true);
+    setClick(false);
   };
 
   return (
     <div className={s.container}>
       <header className={s.header}>
         <div className={s.taskDescription}>
-          <span>Номер задачи: </span>
-          <h1 className={s.taskNumber}>1232194</h1>
+          <span>Баллы: </span>
+          <h1 className={s.taskNumber}>{task.points}</h1>
         </div>
         <div>
           <span className={s.time}>{`${minutes}:${seconds}`}</span>
@@ -50,7 +51,9 @@ function TaskHeader({
           {isCounting ? (
             <button onClick={handleOpen}>Удержание</button>
           ) : (
-            <button onClick={handleStart}>Продолжить</button>
+            <button disabled={task.state === "new"} onClick={handleStart}>
+              Начать
+            </button>
           )}
         </div>
       </header>

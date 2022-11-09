@@ -3,11 +3,18 @@ import s from "./TaskItem.module.scss";
 import img from "../../assets/Admin/Admin.jpg";
 import TaskMessage from "./TaskMessage";
 import TaskButtons from "./TaskButtons";
-import { useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { getTaskById } from "../../app/features/tasks/tasksSlice";
-function TaskItem({ isCounting, setIsCounting, reasons, reason, setReason }) {
+// import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
+// import { useEffect } from "react";
+// import { getTaskById } from "../../app/features/tasks/tasksSlice";
+function TaskItem({
+  click,
+  isCounting,
+  setIsCounting,
+  reasons,
+  reason,
+  setReason,
+}) {
   // const { taskId } = useParams();
   const task = useSelector((state) => state.tasks.task);
   const dispatch = useDispatch();
@@ -15,6 +22,10 @@ function TaskItem({ isCounting, setIsCounting, reasons, reason, setReason }) {
   // useEffect(() => {
   //   dispatch(getTaskById(taskId));
   // }, [dispatch]);
+
+  if (!task) {
+    return "...";
+  }
 
   return (
     <div className={s.container}>
@@ -36,6 +47,7 @@ function TaskItem({ isCounting, setIsCounting, reasons, reason, setReason }) {
         </div>
       </div>
       <TaskMessage
+        click={click}
         isCounting={isCounting}
         reasons={reasons}
         reason={reason}

@@ -42,15 +42,15 @@
             }
         
         }
-        .stateReason {
-            .reasonText {
-                font-weight: 500;
-                line-height: 16px;
-                font-size: 12px;
-                letter-spacing: 0.02em;
-                color: red;
-            }
+        .reasonText {
+            display: inline;
+            font-weight: 500;
+            line-height: 16px;
+            font-size: 12px;
+            letter-spacing: 0.02em;
+            color: red;
         }
+       
     }
 
     .messages {
