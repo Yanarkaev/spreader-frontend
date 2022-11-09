@@ -6,9 +6,8 @@
         font-size: 14px;
         padding: 0 10px;
         border: none;
-        // background: red;
         box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.186);
-   
+
     }
     button{
         width: 15%;
@@ -18,5 +17,10 @@
         border: none;
         background: #109CF1;
         box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.186);
+        cursor: pointer;
+        &:hover {
+        background-color: #0e6da8;
+        transition: .1s linear;
+        }
     }
 }
