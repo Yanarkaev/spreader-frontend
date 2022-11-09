@@ -7,9 +7,30 @@ import { ReactComponent as DealsIcon } from "../../assets/Aside/deals.svg";
 import { ReactComponent as LogoutIcon } from "../../assets/Aside/logout.svg";
 import { useSelector, useDispatch } from "react-redux";
 import { decodePayload, logOut } from "../../app/features/auth/authSlice";
-import { Link, redirect } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Sidebar = () => {
+  const sidebaeItems = [
+    {
+      id: 1,
+      name: "Все задачи",
+      link: "/spreader/dashboard",
+      taskIcon: DashboardIcon,
+    },
+    {
+      id: 2,
+      name: "Мои задачи",
+      link: "/spreader/tasks",
+      taskIcon: TasksIcon,
+    },
+    {
+      id: 3,
+      name: "Отчеты",
+      link: "/spreader/report",
+      taskIcon: DealsIcon,
+    },
+  ];
+
   const payload = useSelector((state) => state.auth.payload);
   const token = useSelector((state) => state.auth.token);
   const dispatch = useDispatch();
@@ -17,7 +38,6 @@ const Sidebar = () => {
   useEffect(() => {
     if (token) {
       dispatch(decodePayload());
-      redirect("/we");
     }
   }, [token]);
 
@@ -27,33 +47,22 @@ const Sidebar = () => {
 
   return (
     <div className={styles.sidebar}>
-      <div className={styles.logo}>
-        <h1>LOGO</h1>
-      </div>
-
       <div className={styles.profile}>
         {token && payload && <div className={styles.name}>{payload.login}</div>}
       </div>
 
       <div className={styles.sidebarItemsWrapper}>
-        <div className={styles.sidebarItem}>
-          <Link to="spreader/dashboard">
-            <DashboardIcon stroke="#C2CFE0" className={styles.iconStroke} />
-            <span>Все задачи</span>
-          </Link>
-        </div>
-        <div className={styles.sidebarItem}>
-          <Link>
-            <TasksIcon stroke="#C2CFE0" className={styles.iconStroke} />
-            <span>Мои задачи</span>
-          </Link>
-        </div>
-        <div className={styles.sidebarItem}>
-          <Link>
-            <DealsIcon stroke="#C2CFE0" className={styles.iconStroke} />
-            <span>Отчеты</span>
-          </Link>
-        </div>
+        {sidebaeItems.map((item) => {
+          return (
+            <div className={styles.sidebarItem} key={item.id}>
+              <NavLink to={item.link}>
+                <item.taskIcon stroke="#C2CFE0" className={styles.iconStroke} />
+                <span>{item.name}</span>
+              </NavLink>
+            </div>
+          );
+        })}
+
         {token && payload && payload.role === "ADMIN" && (
           <div className={styles.sidebarItem}>
             <Link to="/spreader/admin">

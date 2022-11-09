@@ -34,7 +34,6 @@ const Signup = () => {
     dispatch(signup({ login, password, branchId: branch }));
   };
 
-
   const hadnleLogin = (e) => {
     setLogin(e.target.value);
     dispatch(setError());

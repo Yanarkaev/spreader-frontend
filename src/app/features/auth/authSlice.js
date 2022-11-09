@@ -7,6 +7,7 @@ const initialState = {
   payload: null,
   signedUp: false,
   signedIn: false,
+  users: [],
 };
 
 export const signup = createAsyncThunk(
@@ -61,6 +62,17 @@ export const signin = createAsyncThunk(
   }
 );
 
+// get users
+
+export const getUsers = createAsyncThunk("users/fetch", async (_, thunkAPI) => {
+  try {
+    const res = await fetch("/spreader/users");
+    return res.json();
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error);
+  }
+});
+
 export const authSlice = createSlice({
   name: "auth",
   initialState,
@@ -88,9 +100,9 @@ export const authSlice = createSlice({
     },
 
     logOut: (state, action) => {
-        localStorage.removeItem("token");
-        state.token = null
-    }
+      localStorage.removeItem("token");
+      state.token = null;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -106,7 +118,9 @@ export const authSlice = createSlice({
         state.loading = false;
         state.error = action.payload;
       })
+      //===
       .addCase(signin.pending, (state, action) => {
+        console.log(state);
         state.loading = true;
         state.error = null;
       })
@@ -117,9 +131,23 @@ export const authSlice = createSlice({
         state.error = null;
       })
       .addCase(signin.rejected, (state, action) => {
+        console.log(state);
         state.error = action.payload;
         state.token = null;
         state.loading = false;
+      })
+      // ===
+      .addCase(getUsers.pending, (state, action) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(getUsers.fulfilled, (state, action) => {
+        state.loading = false;
+        state.users = action.payload;
+      })
+      .addCase(getUsers.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
       });
   },
 });
