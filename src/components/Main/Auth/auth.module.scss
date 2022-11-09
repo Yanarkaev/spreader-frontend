@@ -4,11 +4,12 @@
   margin: 0 auto;
   position: relative;
 
-  .formError{
+  .formError {
     animation: shake 0.2s ease-in-out 0s 2;
   }
-  
+
   form {
+    box-sizing: content-box;
     position: absolute;
     width: 100%;
     display: flex;
@@ -16,31 +17,31 @@
     align-items: center;
     top: 200px;
 
-    .status{
+    .status {
       position: absolute;
       top: -30px;
       font-weight: 500;
     }
 
-    .loading{
+    .loading {
       color: rgb(0, 70, 103);
     }
 
-    .error{
-      color: rgb(255, 80, 80);
-
+    .error {
+      color: rgb(155, 0, 0);
     }
-  
+
     input {
       width: 100%;
       border: 0;
       outline-color: #109cf1;
-      background-color: #ddf1ff;
+      background-color: #ffffff;
       margin-bottom: 10px;
       font-size: 1.5em;
       padding: 15px;
       transition: 0.2s;
       border-radius: 3px;
+      font-weight: 500;
 
       &:last-child {
         margin-bottom: 0;
@@ -48,7 +49,7 @@
     }
 
     button {
-      width: 100%;
+      width: 20%;
       max-width: 500px;
       padding: 12px;
       font-size: 20px;
@@ -57,44 +58,44 @@
       background: #109cf1;
       box-shadow: 0px 4px 10px rgba(16, 156, 241, 0.24);
       border-radius: 4px;
-      transition: .2s;
+      transition: 0.2s;
       cursor: pointer;
       margin-top: 15px;
+      transform: translate(0, 0px);
+      font-weight: 500;
 
       &:hover {
         background-color: #098edf;
       }
     }
 
-    .disabled{
-      background-color: #C2CFE0;
+    .disabled {
+      background-color: #c2cfe0;
       cursor: no-drop;
 
       &:hover {
-        background-color: #C2CFE0;
+        background-color: #c2cfe0;
       }
     }
 
-    .authQues{
+    .authQues {
       margin-top: 30px;
       font-weight: 500;
     }
 
-
-    p{
+    p {
       display: flex;
       width: 100%;
       justify-content: space-around;
       font-weight: 500;
       font-size: 20px;
-
     }
-    select{
+    select {
       width: 80%;
       border: 0;
       font-size: 20px;
 
-      option{
+      option {
         border: 0;
         font-size: 18px;
         padding: 15px;
@@ -104,8 +105,16 @@
 }
 
 @keyframes shake {
-  0% { margin-left: 0rem; }
-  25% { margin-left: 0.3rem; }
-  75% { margin-left: -0.3rem; }
-  100% { margin-left: 0rem; }
+  0% {
+    margin-left: 0rem;
+  }
+  25% {
+    margin-left: 0.3rem;
+  }
+  75% {
+    margin-left: -0.3rem;
+  }
+  100% {
+    margin-left: 0rem;
+  }
 }

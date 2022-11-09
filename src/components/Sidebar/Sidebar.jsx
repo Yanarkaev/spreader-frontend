@@ -47,10 +47,6 @@ const Sidebar = () => {
 
   return (
     <div className={styles.sidebar}>
-      <div className={styles.logo}>
-        <h1>LOGO</h1>
-      </div>
-
       <div className={styles.profile}>
         {token && payload && <div className={styles.name}>{payload.login}</div>}
       </div>
@@ -58,7 +54,7 @@ const Sidebar = () => {
       <div className={styles.sidebarItemsWrapper}>
         {sidebaeItems.map((item) => {
           return (
-            <div className={styles.sidebarItem}>
+            <div className={styles.sidebarItem} key={item.id}>
               <NavLink to={item.link}>
                 <item.taskIcon stroke="#C2CFE0" className={styles.iconStroke} />
                 <span>{item.name}</span>
