@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   tasks: [],
-  task: [],
+  task: null,
   loading: false,
   error: null,
   sortBranch: "all",
@@ -24,10 +24,57 @@ export const getTaskById = createAsyncThunk(
   async (id, thunkAPI) => {
     try {
       const res = await fetch(`/spreader/tasks/${id}`);
-      console.log(res);
       return res.json();
     } catch (error) {
       thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
+export const addMessage = createAsyncThunk(
+  "taskMessage/patch",
+
+  async ({ taskId, text }, thunkAPI) => {
+    try {
+      await fetch(`/spreader/tasks/${taskId}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: text }),
+      });
+      return text;
+    } catch (err) {
+      return thunkAPI.rejectWithValue(err);
+    }
+  }
+);
+
+export const takeToWork = createAsyncThunk(
+  "inwork/patch",
+  async ({ taskId, userId }, thunkAPI) => {
+    try {
+      const res = await fetch(`/spreader/tasks/take/${taskId}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId: userId }),
+      });
+      return res.json;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
+export const closeTask = createAsyncThunk(
+  "close/patch",
+  async ({ taskId }, thunkAPI) => {
+    try {
+      const res = await fetch(`/spreader/tasks/close/${taskId}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+      });
+      return res.json();
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );
@@ -94,7 +141,21 @@ export const tasksSlice = createSlice({
         state.error = action.payload;
       })
       // ==
-      .addCase(getTaskById.fulfilled, (state, action) => {
+      .addCase(getTaskById.fulfilled, (state, { payload }) => {
+        state.task = payload;
+      })
+
+      //==
+      .addCase(addMessage.fulfilled, (state, action) => {
+        state.task.message.push(action.payload);
+      })
+
+      //==
+      .addCase(takeToWork.fulfilled, (state, action) => {
+        state.task.userId = action.payload.userId;
+      })
+      //==
+      .addCase(closeTask.fulfilled, (state, action) => {
         state.task = action.payload;
       });
   },

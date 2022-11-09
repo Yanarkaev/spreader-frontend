@@ -30,6 +30,10 @@
                 background: #ba0404;;
                 transition: .1s linear;
             }
+            &:disabled {
+                opacity: .5;
+                box-shadow: none;
+            }
         }
         .time {
             color: #334D6E;

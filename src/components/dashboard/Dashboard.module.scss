@@ -3,6 +3,8 @@
     height: 60px;
     background-color: #fff;
     margin-bottom: 60px;
+    display: flex;
+    align-items: center;
     
     .inputContainer {
         display: flex;
@@ -118,7 +120,7 @@
 }
 
 .container {
-    max-width: 1184px;
+    // max-width: 1184px;
     width: 100%;
     margin: 0 auto;
     background-color: #F5F6F8;
