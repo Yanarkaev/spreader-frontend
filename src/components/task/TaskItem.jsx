@@ -17,7 +17,7 @@ function TaskItem({
 }) {
   // const { taskId } = useParams();
   const task = useSelector((state) => state.tasks.task);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   // useEffect(() => {
   //   dispatch(getTaskById(taskId));
