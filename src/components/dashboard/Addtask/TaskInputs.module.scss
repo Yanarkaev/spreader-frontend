@@ -1,11 +1,11 @@
 .container {
-  width: 90%;
   margin: 0 auto;
   text-align: center;
-  padding: 50px 0px;
+  padding: 30px 20px;
+  width: 90%;
   
   .btn {
-    margin-top: 10px;
+    margin-top: 40px;
     font-weight: 600;
     font-size: 13px;
     line-height: 20px;
@@ -43,11 +43,12 @@
   }
   .title {
     input {
-      width: 90%;
+      width: 100%;
       padding: 8px 10px;
       border: 1px solid #109cf1;
       border-radius: 3px;
       outline-color: #109cf1;
+      text-align: center;
     }
   }
   .text {
@@ -65,6 +66,8 @@
     }
   }
   .department {
+    margin-right: 20px;
+
     select {
       padding: 5px;
       border: 1px solid #109cf1;
@@ -75,6 +78,7 @@
     }
   }
   .time {
+    margin-right: 20px;
     input {
       display: block;
       width: 100px;
@@ -88,6 +92,7 @@
   }
 
   .user {
+    margin-left: 20px;
     select {
       padding: 5px;
       border: 1px solid #109cf1;
@@ -100,7 +105,7 @@
 }
 .flex {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   margin-top: 50px;
   flex-wrap: wrap;
   align-items: center;

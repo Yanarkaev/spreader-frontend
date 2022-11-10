@@ -12,6 +12,7 @@ function TaskButtons({ setIsCounting }) {
   const dispatch = useDispatch();
   const userId = useSelector((state) => state.auth.payload.id);
   const task = useSelector((state) => state.tasks.task);
+  const loading = useSelector(state => state.tasks.loading)
   const { taskId } = useParams();
 
   const handleToWorkTask = () => {
@@ -22,6 +23,11 @@ function TaskButtons({ setIsCounting }) {
     dispatch(closeTask({ taskId }));
     setIsCounting(false);
   };
+
+
+  if(loading){
+    return <span className="loader"></span>
+  }
 
 
   if (task?.state === "new") {
@@ -42,7 +48,7 @@ function TaskButtons({ setIsCounting }) {
 
   if(task?.state === "closed"){
     return (
-      <div className={s.closed}>Завершено</div>
+      <Link to="/spreader/tasks" className={s.closed}>Завершено</Link>
     )
   }
 

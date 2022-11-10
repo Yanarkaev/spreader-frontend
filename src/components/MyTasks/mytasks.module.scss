@@ -17,6 +17,15 @@
   background: #fff;
   margin: 0 auto;
 
+  .inWork{
+    background-color: #ffe4b9;
+    // border: 4px solid #ffe6be;
+  }
+
+  .closed{
+    background-color: #bdffdb;
+  }
+
   .taskTr {
     &:hover {
       box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.33);
@@ -55,18 +64,15 @@
   width: 100%;
   padding: 17px;
   background-color: #fff;
-  // margin-bottom: 60px;
   width: 100%;
   height: 60px;
   background-color: #fff;
-  // margin-bottom: 60px;
   display: flex;
   align-items: center;
 
   .inputContainer {
     display: flex;
     align-items: center;
-    max-width: 1110px;
     width: 100%;
     margin: 0 auto;
     img {
@@ -86,6 +92,35 @@
       line-height: 18px;
       letter-spacing: 0.01em;
       color: #90a0b7;
+    }
+  }
+
+  .sortButtons {
+    width: 500px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .active {
+      background-color: #0066a6;
+      color: #fff;
+    }
+    button {
+      padding: 10px 20px;
+      border: 0;
+      cursor: pointer;
+      transition: 0.2s;
+      border-radius: 2px;
+      background-color: #f0f0f0;
+      color: rgb(33, 33, 33);
+
+      &:hover {
+        box-shadow: inset 0 0 10px 100px rgba(0, 0, 0, 0.154);
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
     }
   }
 }
