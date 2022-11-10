@@ -1,7 +1,8 @@
 import React from "react";
-import s from "./Dashboard.module.scss";
+import s from "./mytasks.module.scss";
 import searchImg from "../../assets/Dashboard/search.svg";
-function DashboardHeader({ search, setSearch }) {
+
+function MyTasksHeader({ search, setSearch }) {
   const handleSearch = (e) => {
     if(e.target.value[0] !== ' '){
       setSearch(e.target.value)
@@ -22,4 +23,4 @@ function DashboardHeader({ search, setSearch }) {
   );
 }
 
-export default DashboardHeader;
+export default MyTasksHeader;

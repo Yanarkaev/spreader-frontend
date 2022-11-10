@@ -14,6 +14,9 @@ const Signin = () => {
     if (error) {
       setRand(rand > 0 ? -150 : 150);
     }
+    if (password.length < 5) {
+      setRand(rand > 0 ? -150 : 150);
+    }
   };
 
   const [message, setMessage] = useState(error);
@@ -41,13 +44,13 @@ const Signin = () => {
 
     dispatch(setError());
   };
-  
+
+  const handleBlur = () => {
+    
+  };
   return (
     <div className={styles.formWrapper}>
-      <form
-        action=""
-        onSubmit={handleSignin}
-      >
+      <form action="" onSubmit={handleSignin}>
         {error && (
           <div className={`${styles.status} ${styles.error}`}>{error}</div>
         )}
@@ -65,6 +68,7 @@ const Signin = () => {
           placeholder="Пароль"
           value={password}
           onChange={hadnlePassword}
+          onBlur={handleBlur}
         />
 
         <button

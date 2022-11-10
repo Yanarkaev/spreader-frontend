@@ -33,6 +33,7 @@
             &:disabled {
                 opacity: .5;
                 box-shadow: none;
+                cursor: no-drop;
             }
         }
         .time {

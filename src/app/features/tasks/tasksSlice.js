@@ -57,7 +57,7 @@ export const takeToWork = createAsyncThunk(
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ userId: userId }),
       });
-      return res.json;
+      return res.json();
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
@@ -98,6 +98,7 @@ export const addTask = createAsyncThunk(
         }),
       });
 
+      // console.log(res.json());
       return res.json();
     } catch (error) {
       thunkAPI.rejectWithValue(error);
@@ -141,9 +142,20 @@ export const tasksSlice = createSlice({
         state.error = action.payload;
       })
       // ==
-      .addCase(getTaskById.fulfilled, (state, { payload }) => {
-        state.task = payload;
+      .addCase(getTaskById.fulfilled, (state, action) => {
+        state.task = action.payload;
+        state.loading = false;
       })
+      .addCase(getTaskById.pending, (state, action) => {
+        state.loading = true;
+        state.error = null
+      })
+      .addCase(getTaskById.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload
+      })
+      
+
 
       //==
       .addCase(addMessage.fulfilled, (state, action) => {
@@ -152,7 +164,7 @@ export const tasksSlice = createSlice({
 
       //==
       .addCase(takeToWork.fulfilled, (state, action) => {
-        state.task.userId = action.payload.userId;
+        state.task = action.payload;
       })
       //==
       .addCase(closeTask.fulfilled, (state, action) => {

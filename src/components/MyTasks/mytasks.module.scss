@@ -1,6 +1,10 @@
-.tableContainer{
-    width: 100%;
-    margin-top: 10px;
+.wrapper {
+  width: 100%;
+}
+
+.tableContainer {
+  width: 100%;
+  margin-top: 10px;
 }
 .table {
   text-align: left;
@@ -35,14 +39,53 @@
     border-bottom: 1px solid #ebeff2;
     padding: 22px 20px;
     color: #707683;
-    
-    a{
-        color: inherit;
-        text-decoration: none;
-        
-        &:hover{
-            text-decoration: underline;
-        }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.header {
+  width: 100%;
+  padding: 17px;
+  background-color: #fff;
+  // margin-bottom: 60px;
+  width: 100%;
+  height: 60px;
+  background-color: #fff;
+  // margin-bottom: 60px;
+  display: flex;
+  align-items: center;
+
+  .inputContainer {
+    display: flex;
+    align-items: center;
+    max-width: 1110px;
+    width: 100%;
+    margin: 0 auto;
+    img {
+      width: 20px;
+      margin-right: 12px;
+      cursor: pointer;
+    }
+  }
+  input {
+    width: 40%;
+    padding: 5px;
+    border: none;
+    outline-color: #109cf1;
+    &::placeholder {
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 18px;
+      letter-spacing: 0.01em;
+      color: #90a0b7;
     }
   }
 }

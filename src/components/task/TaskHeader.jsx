@@ -47,15 +47,17 @@ function TaskHeader({
         <div>
           <span className={s.time}>{`${minutes}:${seconds}`}</span>
         </div>
-        <div>
-          {isCounting ? (
-            <button onClick={handleOpen}>Удержание</button>
-          ) : (
-            <button disabled={task.state === "new"} onClick={handleStart}>
-              Начать
-            </button>
-          )}
-        </div>
+        {task?.state !== "closed" && (
+          <div>
+            {isCounting ? (
+              <button onClick={handleOpen}>Удержание</button>
+            ) : (
+              <button disabled={task.state === "new"} onClick={handleStart}>
+                Начать
+              </button>
+            )}
+          </div>
+        )}
       </header>
       {open && (
         <div className={s.timeModal}>

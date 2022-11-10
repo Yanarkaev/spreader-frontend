@@ -3,8 +3,8 @@
     margin: 0 auto;
 .container {
     width: 100%;
-    min-height: 200px;
-    max-height: 500px;
+    height: 350px;
+    overflow-y: scroll;
     background-color: #E5E5E5;
     border-radius: 4px;
     margin: 20px auto 0 auto;

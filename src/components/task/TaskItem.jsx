@@ -3,10 +3,11 @@ import s from "./TaskItem.module.scss";
 import img from "../../assets/Admin/Admin.jpg";
 import TaskMessage from "./TaskMessage";
 import TaskButtons from "./TaskButtons";
-// import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
-// import { useEffect } from "react";
-// import { getTaskById } from "../../app/features/tasks/tasksSlice";
+import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getTaskById } from "../../app/features/tasks/tasksSlice";
+
 function TaskItem({
   click,
   isCounting,
@@ -15,16 +16,17 @@ function TaskItem({
   reason,
   setReason,
 }) {
-  // const { taskId } = useParams();
+  const { taskId } = useParams();
   const task = useSelector((state) => state.tasks.task);
-  // const dispatch = useDispatch();
+  const loading = useSelector(state => state.tasks.loading)
+  const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(getTaskById(taskId));
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(getTaskById(taskId));
+  }, [dispatch]);
 
-  if (!task) {
-    return "...";
+  if (loading) {
+    return <span className="loader"></span>
   }
 
   return (
