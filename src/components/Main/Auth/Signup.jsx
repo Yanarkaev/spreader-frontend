@@ -37,9 +37,9 @@ const Signup = () => {
   const handleSignup = (e) => {
     e.preventDefault();
     dispatch(signup({ login, password, branchId: branch }));
-    setTimeout(() => {
-    dispatch(signin({login, password}))
-    }, 1000)
+    // setTimeout(() => {
+    // dispatch(signin({login, password}))
+    // }, 1000)
   };
 
   const hadnleLogin = (e) => {
