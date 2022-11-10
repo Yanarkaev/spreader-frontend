@@ -26,7 +26,7 @@ const Sidebar = () => {
     {
       id: 3,
       name: "Отчеты",
-      link: "/spreader/report",
+      link: "/spreader/reports",
       taskIcon: DealsIcon,
     },
   ];
