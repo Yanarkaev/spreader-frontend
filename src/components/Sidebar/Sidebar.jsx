@@ -67,7 +67,7 @@ const Sidebar = () => {
 
         {payload?.role !== "ADMIN" && (
           <div className={styles.branchName}>
-            <span>Отдел</span> <span>{payload.branch}</span>
+            <span>Отдел</span> <span>{payload?.branch}</span>
           </div>
         )}
       </div>
