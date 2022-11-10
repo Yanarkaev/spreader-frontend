@@ -12,6 +12,7 @@ function Task() {
   const [click, setClick] = useState(false);
   const { taskId } = useParams();
   const task = useSelector((state) => state.tasks.task);
+  // const task = useSelector((state) => state.tasks.task);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -54,7 +55,7 @@ function Task() {
 
   const [reason, setReason] = useState(null);
   if (!task) {
-    return "Loading";
+    return <span className="loader"></span>
   }
 
   return (

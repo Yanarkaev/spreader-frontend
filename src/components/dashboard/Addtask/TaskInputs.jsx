@@ -26,7 +26,9 @@ function TaskInputs() {
   }, [dispatch]);
 
   const handleAddTask = () => {
-    dispatch(addTask({ title, text, branchId: branch, time, points, userId: user }));
+    dispatch(
+      addTask({ title, text, branchId: branch, time, points, userId: user })
+    );
   };
 
   return (
@@ -60,11 +62,17 @@ function TaskInputs() {
           <select
             name="Отдел"
             value={branch}
-            onChange={(e) => setBranch(e.target.value)}
+            onChange={(e) => {
+              setBranch(e.target.value);
+            }}
           >
             <option value={"Все"}>Все</option>
             {branches.map((item) => {
-              return <option value={item._id}>{item.name}</option>;
+              return (
+                <option value={item._id} key={item._id}>
+                  {item.name}
+                </option>
+              );
             })}
           </select>
         </div>
@@ -94,13 +102,17 @@ function TaskInputs() {
           <div className={s.user}>
             <span>Пользователь</span>
             <select value={user} onChange={(e) => setUser(e.target.value)}>
-              {
-                users.map((item) => {
-                  if(item.branchId._id === branch){
-                    return <option value={item._id}>{item.login}</option>
-                  }
-                })
-              }
+              {users.map((item, index) => {
+                if (item.branchId._id === branch) {
+                  // usersArr.length !== 1 && usersArr.push(item)
+                  // console.log(usersArr[0].login)
+                  return (
+                    <option value={item._id} key={item._id}>
+                      {item.login}
+                    </option>
+                  );
+                }
+              })}
             </select>
           </div>
         )}

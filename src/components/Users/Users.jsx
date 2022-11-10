@@ -22,7 +22,7 @@ const Users = () => {
   }, [dispatch]);
 
   if (loading) {
-    return <div>Загрузка</div>;
+    return <span className="loader"></span>;
   }
 
   return (

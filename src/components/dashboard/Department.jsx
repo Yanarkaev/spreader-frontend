@@ -53,7 +53,11 @@ function Department() {
               Добавить задачу
             </button>
             {openTask && (
-              <AddTask openTask={openTask} sortByBranch={sortByBranch} />
+              <AddTask
+                openTask={openTask}
+                setOpenTask={setOpenTask}
+                sortByBranch={sortByBranch}
+              />
             )}
           </div>
         )}
