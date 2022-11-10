@@ -9,7 +9,8 @@ import Task from "./../task/Task";
 import Users from "../Users/Users";
 import { redirect } from "react-router-dom";
 import { useSelector } from "react-redux";
-import MyTasks from './../MyTasks/MyTasks';
+import MyTasks from "./../MyTasks/MyTasks";
+import Reports from "../Reports/Reports";
 
 const Main = () => {
   const token = useSelector((state) => state.auth.token);
@@ -41,6 +42,7 @@ const Main = () => {
           <Route path="spreader/tasks" element={<MyTasks />} />
           <Route path="spreader/dashboard/:taskId" element={<Task />} />
           <Route path="spreader/admin/" element={<Users />} />
+          <Route path="spreader/reports" element={<Reports />} />
         </Routes>
       </div>
     );
