@@ -3,7 +3,7 @@
   text-align: center;
   padding: 30px 20px;
   width: 90%;
-  
+
   .btn {
     margin-top: 40px;
     font-weight: 600;
@@ -93,7 +93,10 @@
 
   .user {
     margin-left: 20px;
+    max-width: 100px;
     select {
+    max-width: 120px;
+
       padding: 5px;
       border: 1px solid #109cf1;
       border-radius: 4px;
@@ -111,7 +114,6 @@
   align-items: center;
 }
 
-
-input::-webkit-input-placeholder{
+input::-webkit-input-placeholder {
   font-weight: 600;
 }

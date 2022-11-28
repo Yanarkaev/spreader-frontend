@@ -11,7 +11,6 @@ const User = ({ user }) => {
   const tasks = useSelector((state) => state.tasks.tasks);
   const dispatch = useDispatch();
 
-
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -26,7 +25,6 @@ const User = ({ user }) => {
           <div className={styles.branch}>
             Отдел: <span>{user.branchId.name}</span>
           </div>
-
         </div>
 
         <div className={styles.tasksWrapper}>
@@ -41,13 +39,13 @@ const User = ({ user }) => {
                   >
                     <div className={styles.taskTitle}>{task.title}</div>
                   </Link>
-                )
+                );
               }
             })}
         </div>
       </div>
     </>
-  )
+  );
 };
 
 export default User;

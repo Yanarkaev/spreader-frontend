@@ -27,40 +27,17 @@ const Users = () => {
 
   return (
     <div className={styles.wrapper}>
-      {/* {users.map((user) => {
-        return (
-          <div className={styles.userInfoWrapper}>
-            <div className={styles.user} onClick={() => setOpen(!open)}>
-              <div className={styles.login}>{user.login}</div>
-              <div className={styles.branch}>
-                Отдел: <span>{user.branchId.name}</span>
-              </div>
-            </div>
-
-            <div className={styles.tasksWrapper}>
-              {open &&
-                tasks.map((task) => {
-                  if (task.userId === user._id) {
-                    return (
-                      <Link
-                        to={`/spreader/dashboard/${task._id}`}
-                        className={styles.task}
-                      >
-                        <div className={styles.taskTitle}>{task.title}</div>
-                      </Link>
-                    );
-                  }
-                })}
-            </div>
-          </div>
-        );
-      })} */}
+      <header className={styles.header}>
+        <div className={styles.headerInner}>
+          <h1>Администрирование</h1>
+        </div>
+      </header>
       {users.map((user) => {
         return (
           <div key={user._id}>
             <User user={user} />
           </div>
-        )
+        );
       })}
     </div>
   );

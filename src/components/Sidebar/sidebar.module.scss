@@ -5,13 +5,18 @@
   padding: 0 30px 10px 10px;
   font-weight: 500;
   overflow: hidden;
-  transition: .3s;
+  transition: 0.3s;
   box-shadow: 0 0 10px 0 rgba(88, 88, 88, 0.307);
   min-height: 100vh;
 
-
-  &:hover{
+  &:hover {
     width: 250px;
+
+    .profile {
+      .branchName {
+        opacity: 1;
+      }
+    }
   }
 
   .logo {
@@ -26,12 +31,12 @@
 
     border-bottom: 1px solid rgb(221, 221, 221);
     padding-bottom: 15px;
-    .name{
+    .name {
       display: flex;
       align-items: center;
       width: fit-content;
       padding-bottom: 5px;
-      .avatar{
+      .avatar {
         padding: 20px;
         width: 4px;
         height: 40px;
@@ -46,17 +51,19 @@
         font-size: 20px;
       }
 
-      .adminAvatar{
+      .adminAvatar {
         background-color: rgb(54, 54, 54);
       }
-      .login{
+      .login {
         margin-left: 10px;
       }
     }
 
-    .branchName{
+    .branchName {
       font-size: 12px;
       margin-top: 10px;
+      opacity: 0;
+      transition: 0.2s;
       // text-align: center;
     }
   }
