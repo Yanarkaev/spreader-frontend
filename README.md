@@ -40,3 +40,6 @@ npm i
 ```javascript
 npm start
 ```
+
+##### Разработано совместно с:
+1. **[Laziyni](https://github.com/)**
