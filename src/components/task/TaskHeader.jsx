@@ -14,7 +14,11 @@ function TaskHeader({
   setClick,
 }) {
   const task = useSelector((state) => state.tasks.task);
+  const payload = useSelector((state) => state.auth.payload);
+  console.log(payload);
+
   const [open, setOpen] = useState(false);
+
 
   const handleOpen = () => {
     setOpen(!open);
@@ -47,7 +51,7 @@ function TaskHeader({
         <div>
           <span className={s.time}>{`${minutes}:${seconds}`}</span>
         </div>
-        {task?.state !== "closed" && (
+        {task?.state !== "closed" && payload?.role == "USER" && (
           <div>
             {isCounting ? (
               <button onClick={handleOpen}>Удержание</button>

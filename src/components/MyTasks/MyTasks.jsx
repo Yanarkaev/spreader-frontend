@@ -74,12 +74,6 @@ const MyTasks = () => {
                         {item.title}
                       </Link>
                     </td>
-
-                    {/* <td>
-                      {item.branchId === "Все" || item.branchId === undefined
-                        ? "Все"
-                        : item.branchId.name}
-                    </td> */}
                     <td>
                       {item?.state === "inWork" ? "В работе" : "Завершено"}
                     </td>

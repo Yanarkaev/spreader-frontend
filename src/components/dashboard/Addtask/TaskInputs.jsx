@@ -17,8 +17,9 @@ function TaskInputs() {
   const [time, setTime] = useState("");
   const [points, setPoints] = useState("");
   const [user, setUser] = useState("");
+  console.log(user);
 
-  const inputsFilled = title && text && time && points;
+  const inputsFilled = branch == "Все" ? title && text && time && points : title && text && time && points && user;
 
   useEffect(() => {
     dispatch(getBranches());
@@ -102,10 +103,9 @@ function TaskInputs() {
           <div className={s.user}>
             <span>Пользователь</span>
             <select value={user} onChange={(e) => setUser(e.target.value)}>
+              {!user && <option value="">Выберите работника</option>}
               {users.map((item, index) => {
                 if (item.branchId._id === branch) {
-                  // usersArr.length !== 1 && usersArr.push(item)
-                  // console.log(usersArr[0].login)
                   return (
                     <option value={item._id} key={item._id}>
                       {item.login}
