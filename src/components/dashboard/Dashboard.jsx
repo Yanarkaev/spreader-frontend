@@ -24,7 +24,7 @@ function Dashboard() {
         }
         return item.branchId?._id === sortBranch._id;
       })
-      .filter((elem) => elem.state === "new" && elem.userId === undefined )
+      .filter((elem) => elem.state === "new" && elem.userId === undefined)
   ).filter((item) => {
     if (item?.title.toLowerCase().includes(search.toLocaleLowerCase())) {
       return item;

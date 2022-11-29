@@ -1,15 +1,16 @@
 .wrapper {
-  width: 80%;
-  margin: 50px auto 0;
+  width: 100%;
+  margin: 0 auto;
   font-weight: 600;
 
   .userInfoWrapper {
     width: 100%;
     position: relative;
     transition: 0.2s;
+    margin: 0 auto;
 
     .user { 
-      width: 100%;
+      // width: 100%;
       display: flex;
       justify-content: space-between;
       padding: 20px 25px;
@@ -46,4 +47,16 @@
       }
     }
   }
+}
+
+
+.header {
+  position: relative;
+  height: 60px;
+  background-color: #FFFFFF;
+  text-align: center;
+  margin-bottom: 10px;
+  padding: 10px;
+  color: #109CF1;
+ 
 }

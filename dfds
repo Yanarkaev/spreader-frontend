@@ -1,0 +1,222 @@
+[33mcommit f26adceee7d607a10f25ca62b103bf0e7cf0f19f[m[33m ([m[1;36mHEAD[m[33m, [m[1;32mmy-tasks-update[m[33m)[m
+Author: Yanarkaev <hasssanbek@gmail.com>
+Date:   Fri Nov 11 01:26:23 2022 +0300
+
+    добавил прелоадер для авторизации, скрыл для админа вкладку 'мои задачи'
+
+[33mcommit 29577faae974fd60b188d6b1a8e855ead16eee2b[m
+Author: Yanarkaev <hasssanbek@gmail.com>
+Date:   Fri Nov 11 00:14:22 2022 +0300
+
+    исправил баг показа отдела у пользователя
+
+[33mcommit d1a6379d0fa17b088b6af7aef5d3582c6e97bafb[m
+Author: Yanarkaev <hasssanbek@gmail.com>
+Date:   Fri Nov 11 00:11:34 2022 +0300
+
+    откат регистрации
+
+[33mcommit afe7bc1df18cbb8f7fa1553701b38e6889bd8de9[m
+Author: Yanarkaev <hasssanbek@gmail.com>
+Date:   Fri Nov 11 00:10:04 2022 +0300
+
+    Сделал фильтрацию задач пользователя
+
+[33mcommit 6c38a31d257f6b1969d938dba21de2813cffdc31[m[33m ([m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m)[m
+Merge: ef72181 1d8a36a
+Author: Yanarkaev <110416456+Yanarkaev@users.noreply.github.com>
+Date:   Thu Nov 10 17:24:37 2022 +0300
+
+    Merge pull request #20 from Yanarkaev/tasks-status
+    
+    добавил прелоадеры и подправил верстку
+
+[33mcommit 1d8a36af44aa06232e7161f609c8af2867511ea3[m[33m ([m[1;31morigin/tasks-status[m[33m)[m
+Merge: 9b0f28d ef72181
+Author: Yanarkaev <110416456+Yanarkaev@users.noreply.github.com>
+Date:   Thu Nov 10 17:24:21 2022 +0300
+
+    Merge branch 'main' into tasks-status
+
+[33mcommit 9b0f28d34b6392b8c0f621b27594e9546d55bb1f[m[33m ([m[1;32mtasks-status[m[33m)[m
+Author: Yanarkaev <hasssanbek@gmail.com>
+Date:   Thu Nov 10 17:20:26 2022 +0300
+
+    добавил прелоадеры и подправил верстку
+
+[33mcommit ef72181aa251e43ee38c8a07e6a056a0f815bb70[m
+Merge: 3f0741c 9a52e7c
+Author: Yanarkaev <110416456+Yanarkaev@users.noreply.github.com>
+Date:   Thu Nov 10 17:18:33 2022 +0300
+
+    Merge pull request #19 from Laziyni/Reports
+    
+    Вывел отчеты
+
+[33mcommit 9a52e7c289105a4c3a8d533791e86fcb56d66638[m
+Author: Laziyni <soasue@mail.ru>
+Date:   Thu Nov 10 17:16:55 2022 +0300
+
+    Вывел отчеты
+
+[33mcommit 3f0741c6c8afc01a7410853297ff241752d03871[m
+Merge: fec2faf 81e9d12
+Author: Yanarkaev <110416456+Yanarkaev@users.noreply.github.com>
+Date:   Wed Nov 9 13:06:43 2022 +0300
+
+    Merge pull request #18 from Yanarkaev/admin-panel
+    
+    Admin panel
+
+[33mcommit 81e9d12529804372094dc41c1610645adabe4af8[m[33m ([m[1;31morigin/admin-panel[m[33m)[m
+Merge: eec3570 fec2faf
+Author: Yanarkaev <110416456+Yanarkaev@users.noreply.github.com>
+Date:   Wed Nov 9 13:06:19 2022 +0300
+
+    Merge branch 'main' into admin-panel
+
+[33mcommit eec3570aef1324a33bbd9585cadf6a4f42cbb4f0[m[33m ([m[1;32madmin-panel[m[33m)[m
+Author: Yanarkaev <hasssanbek@gmail.com>
+Date:   Wed Nov 9 12:59:16 2022 +0300
+
+    починил авторизацию и сделал панель админа
+
+[33mcommit fec2fafab6a10799cacf56476c4a7baf5e657514[m
+Merge: de3c5b9 6ee9fe3
+Author: Yanarkaev <110416456+Yanarkaev@users.noreply.github.com>
+Date:   Wed Nov 9 12:58:23 2022 +0300
+
+    Merge pull request #17 from Laziyni/Task
+    
+    Сделал все
+
+[33mcommit 6ee9fe3cd1d8d309547b676a06f3d876b8f44fa9[m
+Author: Laziyni <soasue@mail.ru>
+Date:   Wed Nov 9 12:55:45 2022 +0300
+
+    Сделал все
+
+[33mcommit 081edafebab434c24673ad0a326939d08f510408[m
+Author: Yanarkaev <hasssanbek@gmail.com>
+Date:   Tue Nov 8 22:01:20 2022 +0300
+
+    исправил работу авторизации
+
+[33mcommit 3c5e105603dea9f260586e026855599cca07096b[m
+Merge: c055a8e de3c5b9
+Author: Yanarkaev <hasssanbek@gmail.com>
+Date:   Tue Nov 8 20:40:44 2022 +0300
+
+    исправил баг с авторизацией
+
+[33mcommit c055a8edcd35559b46b0d09d42abccd577b21eae[m
+Author: Yanarkaev <hasssanbek@gmail.com>
+Date:   Tue Nov 8 16:26:13 2022 +0300
+
+    вынужденный
+
+[33mcommit de3c5b95bdf1edb9d8039deaefe8b08dad1f6892[m
+Merge: f1c6a58 198b739
+Author: Yanarkaev <110416456+Yanarkaev@users.noreply.github.com>
+Date:   Tue Nov 8 16:18:02 2022 +0300
+
+    Merge pull request #16 from Laziyni/Task
+    
+    почти сделал вывод одной задачи
+
+[33mcommit 198b7399b2116aab7fc8aea0967fca762e011448[m
+Author: Laziyni <soasue@mail.ru>
+Date:   Tue Nov 8 16:14:57 2022 +0300
+
+    почти сделал вывод одной задачи
+
+[33mcommit f1c6a58e79221ae019611993d16f312cfa59ade0[m
+Merge: 49af711 28a4de7
+Author: Yanarkaev <110416456+Yanarkaev@users.noreply.github.com>
+Date:   Tue Nov 8 11:46:45 2022 +0300
+
+    Merge pull request #15 from Yanarkaev/single-task
+    
+    таймер и страница конкретной задачи
+
+[33mcommit 28a4de7d157698c534781c2e4ea2bcae63fdda76[m[33m ([m[1;31morigin/single-task[m[33m)[m
+Author: Yanarkaev <hasssanbek@gmail.com>
+Date:   Tue Nov 8 11:46:02 2022 +0300
+
+    таймер и страница конкретной задачи
+
+[33mcommit 49af7115df55de8c81d658ae946df21cd0e855e4[m
+Merge: a41a0e0 30b227d
+Author: Yanarkaev <110416456+Yanarkaev@users.noreply.github.com>
+Date:   Tue Nov 8 11:22:18 2022 +0300
+
+    Merge pull request #14 from Yanarkaev/users
+    
+    вывел пользователей при добавлении задачи
+
+[33mcommit 30b227d4f4ee007323f4f2f5081b70ef9794eef2[m[33m ([m[1;31morigin/users[m[33m, [m[1;32musers[m[33m)[m
+Author: Yanarkaev <hasssanbek@gmail.com>
+Date:   Tue Nov 8 11:21:33 2022 +0300
+
+    вывел пользователей при добавлении задачи
+
+[33mcommit a41a0e0903026c42469cd077b866a83560e2c7ec[m
+Merge: 0c70c11 c2de413
+Author: Yanarkaev <110416456+Yanarkaev@users.noreply.github.com>
+Date:   Mon Nov 7 22:09:44 2022 +0300
+
+    Merge pull request #13 from Yanarkaev/add-task-button
+    
+    сделал добавление задачи
+
+[33mcommit c2de413174a867eaf6cc8dd0dbf9c289d903891b[m[33m ([m[1;31morigin/add-task-button[m[33m, [m[1;32madd-task-button[m[33m)[m
+Author: Yanarkaev <hasssanbek@gmail.com>
+Date:   Mon Nov 7 22:09:11 2022 +0300
+
+    сделал добавление задачи
+
+[33mcommit 0c70c113d0bfec09cc7b2af4fa8c91238b5f47ef[m
+Merge: af3d308 b7cd485
+Author: Yanarkaev <110416456+Yanarkaev@users.noreply.github.com>
+Date:   Mon Nov 7 10:52:16 2022 +0300
+
+    Merge pull request #12 from Yanarkaev/add-task-button
+    
+    исправил баг с отображением кнопки добавления задачи для админа
+
+[33mcommit b7cd48500cc3851bc9f986bd73443a17ab3eb1ba[m
+Author: Yanarkaev <hasssanbek@gmail.com>
+Date:   Mon Nov 7 10:48:41 2022 +0300
+
+    исправил баг с отображением кнопки добавления задачи для админа
+
+[33mcommit af3d308cfffdb59198fba414815e66a9c958ebfd[m
+Merge: dbc3c75 8ed6337
+Author: Yanarkaev <110416456+Yanarkaev@users.noreply.github.com>
+Date:   Sun Nov 6 21:30:55 2022 +0300
+
+    Merge pull request #11 from Yanarkaev/fetch-tasks
+    
+    Получил задачи с бэка и сделал их сортировку по отделам
+
+[33mcommit 8ed6337eadce616fbc3f211c6c7a6e6190dc01af[m[33m ([m[1;31morigin/fetch-tasks[m[33m, [m[1;32mfetch-tasks[m[33m)[m
+Author: Yanarkaev <hasssanbek@gmail.com>
+Date:   Sun Nov 6 21:30:03 2022 +0300
+
+    Получил задачи с бэка и сделал их сортировку по отделам
+
+[33mcommit dbc3c75173a6f75da1714581eb0c7eaf2b52ce4f[m
+Merge: 31a3c0e 1f0d2d3
+Author: Yanarkaev <110416456+Yanarkaev@users.noreply.github.com>
+Date:   Sat Nov 5 23:18:34 2022 +0300
+
+    Merge pull request #10 from Yanarkaev/auth-component
+    
+    добавил анимацию ошибки при авторизации
+
+[33mcommit 1f0d2d341d6e6caf8db80e60b99349b518199c3a[m[33m ([m[1;31morigin/auth-component[m[33m)[m
+Merge: 06c30da 31a3c0e
+Author: Yanarkaev <110416456+Yanarkaev@users.noreply.github.com>
+Date:   Sat Nov 5 23:18:26 2022 +0300
+
+    Merge branch 'main' into 

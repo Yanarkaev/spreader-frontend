@@ -37,7 +37,6 @@ const Main = () => {
             element={<Navigate to="spreader/dashboard" replace />}
           />
 
-          <Route path="spreader/signup" element={<Signup />} />
           <Route path="spreader/dashboard" element={<Dashboard />} />
           <Route path="spreader/tasks" element={<MyTasks />} />
           <Route path="spreader/dashboard/:taskId" element={<Task />} />

@@ -95,6 +95,7 @@ export const addTask = createAsyncThunk(
           branchId: branchId === "Все" ? undefined : branchId,
           points: points,
           time: time,
+          state: userId ? "inWork" : "new"
         }),
       });
 

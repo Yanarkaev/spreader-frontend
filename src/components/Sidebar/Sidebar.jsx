@@ -10,29 +10,42 @@ import { decodePayload, logOut } from "../../app/features/auth/authSlice";
 import { Link, NavLink } from "react-router-dom";
 
 const Sidebar = () => {
-  const sidebaeItems = [
+
+  const payload = useSelector((state) => state.auth.payload);
+  const token = useSelector((state) => state.auth.token);
+  const branch = useSelector((state) => state.auth.branch);
+
+  const sidebarItems = [
     {
       id: 1,
       name: "Все задачи",
       link: "/spreader/dashboard",
       taskIcon: DashboardIcon,
+      className: styles.sidebarItem,
     },
     {
       id: 2,
       name: "Мои задачи",
       link: "/spreader/tasks",
       taskIcon: TasksIcon,
+      className: styles.sidebarItem,
     },
     {
       id: 3,
-      name: "Отчеты",
+      name: "Статистика",
       link: "/spreader/reports",
       taskIcon: DealsIcon,
+      className: styles.sidebarItem,
     },
-  ];
+  ].filter((item) => payload?.role === "ADMIN" ? item.id !== 2 : item);
 
-  const payload = useSelector((state) => state.auth.payload);
-  const token = useSelector((state) => state.auth.token);
+  // const payload = useSelector((state) => state.auth.payload);
+  // const token = useSelector((state) => state.auth.token);
+  // const branch = useSelector((state) => state.auth.branch);
+  // const branch = useSelector((state) => state.branches.branches)?.find(
+  //   (item) => item._id === payload.branch
+  // )?.name;
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -48,19 +61,39 @@ const Sidebar = () => {
   return (
     <div className={styles.sidebar}>
       <div className={styles.profile}>
-        {token && payload && <div className={styles.name}>{payload.login}</div>}
+        {token && payload && (
+          <div className={styles.name}>
+            <span
+              className={`${styles.avatar} ${
+                payload?.role === "ADMIN" ? styles.adminAvatar : ""
+              }`}
+            >
+              {payload.login[0].toUpperCase()}
+            </span>
+            <span className={styles.login}>{payload.login}</span>
+          </div>
+        )}
+
+        {payload?.role !== "ADMIN" && (
+          <div className={styles.branchName}>
+            <span>Отдел</span> <span>{payload?.branch}</span>
+          </div>
+        )}
       </div>
 
       <div className={styles.sidebarItemsWrapper}>
-        {sidebaeItems.map((item) => {
-          return (
-            <div className={styles.sidebarItem} key={item.id}>
-              <NavLink to={item.link}>
-                <item.taskIcon stroke="#C2CFE0" className={styles.iconStroke} />
-                <span>{item.name}</span>
-              </NavLink>
-            </div>
-          );
+        {sidebarItems.map((item) => {
+            return (
+              <div className={item.className} key={item.id}>
+                <NavLink to={item.link}>
+                  <item.taskIcon
+                    stroke="#C2CFE0"
+                    className={styles.iconStroke}
+                  />
+                  <span>{item.name}</span>
+                </NavLink>
+              </div>
+            );
         })}
 
         {token && payload && payload.role === "ADMIN" && (

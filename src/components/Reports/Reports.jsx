@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getBranches } from "../../app/features/branches/branchesSlice";
 import { getTasks } from "../../app/features/tasks/tasksSlice";
 import DoughnutChart from "./Doughnut";
+import { ReactComponent as ReportsIcon } from "../../assets/Reports/reportsIcon.svg";
 
 import s from "./Reports.module.scss";
 
@@ -33,19 +34,16 @@ function Reports() {
     };
   });
 
-  console.log(res);
-
   return (
     <div className={s.container}>
       <header className={s.header}>
-        <div>
-          <h1>UserName</h1>
+        <div className={s.headerInner}>
+          <h1>Статистика</h1>
+        <div className={s.reportsIcon}>
+          <span >
+            <ReportsIcon fill="#109cf1" />
+          </span>
         </div>
-        <div>
-          <h1>Icon</h1>
-        </div>
-        <div>
-          <h1>Reports</h1>
         </div>
       </header>
 

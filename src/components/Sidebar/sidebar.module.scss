@@ -5,13 +5,18 @@
   padding: 0 30px 10px 10px;
   font-weight: 500;
   overflow: hidden;
-  transition: .3s;
+  transition: 0.3s;
   box-shadow: 0 0 10px 0 rgba(88, 88, 88, 0.307);
   min-height: 100vh;
 
+  &:hover {
+    width: 250px;
 
-  &:hover{
-    width: 17%;
+    .profile {
+      .branchName {
+        opacity: 1;
+      }
+    }
   }
 
   .logo {
@@ -21,8 +26,46 @@
   }
 
   .profile {
-    margin: 25px 0 45px 0;
+    margin: 25px 0 25px 0;
     width: 200px;
+
+    border-bottom: 1px solid rgb(221, 221, 221);
+    padding-bottom: 15px;
+    .name {
+      display: flex;
+      align-items: center;
+      width: fit-content;
+      padding-bottom: 5px;
+      .avatar {
+        padding: 20px;
+        width: 4px;
+        height: 40px;
+        display: flex;
+        border-radius: 50%;
+        justify-content: center;
+        align-items: center;
+        background-color: #109cf1;
+        // background-color: #FFB946;
+        color: #fff;
+        // font-weight: 700;
+        font-size: 20px;
+      }
+
+      .adminAvatar {
+        background-color: rgb(54, 54, 54);
+      }
+      .login {
+        margin-left: 10px;
+      }
+    }
+
+    .branchName {
+      font-size: 12px;
+      margin-top: 10px;
+      opacity: 0;
+      transition: 0.2s;
+      // text-align: center;
+    }
   }
 
   .sidebarItemsWrapper {

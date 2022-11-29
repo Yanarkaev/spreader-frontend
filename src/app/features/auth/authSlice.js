@@ -8,6 +8,7 @@ const initialState = {
   signedUp: false,
   signedIn: false,
   users: [],
+  branch: null
 };
 
 export const signup = createAsyncThunk(
@@ -113,6 +114,7 @@ export const authSlice = createSlice({
       .addCase(signup.fulfilled, (state, action) => {
         state.loading = false;
         state.signedUp = true;
+        state.branch = action.payload
       })
       .addCase(signup.rejected, (state, action) => {
         state.loading = false;
@@ -120,7 +122,6 @@ export const authSlice = createSlice({
       })
       //===
       .addCase(signin.pending, (state, action) => {
-        console.log(state);
         state.loading = true;
         state.error = null;
       })

@@ -10,12 +10,13 @@ import {
 import s from "./TaskButtons.module.scss";
 function TaskButtons({ setIsCounting }) {
   const dispatch = useDispatch();
-  const userId = useSelector((state) => state.auth.payload.id);
+  const payload = useSelector((state) => state.auth.payload);
   const task = useSelector((state) => state.tasks.task);
+  const loading = useSelector((state) => state.tasks.loading);
   const { taskId } = useParams();
 
   const handleToWorkTask = () => {
-    dispatch(takeToWork({ taskId, userId }));
+    dispatch(takeToWork({ taskId, userId: payload?.id }));
   };
 
   const handleCloseTask = () => {
@@ -23,8 +24,11 @@ function TaskButtons({ setIsCounting }) {
     setIsCounting(false);
   };
 
+  if (loading) {
+    return <span className="loader"></span>;
+  }
 
-  if (task?.state === "new") {
+  if (task?.state === "new" && payload?.role === "USER") {
     return (
       <button onClick={handleToWorkTask} className={s.takeToWork}>
         Вязть в работу
@@ -32,7 +36,7 @@ function TaskButtons({ setIsCounting }) {
     );
   }
 
-  if (task?.state === "inWork") {
+  if (task?.state === "inWork" && payload?.role === "USER") {
     return (
       <button onClick={handleCloseTask} className={s.close}>
         Завершить задачу
@@ -40,25 +44,13 @@ function TaskButtons({ setIsCounting }) {
     );
   }
 
-  if(task?.state === "closed"){
+  if (task?.state === "closed") {
     return (
-      <div className={s.closed}>Завершено</div>
-    )
+      <Link to="/spreader/tasks" className={s.closed}>
+        Завершено
+      </Link>
+    );
   }
-
-  // return (
-  //   <div className={s.container}>
-  //     {task?.state === "inWork" ? (
-  //       <div onClick={handleCloseTask} className={s.close}>
-  //         Завершить задачу
-  //       </div>
-  //     ) : (
-  //       <button onClick={handleToWorkTask} className={s.takeToWork}>
-  //         Вязть в работу
-  //       </button>
-  //     )}
-  //   </div>
-  // );
 }
 
 export default TaskButtons;

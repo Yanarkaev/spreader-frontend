@@ -3,13 +3,14 @@ import { Link } from "react-router-dom";
 import styles from "./auth.module.scss";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setError, signup } from "./../../../app/features/auth/authSlice";
+import { setError, signin, signup } from "./../../../app/features/auth/authSlice";
 import { getBranches } from "./../../../app/features/branches/branchesSlice";
 
 const Signup = () => {
   const branches = useSelector((state) => state.branches.branches);
   const error = useSelector((state) => state.auth.error);
   const loading = useSelector((state) => state.auth.loading);
+  const signedUp = useSelector(state => state.auth.signedUp)
   const dispatch = useDispatch();
 
   const [login, setLogin] = useState("");
@@ -29,9 +30,16 @@ const Signup = () => {
     branches[0] && setBranch(branches[0]._id);
   }, [branches]);
 
+  // useEffect(() => {
+  //   dispatch(signin({login, password}))
+  // }, [signedUp])
+
   const handleSignup = (e) => {
     e.preventDefault();
     dispatch(signup({ login, password, branchId: branch }));
+    // setTimeout(() => {
+    // dispatch(signin({login, password}))
+    // }, 1000)
   };
 
   const hadnleLogin = (e) => {
