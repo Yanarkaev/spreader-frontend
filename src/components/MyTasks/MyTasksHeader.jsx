@@ -1,7 +1,6 @@
 import React from "react";
 import s from "./mytasks.module.scss";
 import searchImg from "../../assets/Dashboard/search.svg";
-import { useState } from "react";
 
 function MyTasksHeader({ search, setSearch, filterByState, setFilterByState }) {
   const handleSearch = (e) => {
@@ -9,8 +8,6 @@ function MyTasksHeader({ search, setSearch, filterByState, setFilterByState }) {
       setSearch(e.target.value);
     }
   };
-
-  //   const [active, setActive] = useState(0)
 
   return (
     <header className={s.header}>

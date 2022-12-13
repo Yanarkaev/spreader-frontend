@@ -6,6 +6,7 @@ function AddTask({ openTask, setOpenTask }) {
   const handleClose = () => {
     setOpenTask(!openTask);
   };
+
   return (
     <div className={s.container}>
       <span onClick={handleClose} className={s.delete}>

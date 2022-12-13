@@ -7,13 +7,15 @@ import { ReactComponent as DealsIcon } from "../../assets/Aside/deals.svg";
 import { ReactComponent as LogoutIcon } from "../../assets/Aside/logout.svg";
 import { useSelector, useDispatch } from "react-redux";
 import { decodePayload, logOut } from "../../app/features/auth/authSlice";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation, useParams } from "react-router-dom";
+import { useState } from "react";
 
 const Sidebar = () => {
-
   const payload = useSelector((state) => state.auth.payload);
   const token = useSelector((state) => state.auth.token);
-  const branch = useSelector((state) => state.auth.branch);
+  const [active, setActive] = useState(0);
+  const location = useLocation().pathname;
+
 
   const sidebarItems = [
     {
@@ -37,14 +39,7 @@ const Sidebar = () => {
       taskIcon: DealsIcon,
       className: styles.sidebarItem,
     },
-  ].filter((item) => payload?.role === "ADMIN" ? item.id !== 2 : item);
-
-  // const payload = useSelector((state) => state.auth.payload);
-  // const token = useSelector((state) => state.auth.token);
-  // const branch = useSelector((state) => state.auth.branch);
-  // const branch = useSelector((state) => state.branches.branches)?.find(
-  //   (item) => item._id === payload.branch
-  // )?.name;
+  ].filter((item) => (payload?.role === "ADMIN" ? item.id !== 2 : item));
 
   const dispatch = useDispatch();
 
@@ -60,66 +55,88 @@ const Sidebar = () => {
 
   return (
     <div className={styles.sidebar}>
-      <div className={styles.profile}>
-        {token && payload && (
-          <div className={styles.name}>
-            <span
-              className={`${styles.avatar} ${
-                payload?.role === "ADMIN" ? styles.adminAvatar : ""
-              }`}
-            >
-              {payload.login[0].toUpperCase()}
-            </span>
-            <span className={styles.login}>{payload.login}</span>
-          </div>
-        )}
+      <div className={styles.inner}>
+        <div className={styles.profile}>
+          {token && payload && (
+            <div className={styles.name}>
+              <span
+                className={`${styles.avatar} ${
+                  payload?.role === "ADMIN" ? styles.adminAvatar : ""
+                }`}
+              >
+                {payload.login[0].toUpperCase()}
+              </span>
+            </div>
+          )}
 
-        {payload?.role !== "ADMIN" && (
-          <div className={styles.branchName}>
-            <span>Отдел</span> <span>{payload?.branch}</span>
+          <div className={styles.login}>
+            {payload?.login?.split(" ").length > 1
+              ? `${payload?.login?.split(" ")[0]} ${payload?.login
+                  .split(" ")[1][0]
+                  .toUpperCase()}.`
+              : payload?.login?.split(" ")[0]}
           </div>
-        )}
-      </div>
 
-      <div className={styles.sidebarItemsWrapper}>
-        {sidebarItems.map((item) => {
+          {payload?.role !== "ADMIN" && (
+            <div className={styles.branchName}>
+              <span>Отдел: </span> <span>{payload?.branch}</span>
+            </div>
+          )}
+        </div>
+
+        <div className={styles.sidebarItemsWrapper}>
+          {sidebarItems.map((item) => {
             return (
-              <div className={item.className} key={item.id}>
+              <div
+                className={item.className}
+                key={item.id}
+                style={item.link === location ? { color: "#109cf1" } : {}}
+              >
                 <NavLink to={item.link}>
                   <item.taskIcon
                     stroke="#C2CFE0"
                     className={styles.iconStroke}
+                    style={item.link === location ? { stroke: "#109cf1" } : {}}
                   />
                   <span>{item.name}</span>
                 </NavLink>
               </div>
             );
-        })}
+          })}
 
-        {token && payload && payload.role === "ADMIN" && (
-          <div className={styles.sidebarItem}>
-            <Link to="/spreader/admin">
-              <ContactsIcon stroke="#C2CFE0" className={styles.iconStroke} />
-              <span>Админка</span>
-            </Link>
-          </div>
-        )}
+          {token && payload && payload.role === "ADMIN" && (
+            <div
+              className={styles.sidebarItem}
+              onClick={() => setActive("admin")}
+              style={active === "admin" ? { color: "#109cf1" } : {}}
+            >
+              <Link to="/spreader/admin">
+                <ContactsIcon
+                  stroke="#C2CFE0"
+                  className={styles.iconStroke}
+                  style={active === "admin" ? { stroke: "#109cf1" } : {}}
+                />
+                <span>Админка</span>
+              </Link>
+            </div>
+          )}
 
-        {token ? (
-          <div
-            className={`${styles.other} ${styles.sidebarItem}`}
-            onClick={handleLogOut}
-          >
-            <LogoutIcon fill="#C2CFE0" className={styles.iconFill} />
-            <span>Выйти в окно</span>
-          </div>
-        ) : (
-          <div className={`${styles.other} ${styles.sidebarItem}`}>
-            <Link to="/spreader/signin" className={styles.signInBtn}>
-              Войти
-            </Link>
-          </div>
-        )}
+          {token ? (
+            <div
+              className={`${styles.other} ${styles.sidebarItem}`}
+              onClick={handleLogOut}
+            >
+              <LogoutIcon fill="#C2CFE0" className={styles.iconFill} />
+              <span>Выйти в окно</span>
+            </div>
+          ) : (
+            <div className={`${styles.other} ${styles.sidebarItem}`}>
+              <Link to="/spreader/signin" className={styles.signInBtn}>
+                Войти
+              </Link>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

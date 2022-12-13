@@ -34,14 +34,10 @@ const Signin = () => {
 
   const handleLogin = (e) => {
     setLogin(e.target.value);
-    // if (error) {
-    //   setMessage(null)
-    // }
     dispatch(setError());
   };
   const hadnlePassword = (e) => {
     setPassword(e.target.value);
-
     dispatch(setError());
   };
 
@@ -50,6 +46,7 @@ const Signin = () => {
   };
   return (
     <div className={styles.formWrapper}>
+      
       <form action="" onSubmit={handleSignin}>
         {error && (
           <div className={`${styles.status} ${styles.error}`}>{error}</div>

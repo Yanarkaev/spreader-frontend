@@ -7,7 +7,6 @@ import Dashboard from "../dashboard/Dashboard";
 import Sidebar from "../Sidebar/Sidebar";
 import Task from "./../task/Task";
 import Users from "../Users/Users";
-import { redirect } from "react-router-dom";
 import { useSelector } from "react-redux";
 import MyTasks from "./../MyTasks/MyTasks";
 import Reports from "../Reports/Reports";
@@ -36,7 +35,6 @@ const Main = () => {
             path="*"
             element={<Navigate to="spreader/dashboard" replace />}
           />
-
           <Route path="spreader/dashboard" element={<Dashboard />} />
           <Route path="spreader/tasks" element={<MyTasks />} />
           <Route path="spreader/dashboard/:taskId" element={<Task />} />

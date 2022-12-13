@@ -39,19 +39,18 @@ function Reports() {
       <header className={s.header}>
         <div className={s.headerInner}>
           <h1>Статистика</h1>
-        <div className={s.reportsIcon}>
-          <span >
-            <ReportsIcon fill="#109cf1" />
-          </span>
-        </div>
+          <div className={s.reportsIcon}>
+            <span>
+              <ReportsIcon fill="#109cf1" />
+            </span>
+          </div>
         </div>
       </header>
 
       <main className={s.main}>
-        {/* <div className={s.departments}> */}
-        {res.map((item) => {
+        {res.map((item, index) => {
           return (
-            <div className={s.chartsContainer}>
+            <div className={s.chartsContainer} key={index}>
               <div className={s.Doughnut}>
                 <span>{item.name}</span>
                 <DoughnutChart item={item} />
@@ -59,7 +58,6 @@ function Reports() {
             </div>
           );
         })}
-        {/* </div> */}
       </main>
     </div>
   );

@@ -48,7 +48,7 @@ function Department() {
           <img onClick={handleCLick} src={img} alt="logo" />
         </div>
         {token && payload && payload.role === "ADMIN" && (
-          <div>
+          <div className={s.addTaskBtn}>
             <button onClick={handleOpenAddTask} className={s.btn}>
               Добавить задачу
             </button>
