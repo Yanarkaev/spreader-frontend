@@ -34,14 +34,6 @@ function Reports() {
     };
   });
 
-  console.log(
-    tasks.filter(
-      (item) =>
-        item.branchId?._id === "638505ed0bd5004941f55c30" // && item.state === "closed"
-    )
-  );
-  console.log(res);
-
   return (
     <div className={s.container}>
       <header className={s.header}>
@@ -56,10 +48,9 @@ function Reports() {
       </header>
 
       <main className={s.main}>
-        {/* <div className={s.departments}> */}
-        {res.map((item) => {
+        {res.map((item, index) => {
           return (
-            <div className={s.chartsContainer}>
+            <div className={s.chartsContainer} key={index}>
               <div className={s.Doughnut}>
                 <span>{item.name}</span>
                 <DoughnutChart item={item} />
@@ -67,7 +58,6 @@ function Reports() {
             </div>
           );
         })}
-        {/* </div> */}
       </main>
     </div>
   );

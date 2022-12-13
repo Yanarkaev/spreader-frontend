@@ -43,7 +43,7 @@ function Dashboard() {
     <div className={s.container}>
       <DashboardHeader search={search} setSearch={setSearch} />
 
-      <Department tasks={tasks.length > 0}/>
+      <Department/>
       {tasks.length > 0 ? (
         <>
           <div className={s.tableContainer}>

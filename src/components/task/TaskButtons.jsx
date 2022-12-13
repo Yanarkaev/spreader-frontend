@@ -32,10 +32,10 @@ function TaskButtons({ setIsCounting }) {
   }
 
   if (
-    (task?.state === "new" &&
-      payload?.role === "USER" &&
-      task.branchId === undefined) ||
-    (task.branchId._id === payload?.branchId && task.userId === undefined)
+    (task?.state === "new" && task.branchId === undefined && payload?.role === "USER") ||
+    (task.branchId?._id === payload?.branchId &&
+      task?.userId === undefined &&
+      payload?.role === "USER")
   ) {
     return (
       <button onClick={handleToWorkTask} className={s.takeToWork}>

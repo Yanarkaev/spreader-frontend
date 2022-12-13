@@ -7,7 +7,16 @@
   overflow: hidden;
   transition: 0.3s;
   box-shadow: 0 0 10px 0 rgba(88, 88, 88, 0.307);
-  min-height: 100vh;
+  max-height: 100%;
+  position: relative;
+
+  .inner {
+    position: fixed;
+    // max-width: 100%;
+    width: 49px;
+    overflow: hidden;
+    transition: 0.3s;
+  }
 
   &:hover {
     width: 250px;
@@ -16,6 +25,13 @@
       .branchName {
         opacity: 1;
       }
+
+      .login {
+        opacity: 1;
+      }
+    }
+    .inner {
+      width: 196px;
     }
   }
 
@@ -31,6 +47,13 @@
 
     border-bottom: 1px solid rgb(221, 221, 221);
     padding-bottom: 15px;
+
+    .login {
+      margin-top: 10px;
+      font-size: 14px;
+      opacity: 0;
+      transition: 0.2s;
+    }
     .name {
       display: flex;
       align-items: center;
@@ -51,9 +74,6 @@
 
       .adminAvatar {
         background-color: rgb(54, 54, 54);
-      }
-      .login {
-        margin-left: 10px;
       }
     }
 

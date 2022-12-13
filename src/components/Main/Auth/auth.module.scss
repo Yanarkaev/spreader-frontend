@@ -2,7 +2,10 @@
   width: 100%;
   max-width: 500px;
   margin: 0 auto;
-  position: relative;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 
   .formError {
     animation: shake 0.2s ease-in-out 0s 2;
@@ -10,12 +13,10 @@
 
   form {
     box-sizing: content-box;
-    position: absolute;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    top: 200px;
 
     .status {
       position: absolute;
@@ -103,17 +104,17 @@
   }
 }
 
-// @keyframes shake {
-//   0% {
-//     margin-left: 0rem;
-//   }
-//   25% {
-//     margin-left: 0.3rem;
-//   }
-//   75% {
-//     margin-left: -0.3rem;
-//   }
-//   100% {
-//     margin-left: 0rem;
-//   }
-// }
+@keyframes shake {
+  0% {
+    margin-left: 0rem;
+  }
+  25% {
+    margin-left: 0.3rem;
+  }
+  75% {
+    margin-left: -0.3rem;
+  }
+  100% {
+    margin-left: 0rem;
+  }
+}
