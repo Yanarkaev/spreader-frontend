@@ -7,13 +7,15 @@ import { ReactComponent as DealsIcon } from "../../assets/Aside/deals.svg";
 import { ReactComponent as LogoutIcon } from "../../assets/Aside/logout.svg";
 import { useSelector, useDispatch } from "react-redux";
 import { decodePayload, logOut } from "../../app/features/auth/authSlice";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation, useParams } from "react-router-dom";
 import { useState } from "react";
 
 const Sidebar = () => {
   const payload = useSelector((state) => state.auth.payload);
   const token = useSelector((state) => state.auth.token);
   const [active, setActive] = useState(0);
+  const location = useLocation().pathname;
+
 
   const sidebarItems = [
     {
@@ -83,19 +85,18 @@ const Sidebar = () => {
         </div>
 
         <div className={styles.sidebarItemsWrapper}>
-          {sidebarItems.map((item, index) => {
+          {sidebarItems.map((item) => {
             return (
               <div
                 className={item.className}
                 key={item.id}
-                onClick={() => setActive(index)}
-                style={active === index ? { color: "#109cf1" } : {}}
+                style={item.link === location ? { color: "#109cf1" } : {}}
               >
                 <NavLink to={item.link}>
                   <item.taskIcon
                     stroke="#C2CFE0"
                     className={styles.iconStroke}
-                    style={active === index ? { stroke: "#109cf1" } : {}}
+                    style={item.link === location ? { stroke: "#109cf1" } : {}}
                   />
                   <span>{item.name}</span>
                 </NavLink>
