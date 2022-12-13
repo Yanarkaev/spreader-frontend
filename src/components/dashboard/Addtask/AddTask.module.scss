@@ -1,10 +1,11 @@
 .container {
-    width: 65%;
+    min-width: 65%;
     background-color: #fff;
     position: absolute;
-    z-index: 2;
+    z-index: 10;
     left: 50%;
-    transform: translate(-50%,-20%);
+    // top: 50%;
+    transform: translate(-50%);
     box-shadow: 0px 0px 20px 0px rgba(75, 70, 70, 0.263);
     border-radius: 10px;
     

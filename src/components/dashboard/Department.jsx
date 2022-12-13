@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getBranches } from "./../../app/features/branches/branchesSlice";
 import { sortByBranch } from "../../app/features/tasks/tasksSlice";
 
-function Department() {
+function Department({ tasks }) {
   const [opened, setOpened] = useState(false);
   const [openTask, setOpenTask] = useState(false);
 
@@ -38,17 +38,19 @@ function Department() {
   return (
     <>
       <div className={s.Department}>
-        <div>
-          <span>
-            Фильтр по отделам:
-            <span onClick={handleOpen} className={s.textBlue}>
-              {sortBranch === "all" ? " Все" : " " + sortBranch.name}
-            </span>
-          </span>
-          <img onClick={handleCLick} src={img} alt="logo" />
-        </div>
-        {token && payload && payload.role === "ADMIN" && (
+        {tasks && (
           <div>
+            <span>
+              Фильтр по отделам:
+              <span onClick={handleOpen} className={s.textBlue}>
+                {sortBranch === "all" ? " Все" : " " + sortBranch.name}
+              </span>
+            </span>
+            <img onClick={handleCLick} src={img} alt="logo" />
+          </div>
+        )}
+        {token && payload && payload.role === "ADMIN" && (
+          <div className={s.addTaskBtn}>
             <button onClick={handleOpenAddTask} className={s.btn}>
               Добавить задачу
             </button>

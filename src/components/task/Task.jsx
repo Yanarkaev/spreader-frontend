@@ -12,7 +12,6 @@ function Task() {
   const [click, setClick] = useState(false);
   const { taskId } = useParams();
   const task = useSelector((state) => state.tasks.task);
-  // const task = useSelector((state) => state.tasks.task);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -26,7 +25,6 @@ function Task() {
     (Number(timer?.minutes) || +task?.time) * 60 + (Number(timer?.seconds) || 0)
   );
 
-  // ssaas?.isCounting || false
   const [isCounting, setIsCounting] = useState(
     timer?.isCounting === "false" ? true : false
   );
@@ -46,6 +44,7 @@ function Task() {
   }, [isCounting]);
 
   // =================================== Reasons ========================================== \\
+
   const reasons = [
     "По поручению администратора",
     "Причина 2",
@@ -54,8 +53,9 @@ function Task() {
   ];
 
   const [reason, setReason] = useState(null);
+
   if (!task) {
-    return <span className="loader"></span>
+    return <span className="loader"></span>;
   }
 
   return (

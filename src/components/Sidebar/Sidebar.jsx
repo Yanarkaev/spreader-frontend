@@ -10,10 +10,8 @@ import { decodePayload, logOut } from "../../app/features/auth/authSlice";
 import { Link, NavLink } from "react-router-dom";
 
 const Sidebar = () => {
-
   const payload = useSelector((state) => state.auth.payload);
   const token = useSelector((state) => state.auth.token);
-  const branch = useSelector((state) => state.auth.branch);
 
   const sidebarItems = [
     {
@@ -37,14 +35,7 @@ const Sidebar = () => {
       taskIcon: DealsIcon,
       className: styles.sidebarItem,
     },
-  ].filter((item) => payload?.role === "ADMIN" ? item.id !== 2 : item);
-
-  // const payload = useSelector((state) => state.auth.payload);
-  // const token = useSelector((state) => state.auth.token);
-  // const branch = useSelector((state) => state.auth.branch);
-  // const branch = useSelector((state) => state.branches.branches)?.find(
-  //   (item) => item._id === payload.branch
-  // )?.name;
+  ].filter((item) => (payload?.role === "ADMIN" ? item.id !== 2 : item));
 
   const dispatch = useDispatch();
 
@@ -83,17 +74,14 @@ const Sidebar = () => {
 
       <div className={styles.sidebarItemsWrapper}>
         {sidebarItems.map((item) => {
-            return (
-              <div className={item.className} key={item.id}>
-                <NavLink to={item.link}>
-                  <item.taskIcon
-                    stroke="#C2CFE0"
-                    className={styles.iconStroke}
-                  />
-                  <span>{item.name}</span>
-                </NavLink>
-              </div>
-            );
+          return (
+            <div className={item.className} key={item.id}>
+              <NavLink to={item.link}>
+                <item.taskIcon stroke="#C2CFE0" className={styles.iconStroke} />
+                <span>{item.name}</span>
+              </NavLink>
+            </div>
+          );
         })}
 
         {token && payload && payload.role === "ADMIN" && (

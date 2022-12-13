@@ -26,7 +26,6 @@ const data = {
   ],
   datasets: [
     {
-      // label: "СИЙН Ц1Е ГРАФИК",
       data: [8, 9, 7.8, 7.9, 6, 7, 8, 6, 5, 7.8, 5, 6],
       backgroundColor: "transparent",
       borderColor: "#f26c6d",

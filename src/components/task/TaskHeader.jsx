@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-
 import s from "./TaskHeader.module.scss";
 
 function TaskHeader({
@@ -9,7 +8,6 @@ function TaskHeader({
   seconds,
   isCounting,
   reasons,
-  reason,
   setReason,
   setClick,
 }) {
@@ -18,7 +16,6 @@ function TaskHeader({
   console.log(payload);
 
   const [open, setOpen] = useState(false);
-
 
   const handleOpen = () => {
     setOpen(!open);
@@ -51,17 +48,19 @@ function TaskHeader({
         <div>
           <span className={s.time}>{`${minutes}:${seconds}`}</span>
         </div>
-        {task?.state !== "closed" && payload?.role == "USER" && (
-          <div>
-            {isCounting ? (
-              <button onClick={handleOpen}>Удержание</button>
-            ) : (
-              <button disabled={task.state === "new"} onClick={handleStart}>
-                Начать
-              </button>
-            )}
-          </div>
-        )}
+        {task?.state !== "closed" &&
+          payload?.role === "USER" &&
+           (
+            <div>
+              {isCounting ? (
+                <button onClick={handleOpen}>Удержание</button>
+              ) : (
+                <button disabled={task.state === "new"} onClick={handleStart}>
+                  Начать
+                </button>
+              )}
+            </div>
+          )}
       </header>
       {open && (
         <div className={s.timeModal}>

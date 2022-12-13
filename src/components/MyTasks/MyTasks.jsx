@@ -60,7 +60,10 @@ const MyTasks = () => {
 
           <tbody>
             {tasks.map((item, index) => {
-              if (payload?.id === item.userId) {
+              if (
+                payload?.id === item.userId ||
+                (item.state === "new" && payload?.branchId === item.branchId)
+              ) {
                 return (
                   <tr
                     className={`${s.taskTr} ${

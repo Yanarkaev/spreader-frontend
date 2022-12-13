@@ -31,6 +31,18 @@ export const getTaskById = createAsyncThunk(
   }
 );
 
+// export const getTasksByBranch = createAsyncThunk(
+//   "tasks/getByBranch",
+//   async (id, thunkAPI) => {
+//     try {
+//       const res = await fetch(`/spreader/tasks/branch/${id}`);
+//       return res.json();
+//     } catch (error) {
+//       thunkAPI.rejectWithValue(error);
+//     }
+//   }
+// );
+
 export const addMessage = createAsyncThunk(
   "taskMessage/patch",
 
@@ -50,12 +62,12 @@ export const addMessage = createAsyncThunk(
 
 export const takeToWork = createAsyncThunk(
   "inwork/patch",
-  async ({ taskId, userId }, thunkAPI) => {
+  async ({ taskId, userId, branchId }, thunkAPI) => {
     try {
       const res = await fetch(`/spreader/tasks/take/${taskId}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ userId: userId }),
+        body: JSON.stringify({ userId: userId, branchId: branchId }),
       });
       return res.json();
     } catch (error) {
@@ -91,15 +103,14 @@ export const addTask = createAsyncThunk(
         body: JSON.stringify({
           title: title,
           text: text,
-          userId: userId === "" ? undefined : userId,
+          userId: userId === "Все" ? undefined : userId,
           branchId: branchId === "Все" ? undefined : branchId,
           points: points,
           time: time,
-          state: userId ? "inWork" : "new"
+          state: userId !== "Все" ? "inWork" : "new",
         }),
       });
 
-      // console.log(res.json());
       return res.json();
     } catch (error) {
       thunkAPI.rejectWithValue(error);
@@ -137,6 +148,7 @@ export const tasksSlice = createSlice({
       .addCase(addTask.fulfilled, (state, action) => {
         state.loading = false;
         state.tasks.push(action.payload);
+        console.log(action.payload);
       })
       .addCase(addTask.rejected, (state, action) => {
         state.loading = false;
@@ -149,14 +161,12 @@ export const tasksSlice = createSlice({
       })
       .addCase(getTaskById.pending, (state, action) => {
         state.loading = true;
-        state.error = null
+        state.error = null;
       })
       .addCase(getTaskById.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload
+        state.error = action.payload;
       })
-      
-
 
       //==
       .addCase(addMessage.fulfilled, (state, action) => {

@@ -18,7 +18,7 @@ function TaskItem({
 }) {
   const { taskId } = useParams();
   const task = useSelector((state) => state.tasks.task);
-  const loading = useSelector(state => state.tasks.loading)
+  const loading = useSelector((state) => state.tasks.loading);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -26,7 +26,7 @@ function TaskItem({
   }, [dispatch]);
 
   if (loading) {
-    return <span className="loader"></span>
+    return <span className="loader"></span>;
   }
 
   return (

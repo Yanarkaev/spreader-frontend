@@ -34,16 +34,24 @@ function Reports() {
     };
   });
 
+  console.log(
+    tasks.filter(
+      (item) =>
+        item.branchId?._id === "638505ed0bd5004941f55c30" // && item.state === "closed"
+    )
+  );
+  console.log(res);
+
   return (
     <div className={s.container}>
       <header className={s.header}>
         <div className={s.headerInner}>
           <h1>Статистика</h1>
-        <div className={s.reportsIcon}>
-          <span >
-            <ReportsIcon fill="#109cf1" />
-          </span>
-        </div>
+          <div className={s.reportsIcon}>
+            <span>
+              <ReportsIcon fill="#109cf1" />
+            </span>
+          </div>
         </div>
       </header>
 
