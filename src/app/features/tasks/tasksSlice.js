@@ -31,18 +31,6 @@ export const getTaskById = createAsyncThunk(
   }
 );
 
-// export const getTasksByBranch = createAsyncThunk(
-//   "tasks/getByBranch",
-//   async (id, thunkAPI) => {
-//     try {
-//       const res = await fetch(`/spreader/tasks/branch/${id}`);
-//       return res.json();
-//     } catch (error) {
-//       thunkAPI.rejectWithValue(error);
-//     }
-//   }
-// );
-
 export const addMessage = createAsyncThunk(
   "taskMessage/patch",
 
