@@ -6,6 +6,7 @@ import { getBranches } from "./../../../app/features/branches/branchesSlice";
 import { useEffect } from "react";
 import { addTask } from "../../../app/features/tasks/tasksSlice";
 import { getUsers } from "./../../../app/features/users/usersSlice";
+
 function TaskInputs() {
   const dispatch = useDispatch();
   const branches = useSelector((state) => state.branches.branches);
@@ -17,8 +18,7 @@ function TaskInputs() {
   const [time, setTime] = useState("");
   const [points, setPoints] = useState("");
   const [user, setUser] = useState("Все");
-  console.log(user);
-
+ 
   const inputsFilled =
     branch == "Все"
       ? title && text && time && points

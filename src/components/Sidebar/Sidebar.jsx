@@ -7,15 +7,12 @@ import { ReactComponent as DealsIcon } from "../../assets/Aside/deals.svg";
 import { ReactComponent as LogoutIcon } from "../../assets/Aside/logout.svg";
 import { useSelector, useDispatch } from "react-redux";
 import { decodePayload, logOut } from "../../app/features/auth/authSlice";
-import { Link, NavLink, useLocation, useParams } from "react-router-dom";
-import { useState } from "react";
+import { Link, NavLink, useLocation } from "react-router-dom";
 
 const Sidebar = () => {
   const payload = useSelector((state) => state.auth.payload);
   const token = useSelector((state) => state.auth.token);
-  const [active, setActive] = useState(0);
   const location = useLocation().pathname;
-
 
   const sidebarItems = [
     {
@@ -107,14 +104,15 @@ const Sidebar = () => {
           {token && payload && payload.role === "ADMIN" && (
             <div
               className={styles.sidebarItem}
-              onClick={() => setActive("admin")}
-              style={active === "admin" ? { color: "#109cf1" } : {}}
+              style={location === "/spreader/admin" ? { color: "#109cf1" } : {}}
             >
               <Link to="/spreader/admin">
                 <ContactsIcon
                   stroke="#C2CFE0"
                   className={styles.iconStroke}
-                  style={active === "admin" ? { stroke: "#109cf1" } : {}}
+                  style={
+                    location === "/spreader/admin" ? { stroke: "#109cf1" } : {}
+                  }
                 />
                 <span>Админка</span>
               </Link>
