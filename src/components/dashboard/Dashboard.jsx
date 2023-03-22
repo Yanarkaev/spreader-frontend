@@ -4,14 +4,16 @@ import DashboardHeader from "./DashboardHeader";
 import Department from "./Department";
 import { useDispatch, useSelector } from "react-redux";
 import { getTasks } from "./../../app/features/tasks/tasksSlice";
-import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Dashboard() {
   const loading = useSelector((state) => state.tasks.loading);
   const dispatch = useDispatch();
   const sortBranch = useSelector((state) => state.tasks.sortBranch);
   const [search, setSearch] = useState("");
+
+  const navigate = useNavigate()
 
   const tasks = useSelector((state) =>
     state.tasks.tasks
@@ -43,7 +45,7 @@ function Dashboard() {
     <div className={s.container}>
       <DashboardHeader search={search} setSearch={setSearch} />
 
-      <Department/>
+      <Department />
       {tasks.length > 0 ? (
         <>
           <div className={s.tableContainer}>
@@ -63,10 +65,10 @@ function Dashboard() {
               <tbody>
                 {tasks.map((item, index) => {
                   return (
-                    <tr className={s.taskTr} key={item._id}>
+                    <tr className={s.taskTr} key={item._id} onClick={() => navigate(`${item._id}`)}>
                       <td>{index + 1}</td>
                       <td>
-                        <Link to={item._id}>{item.title}</Link>
+                        <span>{item.title}</span>
                       </td>
 
                       <td>
