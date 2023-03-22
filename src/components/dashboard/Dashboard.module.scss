@@ -72,28 +72,6 @@ input {
   width: 90%;
   position: relative;
 
-  .addTaskBtn{
-    margin-left: auto;
-  }
-  .btn {
-    font-weight: 600;
-    font-size: 13px;
-    line-height: 20px;
-    text-align: center;
-    letter-spacing: 0.01em;
-    color: #ffffff;
-    width: 160px;
-    height: 42px;
-    background: #109cf1;
-    box-shadow: 0px 4px 10px rgba(16, 156, 241, 0.24);
-    border-radius: 4px;
-    border: none;
-    cursor: pointer;
-    &:hover {
-      background: #0c81c9;
-      transition: 0.1s linear;
-    }
-  }
   .modal {
     /* Модальное Окно */
     padding: 10px;
@@ -154,7 +132,7 @@ input {
   margin: 0 auto;
   background-color: #f5f6f8;
 
-  .empty{
+  .empty {
     position: absolute;
     left: 50%;
     top: 50%;

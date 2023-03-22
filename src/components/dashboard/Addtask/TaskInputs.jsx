@@ -6,6 +6,7 @@ import { getBranches } from "./../../../app/features/branches/branchesSlice";
 import { useEffect } from "react";
 import { addTask } from "../../../app/features/tasks/tasksSlice";
 import { getUsers } from "./../../../app/features/users/usersSlice";
+import { Button } from "../../../shared/iu";
 
 function TaskInputs() {
   const dispatch = useDispatch();
@@ -18,7 +19,7 @@ function TaskInputs() {
   const [time, setTime] = useState("");
   const [points, setPoints] = useState("");
   const [user, setUser] = useState("Все");
- 
+
   const inputsFilled =
     branch === "Все"
       ? title && text && time && points
@@ -120,13 +121,14 @@ function TaskInputs() {
           </div>
         )}
       </div>
-      <button
+
+      <Button
+        className={s.btn}
         disabled={!inputsFilled}
-        className={`${s.btn} ${!inputsFilled && s.btnDisabled}`}
         onClick={handleAddTask}
       >
         Создать Задачу
-      </button>
+      </Button>
     </div>
   );
 }
