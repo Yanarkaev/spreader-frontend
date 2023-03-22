@@ -20,7 +20,7 @@ function TaskInputs() {
   const [user, setUser] = useState("Все");
  
   const inputsFilled =
-    branch == "Все"
+    branch === "Все"
       ? title && text && time && points
       : title && text && time && points && user;
 
