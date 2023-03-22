@@ -1,0 +1,26 @@
+.Button {
+  font-weight: 600;
+  font-size: 13px;
+  padding: 10px 20px;
+  line-height: 20px;
+  color: #ffffff;
+  background: #109cf1;
+  box-shadow: 0px 4px 10px rgba(16, 156, 241, 0.24);
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    background: #0c81c9;
+    transition: 0.1s linear;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: no-drop;
+    &:hover {
+      background: #109cf1;
+      transition: 0;
+    }
+  }
+}

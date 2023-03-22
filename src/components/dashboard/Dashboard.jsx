@@ -13,7 +13,7 @@ function Dashboard() {
   const sortBranch = useSelector((state) => state.tasks.sortBranch);
   const [search, setSearch] = useState("");
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const tasks = useSelector((state) =>
     state.tasks.tasks
@@ -65,7 +65,11 @@ function Dashboard() {
               <tbody>
                 {tasks.map((item, index) => {
                   return (
-                    <tr className={s.taskTr} key={item._id} onClick={() => navigate(`${item._id}`)}>
+                    <tr
+                      className={s.taskTr}
+                      key={item._id}
+                      onClick={() => navigate(`${item._id}`)}
+                    >
                       <td>{index + 1}</td>
                       <td>
                         <span>{item.title}</span>

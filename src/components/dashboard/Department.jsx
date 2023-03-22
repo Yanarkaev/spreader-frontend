@@ -5,6 +5,7 @@ import AddTask from "./Addtask/AddTask";
 import { useDispatch, useSelector } from "react-redux";
 import { getBranches } from "./../../app/features/branches/branchesSlice";
 import { sortByBranch } from "../../app/features/tasks/tasksSlice";
+import { Button } from "./../../shared/iu";
 
 function Department() {
   const [opened, setOpened] = useState(false);
@@ -49,9 +50,9 @@ function Department() {
         </div>
         {token && payload && payload.role === "ADMIN" && (
           <div className={s.addTaskBtn}>
-            <button onClick={handleOpenAddTask} className={s.btn}>
+            <Button onClick={handleOpenAddTask} className={s.btn}>
               Добавить задачу
-            </button>
+            </Button>
             {openTask && (
               <AddTask
                 openTask={openTask}
