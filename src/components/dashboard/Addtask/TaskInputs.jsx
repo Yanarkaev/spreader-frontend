@@ -6,7 +6,7 @@ import { getBranches } from "./../../../app/features/branches/branchesSlice";
 import { useEffect } from "react";
 import { addTask } from "../../../app/features/tasks/tasksSlice";
 import { getUsers } from "./../../../app/features/users/usersSlice";
-import { Button } from "../../../shared/iu";
+import { Button, Input, Select } from "../../../shared/iu";
 
 function TaskInputs() {
   const dispatch = useDispatch();
@@ -19,6 +19,8 @@ function TaskInputs() {
   const [time, setTime] = useState("");
   const [points, setPoints] = useState("");
   const [user, setUser] = useState("Все");
+
+  console.log(branch)
 
   const inputsFilled =
     branch === "Все"
@@ -39,7 +41,7 @@ function TaskInputs() {
   return (
     <div className={s.container}>
       <div className={s.title}>
-        <input
+        <Input
           placeholder="Введите название"
           type="text"
           value={title}
@@ -64,7 +66,7 @@ function TaskInputs() {
       <div className={s.flex}>
         <div className={s.department}>
           <span>Выберите отдел</span>
-          <select
+          {/* <select
             name="Отдел"
             value={branch}
             onChange={(e) => {
@@ -79,11 +81,19 @@ function TaskInputs() {
                 </option>
               );
             })}
-          </select>
+          </select> */}
+          <Select
+            value={branch}
+            onChange={(e) => {
+              setBranch(e.target.value);
+            }}
+            array={branches}
+            initialValue="Все"
+          />
         </div>
         <div className={s.time}>
           <span>Время исполнения</span>
-          <input
+          <Input
             placeholder="Время..."
             type="number"
             value={time}
@@ -95,7 +105,7 @@ function TaskInputs() {
         </div>
         <div className={s.time}>
           <span>Баллы</span>
-          <input
+          <Input
             placeholder="Баллы... "
             type="number"
             value={points}

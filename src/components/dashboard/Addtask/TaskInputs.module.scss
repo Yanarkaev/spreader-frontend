@@ -13,18 +13,10 @@
     font-weight: 600;
   }
   input {
+    text-align: center;
     margin-bottom: 10px;
   }
-  .title {
-    input {
-      width: 100%;
-      padding: 8px 10px;
-      border: 1px solid #109cf1;
-      border-radius: 3px;
-      outline-color: #109cf1;
-      text-align: center;
-    }
-  }
+  
   .text {
     textarea {
       max-width: 100%;
