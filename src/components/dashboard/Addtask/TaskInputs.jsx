@@ -1,31 +1,32 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import s from "./TaskInputs.module.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
 import { getBranches } from "./../../../app/features/branches/branchesSlice";
-import { useEffect } from "react";
 import { addTask } from "../../../app/features/tasks/tasksSlice";
 import { getUsers } from "./../../../app/features/users/usersSlice";
 import { Button, Input, Select } from "../../../shared/iu";
 
 function TaskInputs() {
   const dispatch = useDispatch();
+
+  const [data, setData] = useState({
+    title: "",
+    text: "",
+    branchId: "Все",
+    time: "",
+    points: "",
+    userId: "Все",
+  });
+
   const branches = useSelector((state) => state.branches.branches);
-  const users = useSelector((state) => state.users.users);
-
-  const [title, setTitle] = useState("");
-  const [text, setText] = useState("");
-  const [branch, setBranch] = useState("Все");
-  const [time, setTime] = useState("");
-  const [points, setPoints] = useState("");
-  const [user, setUser] = useState("Все");
-
-  console.log(branch)
+  const users = useSelector((state) => state.users.users).filter(
+    (user) => user?.branchId?._id === data.branchId
+  );
 
   const inputsFilled =
-    branch === "Все"
-      ? title && text && time && points
-      : title && text && time && points && user;
+    data.branchId === "Все"
+      ? data.title && data.text && data.time && data.points
+      : data.title && data.text && data.time && data.points && data.userId;
 
   useEffect(() => {
     dispatch(getBranches());
@@ -33,9 +34,11 @@ function TaskInputs() {
   }, [dispatch]);
 
   const handleAddTask = () => {
-    dispatch(
-      addTask({ title, text, branchId: branch, time, points, userId: user })
-    );
+    dispatch(addTask(data));
+  };
+
+  const handleData = (e) => {
+    setData({ ...data, [e.target.name]: e.target.value });
   };
 
   return (
@@ -44,62 +47,46 @@ function TaskInputs() {
         <Input
           placeholder="Введите название"
           type="text"
-          value={title}
-          onChange={(e) =>
-            e.target.value[0] !== " " && setTitle(e.target.value)
-          }
+          value={data.title}
+          name="title"
+          onChange={handleData}
         />
       </div>
 
       <div className={s.text}>
         <textarea
           placeholder="Опишите задачу..."
-          name=""
-          id=""
+          name="text"
           cols="30"
           rows="10"
-          value={text}
-          onChange={(e) => e.target.value[0] !== " " && setText(e.target.value)}
+          value={data.text}
+          onChange={handleData}
         />
       </div>
 
       <div className={s.flex}>
         <div className={s.department}>
           <span>Выберите отдел</span>
-          {/* <select
-            name="Отдел"
-            value={branch}
-            onChange={(e) => {
-              setBranch(e.target.value);
-            }}
-          >
-            <option value={"Все"}>Все</option>
-            {branches.map((item) => {
-              return (
-                <option value={item._id} key={item._id}>
-                  {item.name}
-                </option>
-              );
-            })}
-          </select> */}
           <Select
-            value={branch}
-            onChange={(e) => {
-              setBranch(e.target.value);
-            }}
+            value={data.branchId}
+            body="name"
+            name="branchId"
+            selectValue="_id"
+            uniqueValue="_id"
+            onChange={handleData}
             array={branches}
             initialValue="Все"
           />
         </div>
+
         <div className={s.time}>
           <span>Время исполнения</span>
           <Input
             placeholder="Время..."
             type="number"
-            value={time}
-            onChange={(e) =>
-              e.target.value[0] !== " " && setTime(e.target.value)
-            }
+            value={data.time}
+            name="time"
+            onChange={handleData}
             min="5"
           />
         </div>
@@ -108,26 +95,25 @@ function TaskInputs() {
           <Input
             placeholder="Баллы... "
             type="number"
-            value={points}
-            onChange={(e) => setPoints(e.target.value)}
+            name="points"
+            value={data.points}
+            onChange={handleData}
             min="5"
           />
         </div>
-        {branch !== "Все" && (
+        {data.branchId !== "Все" && (
           <div className={s.user}>
             <span>Пользователь</span>
-            <select value={user} onChange={(e) => setUser(e.target.value)}>
-              <option value="Все">Все</option>
-              {users.map((item, index) => {
-                if (item.branchId._id === branch) {
-                  return (
-                    <option value={item._id} key={item._id}>
-                      {item.login}
-                    </option>
-                  );
-                }
-              })}
-            </select>
+            <Select
+              value={data.user}
+              body="login"
+              name="userId"
+              selectValue="_id"
+              uniqueValue="_id"
+              onChange={handleData}
+              array={users}
+              initialValue="Все"
+            />
           </div>
         )}
       </div>
