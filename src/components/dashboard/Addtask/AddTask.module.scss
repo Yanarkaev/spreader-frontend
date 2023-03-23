@@ -8,10 +8,9 @@
   transform: translate(-50%);
   box-shadow: 0px 0px 20px 0px rgba(75, 70, 70, 0.263);
   border-radius: 10px;
-  backdrop-filter: blur(10px);
-  animation-duration: 1s;
-//   animation-name: slidein;
-//   animation: ;
+  // backdrop-filter: blur(10px);
+  animation-duration: .2s;
+  animation-name: slidein;
 
   .delete {
     position: absolute;
@@ -30,10 +29,10 @@
 
 @keyframes slidein {
   from {
-    transform: translate(100%);
+    opacity: 0;
   }
 
   to {
-    transform: translate(-50%);
+    opacity: 1;
   }
 }
