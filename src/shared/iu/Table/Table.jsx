@@ -1,50 +1,40 @@
 import React from "react";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getTasks } from "./../../../app/features/tasks/tasksSlice";
+import s from "./Table.module.scss";
+import { useNavigate } from "react-router-dom";
 
-const columns = [
-  { value: "title", displayValue: "Название" },
-  // { value: "", displayValue: "Номер" },
-  { value: "branchId?.name", displayValue: "Отдел" },
-  { value: "time", displayValue: "Время" },
-  { value: "points", displayValue: "Баллы" },
-  { value: "createdAt", displayValue: "Дата" },
-  { value: "state", displayValue: "Статус" },
-];
-
-export const Table = () => {
-  //   const rows = useSelector((state) => state.tasks.tasks);
-  const rows = useSelector((state) => state.tasks.tasks).filter(
-    (elem) => elem.state === "new"
-  );
-  console.log(rows);
-
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getTasks());
-  }, [dispatch]);
+export const Table = ({ columns, rows }) => {
+  const navigate = useNavigate();
 
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>№</th>
-          {columns.map(({ displayValue }) => {
-            return <th>{displayValue}</th>;
-          })}
-        </tr>
-      </thead>
-      <tbody>
-        {rows.map((item, index) => (
+    <div className={s.Table}>
+      <table>
+        <thead>
           <tr>
-            <td>{index + 1}</td>
-            {columns.map((el) => {
-              return <td>{item[el.value]}</td>;
+            <th>№</th>
+            {columns.map(({ displayValue }, index) => {
+              return <th key={index}>{displayValue}</th>;
             })}
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {rows.map((item, index) => (
+            <tr
+              key={item._id}
+              className={s.tRow}
+              onClick={() => navigate(`${item._id}`)}
+            >
+              <td>{index + 1}</td>
+              {columns.map(({ value }) => {
+                return (
+                  <td key={value}>
+                    {item[value]?.name ? item[value]?.name : item[value]}
+                  </td>
+                );
+              })}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 };

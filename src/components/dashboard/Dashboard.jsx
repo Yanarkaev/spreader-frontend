@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getTasks } from "./../../app/features/tasks/tasksSlice";
 import { useNavigate } from "react-router-dom";
 import { Table } from "../../shared/iu/Table/Table";
+import TasksTable from "./TasksTable/TasksTable";
 
 function Dashboard() {
   const dispatch = useDispatch();
@@ -45,7 +46,7 @@ function Dashboard() {
     <div className={s.container}>
       <DashboardHeader search={search} setSearch={setSearch} />
       <Department />
-      <Table />
+      <TasksTable />
       {/* {tasks.length > 0 ? (
         <>
           <div className={s.tableContainer}>
@@ -93,7 +94,7 @@ function Dashboard() {
         </>
       ) : (
         <div className={s.empty}>Задач пока нет</div>
-      )} */}
+      )}  */}
     </div>
   );
 }
