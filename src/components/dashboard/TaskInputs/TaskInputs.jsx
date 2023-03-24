@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import s from "./TaskInputs.module.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { getBranches } from "./../../../app/features/branches/branchesSlice";
+import { getBranches } from "../../../app/features/branches/branchesSlice";
 import { addTask } from "../../../app/features/tasks/tasksSlice";
-import { getUsers } from "./../../../app/features/users/usersSlice";
+import { getUsers } from "../../../app/features/users/usersSlice";
 import { Button, Input, Select } from "../../../shared/iu";
 
 function TaskInputs() {

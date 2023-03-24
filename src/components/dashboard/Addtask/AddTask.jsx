@@ -1,6 +1,6 @@
 import React from "react";
 import s from "./AddTask.module.scss";
-import TaskInputs from "./TaskInputs";
+import TaskInputs from "../TaskInputs/TaskInputs";
 
 function AddTask({ openTask, setOpenTask }) {
   const handleClose = () => {

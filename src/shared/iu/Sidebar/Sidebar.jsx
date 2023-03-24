@@ -1,15 +1,15 @@
 import React, { useEffect } from "react";
 import styles from "./sidebar.module.scss";
-import { ReactComponent as DashboardIcon } from "../../assets/Aside/dashboard.svg";
-import { ReactComponent as TasksIcon } from "../../assets/Aside/tasks.svg";
-import { ReactComponent as ContactsIcon } from "../../assets/Aside/contacts.svg";
-import { ReactComponent as DealsIcon } from "../../assets/Aside/deals.svg";
-import { ReactComponent as LogoutIcon } from "../../assets/Aside/logout.svg";
+import { ReactComponent as DashboardIcon } from "../../../assets/Aside/dashboard.svg";
+import { ReactComponent as TasksIcon } from "../../../assets/Aside/tasks.svg";
+import { ReactComponent as ContactsIcon } from "../../../assets/Aside/contacts.svg";
+import { ReactComponent as DealsIcon } from "../../../assets/Aside/deals.svg";
+import { ReactComponent as LogoutIcon } from "../../../assets/Aside/logout.svg";
 import { useSelector, useDispatch } from "react-redux";
-import { decodePayload, logOut } from "../../app/features/auth/authSlice";
+import { decodePayload, logOut } from "../../../app/features/auth/authSlice";
 import { Link, NavLink, useLocation } from "react-router-dom";
 
-const Sidebar = () => {
+export const Sidebar = () => {
   const payload = useSelector((state) => state.auth.payload);
   const token = useSelector((state) => state.auth.token);
   const location = useLocation().pathname;
@@ -140,4 +140,3 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;

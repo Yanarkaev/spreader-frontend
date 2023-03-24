@@ -1,15 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import s from "./Dashboard.module.scss";
 import DashboardHeader from "./DashboardHeader";
 import Department from "./Department";
 import { useDispatch, useSelector } from "react-redux";
 import { getTasks } from "./../../app/features/tasks/tasksSlice";
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Table } from "../../shared/iu/Table/Table";
 
 function Dashboard() {
-  const loading = useSelector((state) => state.tasks.loading);
   const dispatch = useDispatch();
+  const loading = useSelector((state) => state.tasks.loading);
   const sortBranch = useSelector((state) => state.tasks.sortBranch);
   const [search, setSearch] = useState("");
 
@@ -33,20 +33,20 @@ function Dashboard() {
     }
   });
 
-  useEffect(() => {
-    dispatch(getTasks());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getTasks());
+  // }, [dispatch]);
 
-  if (loading) {
-    return <span className="loader"></span>;
-  }
+  // if (loading) {
+  //   return <span className="loader"></span>;
+  // }
 
   return (
     <div className={s.container}>
       <DashboardHeader search={search} setSearch={setSearch} />
-
       <Department />
-      {tasks.length > 0 ? (
+      <Table />
+      {/* {tasks.length > 0 ? (
         <>
           <div className={s.tableContainer}>
             <table className={s.table}>
@@ -93,7 +93,7 @@ function Dashboard() {
         </>
       ) : (
         <div className={s.empty}>Задач пока нет</div>
-      )}
+      )} */}
     </div>
   );
 }
