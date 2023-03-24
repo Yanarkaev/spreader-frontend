@@ -64,6 +64,7 @@ input {
 }
 
 .Department {
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -79,7 +80,7 @@ input {
     background-color: #fff;
     position: absolute;
     z-index: 1;
-    top: 22px;
+    // top: 22px;
     left: 170px;
     font-weight: 400;
     font-size: 13px;
@@ -90,18 +91,19 @@ input {
     li {
       list-style: none;
       padding: 0 10px;
-      cursor: pointer;
+
       &:hover {
         color: #109cf1;
       }
-      &::after {
-        content: "";
-        margin: 3px auto;
-        width: 100%;
-        height: 1px;
-        display: inline-block;
-        background-color: #c3c7c99f;
-      }
+
+      // &::after {
+      //   content: "";
+      //   margin: 3px auto;
+      //   width: 100%;
+      //   height: 1px;
+      //   display: inline-block;
+      //   background-color: #c3c7c99f;
+      // }
     }
   }
 
