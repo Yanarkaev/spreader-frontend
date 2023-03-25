@@ -2,51 +2,16 @@ import React, { useEffect, useState } from "react";
 import s from "./Dashboard.module.scss";
 import DashboardHeader from "./DashboardHeader";
 import Department from "./Department";
-import { useDispatch, useSelector } from "react-redux";
-import { getTasks } from "./../../app/features/tasks/tasksSlice";
-import { useNavigate } from "react-router-dom";
-import { Table } from "../../shared/iu/Table/Table";
 import TasksTable from "./TasksTable/TasksTable";
 
 function Dashboard() {
-  const dispatch = useDispatch();
-  const loading = useSelector((state) => state.tasks.loading);
-  const sortBranch = useSelector((state) => state.tasks.sortBranch);
   const [search, setSearch] = useState("");
-
-  const navigate = useNavigate();
-
-  const tasks = useSelector((state) =>
-    state.tasks.tasks
-      .filter((item) => {
-        if (!sortBranch) {
-          return true;
-        }
-        if (sortBranch === "all") {
-          return item;
-        }
-        return item.branchId?._id === sortBranch._id;
-      })
-      .filter((elem) => elem.state === "new" && elem.userId !== "Все")
-  ).filter((item) => {
-    if (item?.title.toLowerCase().includes(search.toLocaleLowerCase())) {
-      return item;
-    }
-  });
-
-  // useEffect(() => {
-  //   dispatch(getTasks());
-  // }, [dispatch]);
-
-  // if (loading) {
-  //   return <span className="loader"></span>;
-  // }
 
   return (
     <div className={s.container}>
       <DashboardHeader search={search} setSearch={setSearch} />
       <Department />
-      <TasksTable />
+      <TasksTable search={search} />
       {/* {tasks.length > 0 ? (
         <>
           <div className={s.tableContainer}>

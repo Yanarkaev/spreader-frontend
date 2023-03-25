@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { sortByBranch } from "../../../app/features/tasks/tasksSlice";
@@ -8,40 +8,67 @@ import { useEffect } from "react";
 
 const Sort = () => {
   const [openSort, setOpenSort] = useState(false);
+  const [selectedBranch, setSelectedBranch] = useState("Все");
+
   const dispatch = useDispatch();
   const sortBranch = useSelector((state) => state.tasks.sortBranch);
   const branches = useSelector((state) => state.branches.branches);
 
-  const handleSortByBranch = (branchId) => {
-    dispatch(sortByBranch(branchId));
+  const handleSortByBranch = (branch) => {
+    dispatch(sortByBranch(branch));
+    setSelectedBranch(branch.name);
     setOpenSort(!openSort);
   };
 
-  //   useEffect(() => {
-  //     if (openSort) {
-  //       document.body.addEventListener("click", () => setOpenSort(false));
-  //     }
-  //     return document.body.removeEventListener("click", () => setOpenSort(false));
-  //   }, [openSort]);
+  // useEffect(() => {
+  // if (openSort) {
+  // document.body.addEventListener("click", () => setOpenSort(false));
+  // }
+  // return document.body.removeEventListener("click", () => setOpenSort(false));
+  // }, [dispatch]);
+
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (ref.current && !ref.current.contains(event.target)) {
+        setOpenSort(false);
+      }
+    };
+    document.addEventListener("click", handleClickOutside, true);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside, true);
+    };
+  }, [setOpenSort]);
 
   return (
-    <div>
-      <div onClick={() => setOpenSort(!openSort)}>
-        <span>
+    <div className={s.Sort} ref={ref}>
+      <div className={s.sortInput} onClick={() => setOpenSort(!openSort)}>
+        <div>
           Фильтр:
-          <span className={s.textBlue}>
-            {sortBranch === "all" ? " Все" : " " + sortBranch.name}
+          <span className={s.selectedPreview}>
+            {sortBranch === "all" ? "Все" : "" + sortBranch.name}
           </span>
-        </span>
+        </div>
       </div>
 
       {openSort && (
         <div className={s.modal}>
           <ul>
-            <li onClick={() => handleSortByBranch("all")}>Все</li>
+            <li
+              className={sortBranch === "all" ? s.selected : ""}
+              onClick={() => handleSortByBranch("all")}
+            >
+              Все
+            </li>
             {branches.map((item) => {
               return (
-                <li onClick={() => handleSortByBranch(item)} key={item._id}>
+                <li
+                  className={selectedBranch === item.name ? s.selected : ""}
+                  onClick={() => handleSortByBranch(item)}
+                  key={item._id}
+                >
                   {item.name}
                 </li>
               );
