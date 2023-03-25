@@ -3,9 +3,12 @@ import s from "./AddTask.module.scss";
 import AddTaskModal from "../AddTaskModal/AddTaskModal";
 import { Button } from "../../../shared/iu";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { getUsers } from "./../../../app/features/users/usersSlice";
 
 function AddTask() {
   const [openModal, setOpenModal] = useState(false);
+  const dispatch = useDispatch();
 
   const ref = useRef(null);
 
@@ -16,17 +19,17 @@ function AddTask() {
       }
     };
     document.addEventListener("click", handleClickOutside, true);
-
     return () => {
       document.removeEventListener("click", handleClickOutside, true);
     };
   }, [setOpenModal]);
 
+  useEffect(() => {
+    dispatch(getUsers());
+  }, [dispatch]);
+
   return (
     <div className={s.AddTask} ref={ref}>
-      {/* <span onClick={handleClose} className={s.delete}>
-        &times;
-      </span> */}
       <Button onClick={() => setOpenModal(!openModal)}>Добавить задачу</Button>
       {openModal && <AddTaskModal setOpenModal={setOpenModal} />}
     </div>
