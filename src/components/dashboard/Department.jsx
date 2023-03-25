@@ -13,18 +13,11 @@ function Department() {
 
   const payload = useSelector((state) => state.auth.payload);
   const token = useSelector((state) => state.auth.token);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getBranches());
-  }, [dispatch]);
 
   const handleOpenAddTask = () => {
     setOpenTask(!openTask);
   };
-
- 
-
+  
   return (
     <>
       <div className={s.Department}>
