@@ -1,4 +1,3 @@
-import Dashboard from "./components/dashboard/Dashboard";
 import styles from "./app.module.scss";
 import "./loader.css"
 import Main from "./components/Main/Main"

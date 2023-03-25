@@ -3,7 +3,7 @@ import Signup from "./Auth/Signup";
 import Signin from "./Auth/Signin";
 import { Route, Routes, Navigate } from "react-router-dom";
 import styles from "./main.module.scss";
-import Dashboard from "../dashboard/Dashboard";
+import Dashboard from "../../pages/Dashboard/Dashboard";
 import Task from "./../task/Task";
 import Users from "../Users/Users";
 import { useSelector } from "react-redux";

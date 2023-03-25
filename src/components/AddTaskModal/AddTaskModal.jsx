@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addTask } from "../../../app/features/tasks/tasksSlice";
-import { Button, Input, Select } from "../../../shared/iu";
+import { addTask } from "../../app/features/tasks/tasksSlice";
+import { Button, Input, Select } from "../../shared/iu";
 import s from "./AddTaskModal.module.scss";
 
 const TaskInputs = ({ setOpenModal }) => {

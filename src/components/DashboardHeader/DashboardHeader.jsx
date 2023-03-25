@@ -1,6 +1,6 @@
 import React from "react";
 import s from "./DashboardHeader.module.scss";
-import searchImg from "../../../assets/Dashboard/search.svg";
+import searchImg from "../../assets/Dashboard/search.svg";
 
 function DashboardHeader({ search, setSearch }) {
   
