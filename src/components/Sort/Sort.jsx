@@ -1,17 +1,18 @@
 import React, { useRef } from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { sortByBranch } from "../../../app/features/tasks/tasksSlice";
+import { sortByBranch } from "../../app/features/tasks/tasksSlice";
 import { useSelector } from "react-redux";
 import s from "./Sort.module.scss";
 import { useEffect } from "react";
-import { getBranches } from './../../../app/features/branches/branchesSlice';
+import { getBranches } from "../../app/features/branches/branchesSlice";
 
 const Sort = () => {
+  const dispatch = useDispatch();
+
   const [openSort, setOpenSort] = useState(false);
   const [selectedBranch, setSelectedBranch] = useState("Все");
 
-  const dispatch = useDispatch();
   const sortBranch = useSelector((state) => state.tasks.sortBranch);
   const branches = useSelector((state) => state.branches.branches);
 
@@ -21,13 +22,11 @@ const Sort = () => {
     setOpenSort(!openSort);
   };
 
-  console.log("render")
-
   const ref = useRef(null);
 
   useEffect(() => {
-    dispatch(getBranches())
-  }, [])
+    dispatch(getBranches());
+  }, [dispatch]);
 
   useEffect(() => {
     const handleClickOutside = (event) => {

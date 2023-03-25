@@ -1,10 +1,10 @@
 import React, { useEffect, useRef } from "react";
 import s from "./AddTask.module.scss";
 import AddTaskModal from "../AddTaskModal/AddTaskModal";
-import { Button } from "../../../shared/iu";
+import { Button } from "../../shared/iu";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { getUsers } from "./../../../app/features/users/usersSlice";
+import { getUsers } from "../../app/features/users/usersSlice";
 
 function AddTask() {
   const [openModal, setOpenModal] = useState(false);

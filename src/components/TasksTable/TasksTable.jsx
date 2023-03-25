@@ -1,8 +1,8 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getTasks } from "../../../app/features/tasks/tasksSlice";
-import { Table } from "../../../shared/iu/Table/Table";
+import { getTasks } from "../../app/features/tasks/tasksSlice";
+import { Table } from "../../shared/iu/Table/Table";
 
 const TasksTable = ({ search }) => {
   const columns = [
