@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import s from "./TaskInputs.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { getBranches } from "../../../app/features/branches/branchesSlice";
 import { addTask } from "../../../app/features/tasks/tasksSlice";
 import { getUsers } from "../../../app/features/users/usersSlice";
 import { Button, Input, Select } from "../../../shared/iu";
+import s from "./AddTaskModal.module.scss";
 
-function TaskInputs() {
+const TaskInputs = ({ setOpenModal }) => {
   const dispatch = useDispatch();
 
   const [data, setData] = useState({
@@ -35,6 +35,7 @@ function TaskInputs() {
 
   const handleAddTask = () => {
     dispatch(addTask(data));
+    setOpenModal((prev) => !prev);
   };
 
   const handleData = (e) => {
@@ -42,7 +43,7 @@ function TaskInputs() {
   };
 
   return (
-    <div className={s.container}>
+    <div className={s.AddTaskModal}>
       <div className={s.title}>
         <Input
           placeholder="Введите название"
@@ -118,15 +119,21 @@ function TaskInputs() {
         )}
       </div>
 
-      <Button
-        className={s.btn}
-        disabled={!inputsFilled}
-        onClick={handleAddTask}
-      >
-        Создать Задачу
-      </Button>
+      <div className={s.btns}>
+        <Button disabled={!inputsFilled} onClick={handleAddTask}>
+          Создать Задачу
+        </Button>
+
+        <Button
+          variant="danger"
+          className={s.closeModal}
+          onClick={() => setOpenModal((prev) => !prev)}
+        >
+          Закрыть
+        </Button>
+      </div>
     </div>
   );
-}
+};
 
 export default TaskInputs;

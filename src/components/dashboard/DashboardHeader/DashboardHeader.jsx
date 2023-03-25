@@ -1,6 +1,6 @@
 import React from "react";
-import s from "./Dashboard.module.scss";
-import searchImg from "../../assets/Dashboard/search.svg";
+import s from "./DashboardHeader.module.scss";
+import searchImg from "../../../assets/Dashboard/search.svg";
 
 function DashboardHeader({ search, setSearch }) {
   
@@ -10,7 +10,7 @@ function DashboardHeader({ search, setSearch }) {
     }
   };
   return (
-    <header className={s.header}>
+    <header className={s.DashboardHeader}>
       <div className={s.inputContainer}>
         <img src={searchImg} alt="" />
         <input

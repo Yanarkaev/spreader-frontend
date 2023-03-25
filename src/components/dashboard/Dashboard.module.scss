@@ -49,19 +49,6 @@
     cursor: pointer;
   }
 }
-input {
-  width: 40%;
-  padding: 5px;
-  border: none;
-  outline-color: #109cf1;
-  &::placeholder {
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 18px;
-    letter-spacing: 0.01em;
-    color: #90a0b7;
-  }
-}
 
 .Department {
   cursor: pointer;
@@ -133,13 +120,12 @@ input {
   width: 100%;
   margin: 0 auto;
   background-color: #f5f6f8;
-
-  .empty {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 50px;
-    color: #7a7a7a6c;
+  
+  .tools{
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    width: 95%;
+    margin: 20px auto;
   }
 }

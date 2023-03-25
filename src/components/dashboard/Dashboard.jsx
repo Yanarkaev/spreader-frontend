@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import AddTask from "./Addtask/AddTask";
 import s from "./Dashboard.module.scss";
-import DashboardHeader from "./DashboardHeader";
+import DashboardHeader from "./DashboardHeader/DashboardHeader";
 import Department from "./Department";
+import Sort from "./Sort/Sort";
 import TasksTable from "./TasksTable/TasksTable";
 
 function Dashboard() {
@@ -10,7 +12,10 @@ function Dashboard() {
   return (
     <div className={s.container}>
       <DashboardHeader search={search} setSearch={setSearch} />
-      <Department />
+      <div className={s.tools}>
+        <Sort />
+        <AddTask />
+      </div>
       <TasksTable search={search} />
       {/* {tasks.length > 0 ? (
         <>

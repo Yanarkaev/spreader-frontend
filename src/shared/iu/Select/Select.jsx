@@ -1,4 +1,5 @@
 import React from "react";
+import s from "./Select.module.scss";
 
 export const Select = ({
   value,
@@ -7,10 +8,11 @@ export const Select = ({
   body,
   selectValue,
   uniqueValue,
+  className,
   ...props
 }) => {
   return (
-    <select value={value} {...props}>
+    <select value={value} {...props} className={`${s.Select} ${className}`}>
       {initialValue && <option>{initialValue}</option>}
       {array.map((item) => {
         return (

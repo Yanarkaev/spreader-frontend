@@ -14,8 +14,9 @@ const TasksTable = ({ search }) => {
     { value: "createdAt", displayValue: "Дата" },
     { value: "state", displayValue: "Статус" },
   ];
-  const sortTasksValue = useSelector((state) => state.tasks.sortBranch);
 
+  const dispatch = useDispatch();
+  const sortTasksValue = useSelector((state) => state.tasks.sortBranch);
   const tasks = useSelector((state) => state.tasks.tasks)
     .filter(({ state }) => state === "new")
     .filter((task) => {
@@ -27,12 +28,12 @@ const TasksTable = ({ search }) => {
     })
     .filter(({ title }) => title.toLowerCase().includes(search.toLowerCase()));
 
-  const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getTasks());
   }, [dispatch]);
+
   return (
-    <div>
+    <div style={{marginBottom: "50px"}}>
       <Table columns={columns} rows={tasks} />
     </div>
   );

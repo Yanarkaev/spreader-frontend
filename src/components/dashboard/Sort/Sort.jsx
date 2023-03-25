@@ -20,13 +20,6 @@ const Sort = () => {
     setOpenSort(!openSort);
   };
 
-  // useEffect(() => {
-  // if (openSort) {
-  // document.body.addEventListener("click", () => setOpenSort(false));
-  // }
-  // return document.body.removeEventListener("click", () => setOpenSort(false));
-  // }, [dispatch]);
-
   const ref = useRef(null);
 
   useEffect(() => {
