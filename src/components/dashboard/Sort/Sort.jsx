@@ -5,6 +5,7 @@ import { sortByBranch } from "../../../app/features/tasks/tasksSlice";
 import { useSelector } from "react-redux";
 import s from "./Sort.module.scss";
 import { useEffect } from "react";
+import { getBranches } from './../../../app/features/branches/branchesSlice';
 
 const Sort = () => {
   const [openSort, setOpenSort] = useState(false);
@@ -20,7 +21,13 @@ const Sort = () => {
     setOpenSort(!openSort);
   };
 
+  console.log("render")
+
   const ref = useRef(null);
+
+  useEffect(() => {
+    dispatch(getBranches())
+  }, [])
 
   useEffect(() => {
     const handleClickOutside = (event) => {

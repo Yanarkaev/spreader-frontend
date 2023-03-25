@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getBranches } from "../../../app/features/branches/branchesSlice";
 import { addTask } from "../../../app/features/tasks/tasksSlice";
-import { getUsers } from "../../../app/features/users/usersSlice";
 import { Button, Input, Select } from "../../../shared/iu";
 import s from "./AddTaskModal.module.scss";
 
@@ -27,11 +25,6 @@ const TaskInputs = ({ setOpenModal }) => {
     data.branchId === "Все"
       ? data.title && data.text && data.time && data.points
       : data.title && data.text && data.time && data.points && data.userId;
-
-  useEffect(() => {
-    dispatch(getBranches());
-    dispatch(getUsers());
-  }, [dispatch]);
 
   const handleAddTask = () => {
     dispatch(addTask(data));
@@ -102,6 +95,7 @@ const TaskInputs = ({ setOpenModal }) => {
             min="5"
           />
         </div>
+
         {data.branchId !== "Все" && (
           <div className={s.user}>
             <span>Пользователь</span>
