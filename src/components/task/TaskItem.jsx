@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getTaskById } from "../../app/features/tasks/tasksSlice";
+import TaskHeader from "./TaskHeader/TaskHeader";
 
 function TaskItem({
   click,
@@ -31,6 +32,7 @@ function TaskItem({
 
   return (
     <div className={s.container}>
+      <TaskHeader />
       <div className={s.Admin}>
         <div className={s.AdminLogo}>
           <img src={img} alt="/" />
