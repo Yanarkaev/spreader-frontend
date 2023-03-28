@@ -7,9 +7,9 @@ function TaskHeader({
   minutes,
   seconds,
   isCounting,
-  reasons,
-  setReason,
-  setClick,
+  // reasons,
+  // setReason,
+  // setClick,
 }) {
   const task = useSelector((state) => state.tasks.task);
   const payload = useSelector((state) => state.auth.payload);
@@ -23,9 +23,9 @@ function TaskHeader({
 
   const handleReason = (index) => {
     setIsCounting(false);
-    setReason(index);
+    // setReason(index);
     setOpen(!open);
-    setClick(true);
+    // setClick(true);
   };
 
   localStorage.setItem(
@@ -35,7 +35,7 @@ function TaskHeader({
 
   const handleStart = () => {
     setIsCounting(true);
-    setClick(false);
+    // setClick(false);
   };
 
   return (
@@ -62,7 +62,7 @@ function TaskHeader({
             </div>
           )}
       </header>
-      {open && (
+      {/* {open && (
         <div className={s.timeModal}>
           <span className={s.reason}>Укажите причину</span>
           <ul>
@@ -75,7 +75,7 @@ function TaskHeader({
             })}
           </ul>
         </div>
-      )}
+      )} */}
     </div>
   );
 }
