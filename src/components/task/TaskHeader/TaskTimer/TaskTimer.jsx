@@ -7,7 +7,9 @@ const TaskTimer = ({ task }) => {
   const { taskId } = useParams();
 
   const timer = JSON.parse(localStorage.getItem(taskId));
-  console.log(timer);
+
+  //   const timer = JSON.parse(localStorage.getItem(taskId));
+  //   console.log(timer);
 
   const [timeLeft, setTimeLeft] = useState();
   // (Number(timer?.minutes) || +task?.time) * 60 + (Number(timer?.seconds) || 0)
@@ -22,6 +24,7 @@ const TaskTimer = ({ task }) => {
   let seconds = getPadTime(timeLeft - minutes * 60);
 
   useEffect(() => {
+
     if (timer.minutes) {
       setTimeLeft(Number(timer.minutes * 60) + Number(timer.seconds));
     } else {
@@ -55,7 +58,7 @@ const TaskTimer = ({ task }) => {
     return () => {
       clearInterval(interval);
     };
-  }, [isCounting, task, timer]);
+  }, [isCounting, task]);
 
   //   useEffect(() => {
   //     localStorage.setItem(
