@@ -1,6 +1,6 @@
 import React from "react";
 import s from "./Task.module.scss";
-import TaskHeader from "./TaskHeader";
+// import TaskHeader from "./TaskHeader";
 import TaskItem from "./TaskItem";
 import { getPadTime } from "../../shared/helpers/getPadTime";
 import { useState, useEffect } from "react";
@@ -59,8 +59,8 @@ function Task() {
 
   return (
     <div className={s.container}>
-      {task ? (
-        <TaskHeader
+      {/* {task ? (
+         // <TaskHeader
           // setClick={setClick}
           // minutes={minutes}
           // seconds={seconds}
@@ -71,11 +71,19 @@ function Task() {
           // reasons={reasons}
           // reason={reason}
           // setReason={setReason}
-        />
-      ) : (
-        "..."
-      )}
+        // />
+      // ) : (
+        // "..."
+      // )}
       <TaskItem
+        click={click}
+        // reason={reason}
+        // setReason={setReason}
+        // reasons={reasons}
+        // isCounting={isCounting}
+        // setIsCounting={setIsCounting}
+      /> */}
+       <TaskItem
         click={click}
         // reason={reason}
         // setReason={setReason}
