@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   tasks: [],
-  task: null,
+  task: {},
   loading: false,
   error: null,
   sortBranch: "all",

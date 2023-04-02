@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getTaskById } from "../../app/features/tasks/tasksSlice";
 import TaskHeader from "./TaskHeader/TaskHeader";
+import TaskDescription from "./TaskDescription/TaskDescription";
 
 function TaskItem({
   click,
@@ -32,8 +33,10 @@ function TaskItem({
 
   return (
     <div className={s.container}>
-      <TaskHeader />
-      <div className={s.Admin}>
+      <TaskHeader task={task} />
+      <TaskDescription task={task} />
+
+      {/* <div className={s.Admin}>
         <div className={s.AdminLogo}>
           <img src={img} alt="/" />
         </div>
@@ -41,22 +44,22 @@ function TaskItem({
           <span className={s.adminName}>Admin</span>
           <span className={s.adminMail}>admin@mail.ru</span>
         </div>
-      </div>
-      <div className={s.task}>
+      </div> */}
+      {/* <div className={s.task}>
         <div className={s.taskName}>
           <h1>{task.title}</h1>
         </div>
         <div className={s.taskDescription}>
           <p>{task.text}</p>
         </div>
-      </div>
-      <TaskMessage
+      </div> */}
+      {/* <TaskMessage
         click={click}
         isCounting={isCounting}
         reasons={reasons}
         reason={reason}
         setReason={setReason}
-      />
+      /> */}
       <TaskButtons isCounting={isCounting} setIsCounting={setIsCounting} />
     </div>
   );
