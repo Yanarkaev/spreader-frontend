@@ -1,0 +1,33 @@
+.TaskHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  font-size: 20px;
+  background-color: rgb(238, 238, 238);
+
+  .points {
+    // display: flex;
+    // align-items: center;
+
+    span {
+      //   margin-left: 10px;
+    }
+  }
+
+  .timer {
+    font-size: 30px;
+    padding: 0 10px;
+    position: absolute;
+    left: 50%;
+    translate: -50%;
+    // border-bottom: 3px solid rgb(0, 0, 0);
+    transition: .2s;
+    color: rgb(0, 151, 0);
+
+  }
+
+  .timerStarted {
+    color: rgb(255, 81, 81);
+  }
+}

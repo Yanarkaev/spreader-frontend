@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getPadTime } from "../../../../shared/helpers/getPadTime";
 
-const TaskTimer = ({ task, timerStarted }) => {
+const TaskTimer = ({ task, timerStarted, className }) => {
   const { taskId } = useParams();
   const timer = JSON.parse(localStorage.getItem(taskId));
   const [timeLeft, setTimeLeft] = useState(
@@ -54,7 +54,7 @@ const TaskTimer = ({ task, timerStarted }) => {
   }, [timeLeft]);
 
   return (
-    <div>
+    <div className={className}>
       {minutes}:{seconds}
     </div>
   );
