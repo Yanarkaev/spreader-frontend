@@ -4,8 +4,8 @@ import { Button } from "../../../shared/iu";
 import TaskTimer from "./TaskTimer/TaskTimer";
 import s from "./TaskHeader.module.scss";
 
-const TaskHeader = () => {
-  const task = useSelector((state) => state.tasks.task);
+const TaskHeader = ({task}) => {
+  // const task = useSelector((state) => state.tasks.task);
   const [timerStarted, setTimerStarted] = useState(false);
 
   return (
