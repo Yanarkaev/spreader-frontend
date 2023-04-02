@@ -13,7 +13,7 @@ function TaskHeader({
 }) {
   const task = useSelector((state) => state.tasks.task);
   const payload = useSelector((state) => state.auth.payload);
-  console.log(payload);
+  // console.log(payload);
 
   const [open, setOpen] = useState(false);
 
