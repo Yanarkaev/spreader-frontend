@@ -31,6 +31,18 @@ export const getTaskById = createAsyncThunk(
   }
 );
 
+export const getTasksByUser = createAsyncThunk(
+  "tasks/getByUser",
+  async (id, thunkAPI) => {
+    try {
+      const res = await fetch("/spreader/tasks/user/" + id)
+      return res.json()
+    } catch (error) {
+      thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
 export const addMessage = createAsyncThunk(
   "taskMessage/patch",
 
@@ -152,6 +164,19 @@ export const tasksSlice = createSlice({
         state.error = null;
       })
       .addCase(getTaskById.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      // ==
+      .addCase(getTasksByUser.fulfilled, (state, action) => {
+        state.tasks = action.payload;
+        state.loading = false;
+      })
+      .addCase(getTasksByUser.pending, (state, action) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(getTasksByUser.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       })

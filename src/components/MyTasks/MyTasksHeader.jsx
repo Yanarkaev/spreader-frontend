@@ -1,6 +1,7 @@
 import React from "react";
 import s from "./mytasks.module.scss";
 import searchImg from "../../assets/Dashboard/search.svg";
+import DashboardHeader from "../DashboardHeader/DashboardHeader";
 
 function MyTasksHeader({ search, setSearch, filterByState, setFilterByState }) {
   const handleSearch = (e) => {
@@ -9,9 +10,17 @@ function MyTasksHeader({ search, setSearch, filterByState, setFilterByState }) {
     }
   };
 
+  const filterButtons = [
+    { value: "all", displayValue: "Все" },
+    { value: "inWork", displayValue: "В работе" },
+    { value: "closed", displayValue: "Завершенные" },
+  ];
+
+  console.log(filterByState);
+
   return (
     <header className={s.header}>
-      <div className={s.inputContainer}>
+      {/* <div className={s.inputContainer}>
         <img src={searchImg} alt="" />
         <input
           placeholder="Поиск по задачам..."
@@ -19,10 +28,21 @@ function MyTasksHeader({ search, setSearch, filterByState, setFilterByState }) {
           value={search}
           onChange={handleSearch}
         />
-      </div>
+      </div> */}
 
       <div className={s.sortButtons}>
-        <button
+        {filterButtons.map(({ value, displayValue }) => {
+          return (
+            <button
+              key={value}
+              onClick={() => setFilterByState(value)}
+              className={filterByState === value ? s.active : ""}
+            >
+              {displayValue}
+            </button>
+          );
+        })}
+        {/* <button
           className={filterByState === 0 ? s.active : ""}
           onClick={() => setFilterByState(0)}
         >
@@ -39,7 +59,7 @@ function MyTasksHeader({ search, setSearch, filterByState, setFilterByState }) {
           onClick={() => setFilterByState(2)}
         >
           Завершенные
-        </button>
+        </button> */}
       </div>
     </header>
   );

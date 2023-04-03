@@ -24,7 +24,7 @@
     .tRow {
       transition: 0.1s;
       cursor: pointer;
-     
+
       &:hover {
         background-color: rgb(235, 235, 235);
       }
@@ -37,6 +37,23 @@
     td {
       padding: 25px 20px;
       color: #707683;
+    }
+
+    .inWork {
+      background-color: #ffe4b9;
+
+      &:hover {
+        background-color: #fadcaa;
+      }
+    }
+
+    .closed {
+      background-color: #bdffdb;
+
+      &:hover{
+      background-color: #abfacf;
+
+      }
     }
   }
 }

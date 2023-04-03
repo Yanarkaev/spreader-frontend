@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "../../shared/iu";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { takeToWork, closeTask } from "../../app/features/tasks/tasksSlice";
 import s from "./TaskActions.module.scss"
@@ -10,6 +10,9 @@ const TaskActions = ({ task }) => {
   const { taskId } = useParams();
   const dispatch = useDispatch();
   const payload = useSelector((state) => state.auth.payload);
+
+  const navigate = useNavigate()
+  console.log(navigate)
 
   const handleTakeToWork = () => {
     dispatch(
@@ -35,7 +38,7 @@ const TaskActions = ({ task }) => {
         </Button>
       )}
 
-      {state === "closed" && <Button>Завершено</Button>}
+      {state === "closed" && <Button onClick={() => navigate(-1)}>Завершено</Button>}
     </div>
   );
 };

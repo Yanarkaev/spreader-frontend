@@ -7,35 +7,29 @@ import s from "./mytasks.module.scss";
 import { Link } from "react-router-dom";
 import MyTasksHeader from "./MyTasksHeader";
 import { useState } from "react";
+import MyTasksTable from "../MyTasksTable/MyTasksTable";
+import DashboardHeader from "../DashboardHeader/DashboardHeader";
 
 const MyTasks = () => {
   const [search, setSearch] = useState("");
-  const [filterByState, setFilterByState] = useState(0);
+  const [filterByState, setFilterByState] = useState("all");
 
-  const tasks = useSelector((state) => state.tasks.tasks)
-    .filter((item) => item.title.toLowerCase().includes(search.toLowerCase()))
-    .filter((elem) => {
-      if (filterByState === 1) {
-        return elem?.state === "inWork";
-      }
-      if (filterByState === 2) {
-        return elem?.state === "closed";
-      } else {
-        return elem;
-      }
-    });
+  // const tasks = useSelector((state) => state.tasks.tasks)
+  //   .filter((item) => item.title.toLowerCase().includes(search.toLowerCase()))
+  //   .filter((elem) => {
+  //     if (filterByState === 1) {
+  //       return elem?.state === "inWork";
+  //     }
+  //     if (filterByState === 2) {
+  //       return elem?.state === "closed";
+  //     } else {
+  //       return elem;
+  //     }
+  //   });
 
-  const loading = useSelector((state) => state.tasks.loading);
-  const payload = useSelector((state) => state.auth.payload);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getTasks());
-  }, [dispatch]);
-
-  if (loading) {
-    return <span className="loader"></span>;
-  }
+  // if (loading) {
+  //   return <span className="loader"></span>;
+  // }
 
   return (
     <div className={s.wrapper}>
@@ -45,7 +39,7 @@ const MyTasks = () => {
         filterByState={filterByState}
         setFilterByState={setFilterByState}
       />
-      <div className={s.tableContainer}>
+      {/* <div className={s.tableContainer}>
         <table className={s.table}>
           <thead>
             <tr className={s.tableTr}>
@@ -89,7 +83,9 @@ const MyTasks = () => {
             })}
           </tbody>
         </table>
-      </div>
+      </div> */}
+
+      <MyTasksTable search={search} filterByState={filterByState} />
     </div>
   );
 };
