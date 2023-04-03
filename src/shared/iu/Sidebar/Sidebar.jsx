@@ -25,7 +25,7 @@ export const Sidebar = () => {
     {
       id: 2,
       name: "Мои задачи",
-      link: "/spreader/tasks",
+      link: "/spreader/tasks/" + payload?.id,
       taskIcon: TasksIcon,
       className: styles.sidebarItem,
     },

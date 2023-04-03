@@ -2,12 +2,12 @@ import React from "react";
 import s from "./Table.module.scss";
 import { useNavigate } from "react-router-dom";
 
-export const Table = ({ columns, rows }) => {
+export const Table = ({ columns, rows, className }) => {
   const navigate = useNavigate();
 
   return (
-    <div className={s.Table}>
-      <table>
+    <div className={`${s.Table} ${className}`} >
+      <table className={s.Table}>
         <thead>
           <tr>
             <th>№</th>
@@ -20,8 +20,8 @@ export const Table = ({ columns, rows }) => {
           {rows.map((item, index) => (
             <tr
               key={item._id}
-              className={s.tRow}
-              onClick={() => navigate(`${item._id}`)}
+              className={`${s.tRow} ${s[item.state] || ''}`}
+              onClick={() => navigate(`/spreader/task/${item._id}`)}
             >
               <td>{index + 1}</td>
               {columns.map(({ value }) => {
