@@ -60,7 +60,7 @@ function TaskItem({
         reason={reason}
         setReason={setReason}
       /> */}
-      <TaskButtons isCounting={isCounting} setIsCounting={setIsCounting} />
+      {/* <TaskButtons isCounting={isCounting} setIsCounting={setIsCounting} /> */}
     </div>
   );
 }

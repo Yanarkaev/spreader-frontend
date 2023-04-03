@@ -34,12 +34,22 @@
   }
 
   &:disabled {
-    opacity: 0.5;
-    cursor: no-drop;
-    transition: 0;
-
     &:hover {
       background: #f12e10;
+    }
+  }
+}
+
+.success {
+  background: #2ed47a;
+
+  &:hover {
+    background: #2cc06f;
+  }
+
+  &:disabled {
+    &:hover {
+      background: #2ed47a;
     }
   }
 }

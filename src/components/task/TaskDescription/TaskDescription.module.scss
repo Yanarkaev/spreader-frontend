@@ -1,12 +1,14 @@
 .TaskDescription {
   padding: 20px 10px;
+  max-width: 80%;
+
   .title {
-    // text-align: center;
     margin-bottom: 20px;
     font-size: 32px;
   }
 
   .text {
     margin-top: 40px;
+    line-height: 1.5;
   }
 }
