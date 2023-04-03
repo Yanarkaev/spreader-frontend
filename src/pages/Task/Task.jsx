@@ -1,12 +1,12 @@
 import React from "react";
-import TaskDescription from "../../components/Task/TaskDescription/TaskDescription";
+import TaskDescription from "../../components/TaskDescription/TaskDescription";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getTaskById } from "../../app/features/tasks/tasksSlice";
 import { useParams } from "react-router-dom";
-import TaskHeader from './../../components/Task/TaskHeader/TaskHeader';
+import TaskHeader from '../../components/TaskHeader/TaskHeader';
 import s from "./Task.module.scss"
-import TaskActions from "../../components/Task/TaskActions/TaskActions";
+import TaskActions from "../../components/TaskActions/TaskActions";
 
 const Task = () => {
   const { taskId } = useParams();

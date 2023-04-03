@@ -7,8 +7,8 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getTaskById } from "../../app/features/tasks/tasksSlice";
-import TaskHeader from "./TaskHeader/TaskHeader";
-import TaskDescription from "./TaskDescription/TaskDescription";
+import TaskHeader from "../TaskHeader/TaskHeader";
+import TaskDescription from "../TaskDescription/TaskDescription";
 
 function TaskItem({
   click,
