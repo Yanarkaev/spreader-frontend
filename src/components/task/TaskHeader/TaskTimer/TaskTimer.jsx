@@ -23,7 +23,7 @@ const TaskTimer = ({ task, timerStarted, className }) => {
         JSON.stringify({
           minutes: task.time,
           seconds: 0,
-          isCounting: false,
+          started: timerStarted,
         })
       );
     }
@@ -48,7 +48,7 @@ const TaskTimer = ({ task, timerStarted, className }) => {
     if (timeLeft && timerStarted) {
       localStorage.setItem(
         taskId,
-        JSON.stringify({ minutes, seconds, isCounting: false })
+        JSON.stringify({ minutes, seconds, started: timerStarted })
       );
     }
   }, [timeLeft]);

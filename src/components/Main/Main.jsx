@@ -4,12 +4,13 @@ import Signin from "./Auth/Signin";
 import { Route, Routes, Navigate } from "react-router-dom";
 import styles from "./main.module.scss";
 import Dashboard from "../../pages/Dashboard/Dashboard";
-import Task from "../Task/Task";
+// import Task from "../Task/Task";
 import Users from "../Users/Users";
 import { useSelector } from "react-redux";
 import MyTasks from "./../MyTasks/MyTasks";
 import Reports from "../Reports/Reports";
 import { Sidebar } from "../../shared/iu";
+import Task from "../../pages/Task/Task";
 
 const Main = () => {
   const token = useSelector((state) => state.auth.token);
