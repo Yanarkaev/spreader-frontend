@@ -1,8 +1,8 @@
 import React from "react";
-import { Button } from "./../../../shared/iu";
+import { Button } from "../../shared/iu";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { takeToWork, closeTask } from "../../../app/features/tasks/tasksSlice";
+import { takeToWork, closeTask } from "../../app/features/tasks/tasksSlice";
 import s from "./TaskActions.module.scss"
 
 const TaskActions = ({ task }) => {

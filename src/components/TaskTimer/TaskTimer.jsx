@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getPadTime } from "../../../../shared/helpers/getPadTime";
+import { getPadTime } from "../../shared/helpers/getPadTime";
 
 const TaskTimer = ({ task, timerStarted, className }) => {
   const { taskId } = useParams();

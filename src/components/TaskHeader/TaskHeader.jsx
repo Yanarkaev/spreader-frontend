@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { Button } from "../../../shared/iu";
-import TaskTimer from "./TaskTimer/TaskTimer";
+import { Button } from "../../shared/iu";
+import TaskTimer from "../TaskTimer/TaskTimer";
 import s from "./TaskHeader.module.scss";
 
 const TaskHeader = ({ task }) => {
