@@ -19,6 +19,18 @@ export const getTasks = createAsyncThunk("tasks/fetch", async (_, thunkAPI) => {
   }
 });
 
+export const getNewTasks = createAsyncThunk(
+  "tasks/getNew",
+  async (_, thunkAPI) => {
+    try {
+      const res = await fetch("/spreader/tasks/new");
+      return res.json();
+    } catch (error) {
+      thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
 export const getTaskById = createAsyncThunk(
   "tasks/getById",
   async (id, thunkAPI) => {
@@ -35,8 +47,8 @@ export const getTasksByUser = createAsyncThunk(
   "tasks/getByUser",
   async (id, thunkAPI) => {
     try {
-      const res = await fetch("/spreader/tasks/user/" + id)
-      return res.json()
+      const res = await fetch("/spreader/tasks/user/" + id);
+      return res.json();
     } catch (error) {
       thunkAPI.rejectWithValue(error);
     }
@@ -137,6 +149,19 @@ export const tasksSlice = createSlice({
         state.tasks = action.payload;
       })
       .addCase(getTasks.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      // ==
+      .addCase(getNewTasks.pending, (state, action) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(getNewTasks.fulfilled, (state, action) => {
+        state.loading = false;
+        state.tasks = action.payload;
+      })
+      .addCase(getNewTasks.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       })
