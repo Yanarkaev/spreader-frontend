@@ -1,9 +1,9 @@
-import React, { useEffect }  from "react";
+import React, { useEffect } from "react";
 import { Table } from "../../shared/iu/Table/Table";
 import { useSelector, useDispatch } from "react-redux";
 import { getTasksByUser } from "./../../app/features/tasks/tasksSlice";
 import { useParams } from "react-router-dom";
-import s from "./MyTasksTable.module.scss"
+import s from "./MyTasksTable.module.scss";
 import Preloader from "../../shared/iu/Preloader/Preloader";
 
 const MyTasksTable = ({ search, filterByState }) => {
@@ -36,7 +36,7 @@ const MyTasksTable = ({ search, filterByState }) => {
 
   return (
     <div>
-      <Table columns={columns} rows={tasks} className={s.MyTasksTable}/>
+      <Table columns={columns} rows={tasks} className={s.MyTasksTable} />
     </div>
   );
 };
