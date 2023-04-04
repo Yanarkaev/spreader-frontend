@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import AddTask from "../../components/Addtask/AddTask";
 import s from "./Dashboard.module.scss";
-import DashboardHeader from "../../components/DashboardHeader/DashboardHeader";
 import Sort from "../../components/Sort/Sort";
 import TasksTable from "../../components/TasksTable/TasksTable";
+import DashboardHeader from "./../../components/DashboardHeader/DashboardHeader";
 
 function Dashboard() {
   const [search, setSearch] = useState("");
