@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getTasks } from "../../app/features/tasks/tasksSlice";
 import { Table } from "../../shared/iu/Table/Table";
+import Preloader from './../../shared/iu/Preloader/Preloader';
 
 const TasksTable = ({ search }) => {
   const columns = [
@@ -17,6 +18,8 @@ const TasksTable = ({ search }) => {
 
   const dispatch = useDispatch();
   const sortTasksValue = useSelector((state) => state.tasks.sortBranch);
+  const loading = useSelector((state) => state.tasks.loading);
+
   const tasks = useSelector((state) => state.tasks.tasks)
     .filter(({ state }) => state === "new")
     .filter((task) => {
@@ -32,8 +35,13 @@ const TasksTable = ({ search }) => {
     dispatch(getTasks());
   }, [dispatch]);
 
+  
+  if (loading) {
+    return <Preloader />;
+  }
+
   return (
-    <div style={{marginBottom: "50px"}}>
+    <div style={{ marginBottom: "50px" }}>
       <Table columns={columns} rows={tasks} />
     </div>
   );

@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getTasksByUser } from "./../../app/features/tasks/tasksSlice";
 import { useParams } from "react-router-dom";
 import s from "./MyTasksTable.module.scss"
+import Preloader from "../../shared/iu/Preloader/Preloader";
 
 const MyTasksTable = ({ search, filterByState }) => {
   const columns = [
@@ -30,7 +31,7 @@ const MyTasksTable = ({ search, filterByState }) => {
   }, [dispatch]);
 
   if (loading) {
-    return "загрузка";
+    return <Preloader />;
   }
 
   return (
