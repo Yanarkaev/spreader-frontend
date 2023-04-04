@@ -1,27 +1,14 @@
 import React from "react";
-import s from "./DashboardHeader.module.scss";
-import searchImg from "../../assets/Dashboard/search.svg";
+import { TasksHeader } from "../../shared/iu";
 
-function DashboardHeader({ search, setSearch }) {
-  
+const DashboardHeader = ({ search, setSearch }) => {
   const handleSearch = (e) => {
     if (e.target.value[0] !== " ") {
       setSearch(e.target.value);
     }
   };
-  return (
-    <header className={s.DashboardHeader}>
-      <div className={s.inputContainer}>
-        <img src={searchImg} alt="" />
-        <input
-          placeholder="Поиск по задачам..."
-          type="text"
-          value={search}
-          onChange={handleSearch}
-        />
-      </div>
-    </header>
-  );
-}
+
+  return <TasksHeader value={search} onChange={handleSearch} />;
+};
 
 export default DashboardHeader;

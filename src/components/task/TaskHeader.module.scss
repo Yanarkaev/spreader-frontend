@@ -59,22 +59,7 @@
     background-color: #fff;
     right: 56px;
     top: 70px;
-    .reason {
-      font-size: 14px;
-
-      padding: 0 0 10px 0;
-      color: red;
-      font-weight: 600;
-      display: block;
-      &::after {
-        content: "";
-        width: 50%;
-        height: 1px;
-        background-color: #000000;
-        margin: 5px auto;
-        display: block;
-      }
-    }
+    
     li {
       padding: 10px 15px;
       list-style: none;
