@@ -1,25 +1,18 @@
-.sidebar {
+.Sidebar {
   background-color: #fff;
-  width: 60px;
+  width: 65px;
   margin-right: 15px;
-  padding: 0 30px 10px 10px;
-  font-weight: 500;
-  overflow: hidden;
-  transition: 0.3s;
+  padding: 10px;
+  // font-weight: 500;
+  // overflow: hidden;
+  transition: .3s;
   box-shadow: 0 0 10px 0 rgba(88, 88, 88, 0.307);
-  max-height: 100%;
-  position: relative;
-
-  .inner {
-    position: fixed;
-    // max-width: 100%;
-    width: 49px;
-    overflow: hidden;
-    transition: 0.3s;
-  }
+  // max-height: 100%;
+  // position: relative;
+  // position: fixed;
 
   &:hover {
-    width: 250px;
+    // width: 18%;
 
     .profile {
       .branchName {
@@ -29,21 +22,32 @@
       .login {
         opacity: 1;
       }
+      
+      .avatar{
+        // margin: 0 0;
+      }
     }
     .inner {
-      width: 196px;
+      // width: 196px;
     }
+
   }
 
-  .logo {
-    padding: 10px 0;
-    height: 60px;
-    border-bottom: 1px solid #000;
+  .inner {
+    // width: fit-content;
+    // margin: 0 auto;
+    position: fixed;
+    // max-width: 100%;
+    // width: 49px;
+    // min-width: fit-content;
+    // background-color: rgba(0, 0, 0, 0.316);
+    // overflow: hidden;
+    // transition: .3s;
   }
 
   .profile {
-    margin: 25px 0 25px 0;
-    width: 200px;
+    margin: 25px 0;
+    // width: 200px;
 
     border-bottom: 1px solid rgb(221, 221, 221);
     padding-bottom: 15px;
@@ -53,28 +57,7 @@
       font-size: 14px;
       opacity: 0;
       transition: 0.2s;
-    }
-    .name {
-      display: flex;
-      align-items: center;
-      width: fit-content;
-      padding-bottom: 5px;
-      .avatar {
-        padding: 20px;
-        width: 4px;
-        height: 40px;
-        display: flex;
-        border-radius: 50%;
-        justify-content: center;
-        align-items: center;
-        background-color: #109cf1;
-        color: #fff;
-        font-size: 20px;
-      }
-
-      .adminAvatar {
-        background-color: rgb(54, 54, 54);
-      }
+      display: none;
     }
 
     .branchName {
@@ -82,12 +65,31 @@
       margin-top: 10px;
       opacity: 0;
       transition: 0.2s;
+      display: none;
+
+    }
+
+    .avatar {
+      transition: .2s;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #109cf1;
+      color: #fff;
+      font-size: 20px;
+      // translate: 50%;
     }
   }
 
   .sidebarItemsWrapper {
-    min-width: 200px;
-    .sidebarItem {
+    // min-width: 200px;
+    width: fit-content;
+    margin: 0 auto;
+
+    .navItem {
       margin-bottom: 20px;
       cursor: pointer;
       font-size: 14px;
@@ -95,59 +97,41 @@
       display: flex;
       align-items: center;
 
-      a {
+      &:hover {
+        color: #109cf1;
+
+        .icon {
+          stroke: #109cf1;
+        }
+      }
+
+      .navLink {
+        margin: 0 auto;
         color: inherit;
         text-decoration: inherit;
         display: flex;
         align-items: center;
       }
 
-      &:last-child {
-        position: relative;
-        margin-top: 40px;
-        &::before {
-          content: "";
-          width: 100%;
-          position: absolute;
-          height: 1px;
-          background-color: rgb(221, 221, 221);
-          left: 0;
-          top: -20px;
-        }
-      }
-
-      .iconStroke,
-      .iconFill {
+      .icon {
         transition: 0.1s;
-        width: 40px;
-      }
-      &:hover {
-        color: #109cf1;
-        .iconStroke {
-          stroke: #109cf1;
-        }
-        .iconFill {
-          fill: #109cf1;
-        }
+        width: 20px;
       }
 
       span {
-        margin-left: 15px;
+        // width: none;
+        // margin-left: 15px;
+        // visibility: hidden;
+        display: none;
+        // position: absolute;
       }
+    }
+// доработать анимацию появления ссылок в сайдбаре
+    .active {
+      color: #109cf1;
 
-      .signInBtn {
-        padding: 10px 25px;
-        border: 1px solid #109cf1;
-        color: #109cf1;
-        border-radius: 4px;
-        transition: 0.2s;
-        text-decoration: none;
-        margin: 0 auto;
-
-        &:hover {
-          background-color: #109cf1;
-          color: #fff;
-        }
+      .icon {
+        stroke: #109cf1;
       }
     }
   }
