@@ -8,7 +8,6 @@ import Preloader from "./../../shared/iu/Preloader/Preloader";
 const TasksTable = ({ search }) => {
   const columns = [
     { value: "title", displayValue: "Название" },
-    // { value: "", displayValue: "Номер" },
     { value: "branchId", displayValue: "Отдел" },
     { value: "time", displayValue: "Время" },
     { value: "points", displayValue: "Баллы" },
