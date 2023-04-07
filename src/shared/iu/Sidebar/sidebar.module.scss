@@ -1,18 +1,20 @@
 .Sidebar {
   background-color: #fff;
-  width: 65px;
+  width: fit-content;
   margin-right: 15px;
+  // width: 18%;
+
   padding: 10px;
   // font-weight: 500;
   // overflow: hidden;
-  transition: .3s;
+  transition: 0.3s;
   box-shadow: 0 0 10px 0 rgba(88, 88, 88, 0.307);
-  // max-height: 100%;
-  // position: relative;
+  height: 100vh;
+  position: relative;
   // position: fixed;
 
   &:hover {
-    // width: 18%;
+    width: 18%;
 
     .profile {
       .branchName {
@@ -22,21 +24,21 @@
       .login {
         opacity: 1;
       }
-      
-      .avatar{
+
+      .avatar {
         // margin: 0 0;
       }
     }
-    .inner {
-      // width: 196px;
-    }
-
   }
 
   .inner {
-    // width: fit-content;
+    // padding: 10px;
+    background: #fff;
+    // min-width: 200px;
     // margin: 0 auto;
-    position: fixed;
+    overflow: hidden;
+
+    // position: fixed;
     // max-width: 100%;
     // width: 49px;
     // min-width: fit-content;
@@ -46,7 +48,7 @@
   }
 
   .profile {
-    margin: 25px 0;
+    margin: 25px auto;
     // width: 200px;
 
     border-bottom: 1px solid rgb(221, 221, 221);
@@ -66,11 +68,10 @@
       opacity: 0;
       transition: 0.2s;
       display: none;
-
     }
 
     .avatar {
-      transition: .2s;
+      transition: 0.2s;
       width: 40px;
       height: 40px;
       border-radius: 50%;
@@ -81,18 +82,20 @@
       color: #fff;
       font-size: 20px;
       // translate: 50%;
+      // margin: 0 auto;
     }
   }
 
   .sidebarItemsWrapper {
     // min-width: 200px;
-    width: fit-content;
-    margin: 0 auto;
+    // width: fit-content;
+    // margin: 0 auto;
 
     .navItem {
-      margin-bottom: 20px;
+      // margin: 20px auto;
+      width: fit-content;
       cursor: pointer;
-      font-size: 14px;
+      // font-size: 14px;
       transition: 0.1s;
       display: flex;
       align-items: center;
@@ -106,27 +109,33 @@
       }
 
       .navLink {
-        margin: 0 auto;
+        padding: 10px;
         color: inherit;
         text-decoration: inherit;
         display: flex;
         align-items: center;
-      }
+        position: relative;
 
-      .icon {
-        transition: 0.1s;
-        width: 20px;
-      }
+        .icon {
+          // width: fit-content;
+          margin: 0 auto;
+          display: block;
+          transition: 0.1s;
+          width: 20px;
+          margin: 0 auto;
+        }
 
-      span {
-        // width: none;
-        // margin-left: 15px;
-        // visibility: hidden;
-        display: none;
-        // position: absolute;
+        span {
+          width: 200px;
+          // width: none;
+          left: 40px;
+          // visibility: hidden;
+          // display: none;
+          position: absolute;
+        }
       }
     }
-// доработать анимацию появления ссылок в сайдбаре
+    // доработать анимацию появления ссылок в сайдбаре
     .active {
       color: #109cf1;
 

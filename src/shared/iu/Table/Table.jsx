@@ -6,7 +6,7 @@ export const Table = ({ columns, rows, className }) => {
   const navigate = useNavigate();
 
   return (
-    <div className={`${s.Table} ${className}`} >
+    <div className={`${s.Table} ${className}`}>
       <table className={s.Table}>
         <thead>
           <tr>
@@ -20,7 +20,7 @@ export const Table = ({ columns, rows, className }) => {
           {rows.map((item, index) => (
             <tr
               key={item._id}
-              className={`${s.tRow} ${s[item.state] || ''}`}
+              className={`${s.tRow} ${s[item.state] || ""}`}
               onClick={() => navigate(`/spreader/task/${item._id}`)}
             >
               <td>{index + 1}</td>
