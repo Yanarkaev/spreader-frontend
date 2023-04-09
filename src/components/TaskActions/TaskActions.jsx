@@ -3,15 +3,16 @@ import { Button } from "../../shared/iu";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { takeToWork, closeTask } from "../../app/features/tasks/tasksSlice";
-import s from "./TaskActions.module.scss"
+import s from "./TaskActions.module.scss";
+import { Loader } from "../../shared/iu/Loader/Loader";
 
-const TaskActions = ({ task }) => {
+const TaskActions = ({ task, loading }) => {
   const state = task.state;
   const { taskId } = useParams();
   const dispatch = useDispatch();
   const payload = useSelector((state) => state.auth.payload);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleTakeToWork = () => {
     dispatch(
@@ -25,19 +26,23 @@ const TaskActions = ({ task }) => {
 
   return (
     <div className={s.TaskActions}>
-      {state === "new" && (
-        <Button variant="success" onClick={handleTakeToWork}>
-          Взять в работу
-        </Button>
+      {loading ? (
+        <Loader w="150px" h="40px" br="5px" margin="40px auto 0" />
+      ) : (
+        (state === "new" && (
+          <Button variant="success" onClick={handleTakeToWork}>
+            Взять в работу
+          </Button>
+        )) ||
+        (state === "inWork" && (
+          <Button variant="danger" onClick={handleClose}>
+            Звершить задачу
+          </Button>
+        )) ||
+        (state === "closed" && (
+          <Button onClick={() => navigate(-1)}>Завершено</Button>
+        ))
       )}
-
-      {state === "inWork" && (
-        <Button variant="danger" onClick={handleClose}>
-          Звершить задачу
-        </Button>
-      )}
-
-      {state === "closed" && <Button onClick={() => navigate(-1)}>Завершено</Button>}
     </div>
   );
 };
