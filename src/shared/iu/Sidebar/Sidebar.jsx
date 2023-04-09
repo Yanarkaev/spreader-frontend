@@ -9,7 +9,6 @@ export const Sidebar = () => {
   const dispatch = useDispatch();
   const token = useSelector((state) => state.auth.token);
   const payload = useSelector((state) => state.auth.payload);
-
   const location = useLocation().pathname;
 
   const username = payload?.login?.split(" ")[0] || " ";
@@ -55,33 +54,28 @@ export const Sidebar = () => {
         <div className={s.profile}>
           <div className={s.avatar}>{username[0].toUpperCase()}</div>
           <div className={s.login}>{username}</div>
-          {role !== "ADMIN" && (
-            <div className={s.branchName}>
-              <span>Отдел: </span> <span>{branch}</span>
-            </div>
-          )}
+          <div className={s.branchName}>
+            <span>Отдел: </span> <span>{branch}</span>
+          </div>
         </div>
 
         <div className={s.sidebarItemsWrapper}>
           {sidebarData.map((el, index) => (
-            <div
+            <Link
+              to={el.route}
+              key={index}
               className={`${s.navItem} ${
                 el.route === location ? s.active : ""
               }`}
-              key={index}
             >
-              <Link to={el.route} className={s.navLink}>
-                <Icon name={el.icon} stroke="#C2CFE0" className={s.icon} />
-                <span>{el.text}</span>
-              </Link>
-            </div>
+              <Icon name={el.icon} stroke="#C2CFE0" className={s.icon} />
+              <span>{el.text}</span>
+            </Link>
           ))}
 
-          <div className={s.navItem} onClick={handleLogOut}>
-            <div className={s.navLink}>
-              <Icon name="logout" stroke="#C2CFE0" className={s.icon} />
-              <span>Выйти в окно</span>
-            </div>
+          <div className={`${s.navItem} ${s.logout}`} onClick={handleLogOut}>
+            <Icon name="logout" stroke="#C2CFE0" className={s.icon} />
+            <span>Выйти</span>
           </div>
         </div>
       </div>

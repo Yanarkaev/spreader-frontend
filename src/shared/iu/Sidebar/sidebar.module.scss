@@ -1,147 +1,122 @@
 .Sidebar {
   background-color: #fff;
-  width: fit-content;
-  margin-right: 15px;
-  // width: 18%;
-
-  padding: 10px;
-  // font-weight: 500;
-  // overflow: hidden;
+  padding: 20px 10px;
+  width: 65px;
   transition: 0.3s;
-  box-shadow: 0 0 10px 0 rgba(88, 88, 88, 0.307);
-  height: 100vh;
+  overflow: hidden;
   position: relative;
-  // position: fixed;
+  margin-right: 15px;
 
   &:hover {
-    width: 18%;
+    width: 240px;
 
-    .profile {
-      .branchName {
-        opacity: 1;
-      }
-
-      .login {
-        opacity: 1;
-      }
-
-      .avatar {
-        // margin: 0 0;
-      }
-    }
-  }
-
-  .inner {
-    // padding: 10px;
-    background: #fff;
-    // min-width: 200px;
-    // margin: 0 auto;
-    overflow: hidden;
-
-    // position: fixed;
-    // max-width: 100%;
-    // width: 49px;
-    // min-width: fit-content;
-    // background-color: rgba(0, 0, 0, 0.316);
-    // overflow: hidden;
-    // transition: .3s;
-  }
-
-  .profile {
-    margin: 25px auto;
-    // width: 200px;
-
-    border-bottom: 1px solid rgb(221, 221, 221);
-    padding-bottom: 15px;
-
+    .branchName,
     .login {
-      margin-top: 10px;
-      font-size: 14px;
-      opacity: 0;
-      transition: 0.2s;
-      display: none;
+      opacity: 1;
     }
-
-    .branchName {
-      font-size: 12px;
-      margin-top: 10px;
-      opacity: 0;
-      transition: 0.2s;
-      display: none;
-    }
-
-    .avatar {
-      transition: 0.2s;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: #109cf1;
-      color: #fff;
-      font-size: 20px;
-      // translate: 50%;
-      // margin: 0 auto;
-    }
-  }
-
-  .sidebarItemsWrapper {
-    // min-width: 200px;
-    // width: fit-content;
-    // margin: 0 auto;
 
     .navItem {
-      // margin: 20px auto;
-      width: fit-content;
-      cursor: pointer;
-      // font-size: 14px;
-      transition: 0.1s;
-      display: flex;
-      align-items: center;
-
-      &:hover {
-        color: #109cf1;
-
-        .icon {
-          stroke: #109cf1;
-        }
-      }
-
-      .navLink {
-        padding: 10px;
-        color: inherit;
-        text-decoration: inherit;
-        display: flex;
-        align-items: center;
-        position: relative;
-
-        .icon {
-          // width: fit-content;
-          margin: 0 auto;
-          display: block;
-          transition: 0.1s;
-          width: 20px;
-          margin: 0 auto;
-        }
-
-        span {
-          width: 200px;
-          // width: none;
-          left: 40px;
-          // visibility: hidden;
-          // display: none;
-          position: absolute;
-        }
+      span {
+        opacity: 1;
       }
     }
-    // доработать анимацию появления ссылок в сайдбаре
-    .active {
-      color: #109cf1;
 
-      .icon {
-        stroke: #109cf1;
-      }
+    .inner {
+      width: 200px;
+    }
+  }
+}
+
+.inner {
+  position: fixed;
+  overflow: hidden;
+  width: 40px;
+  transition: 0.3s;
+}
+
+.profile {
+  width: 100%;
+  width: fit-content;
+  padding-bottom: 5px;
+  border-bottom: 2px solid #000;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  background-color: #109cf1;
+  color: #fff;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+}
+
+.branchName,
+.login {
+  min-width: max-content ;
+  opacity: 0;
+  transition: 0.2s;
+  font-size: 14px;
+}
+
+.login {
+  margin: 5px 0;
+}
+
+.sidebarItemsWrapper {
+  margin-top: 15px;
+  max-width: 40px;
+  height: 90vh;
+}
+
+.navItem {
+  padding: 10px 10px;
+  display: flex;
+  align-items: center;
+  min-width: 180px;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+
+  &:hover {
+    color: #109cf1;
+
+    .icon {
+      stroke: #109cf1;
+    }
+  }
+
+  span {
+    margin-left: 10px;
+    opacity: 0;
+    transition: 0.1s;
+    font-size: 16px;
+  }
+}
+
+.active {
+  color: #109cf1;
+
+  .icon {
+    stroke: #109cf1;
+  }
+}
+
+.icon {
+  transition: 0.1s;
+}
+
+.logout {
+  position: absolute;
+  bottom: 100px;
+
+  &:hover {
+    color: #f12e10;
+
+    .icon {
+      stroke: #f12e10;
     }
   }
 }
