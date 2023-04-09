@@ -35,25 +35,6 @@ const MyTasksHeader = ({
               </button>
             );
           })}
-
-          {/* <button
-          className={filterByState === 0 ? s.active : ""}
-          onClick={() => setFilterByState(0)}
-        >
-          Все
-        </button>
-        <button
-          className={filterByState === 1 ? s.active : ""}
-          onClick={() => setFilterByState(1)}
-        >
-          В работе
-        </button>
-        <button
-          className={filterByState === 2 ? s.active : ""}
-          onClick={() => setFilterByState(2)}
-        >
-          Завершенные
-        </button> */}
         </div>
       </TasksHeader>
     </header>

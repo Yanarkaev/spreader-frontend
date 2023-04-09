@@ -55,7 +55,7 @@ const TaskTimer = ({ task, timerStarted, className }) => {
 
   return (
     <div className={className}>
-      {minutes}:{seconds}
+      {/* {minutes}:{seconds} */}
     </div>
   );
 };

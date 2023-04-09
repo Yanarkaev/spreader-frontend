@@ -12,7 +12,6 @@ const TaskActions = ({ task }) => {
   const payload = useSelector((state) => state.auth.payload);
 
   const navigate = useNavigate()
-  console.log(navigate)
 
   const handleTakeToWork = () => {
     dispatch(
