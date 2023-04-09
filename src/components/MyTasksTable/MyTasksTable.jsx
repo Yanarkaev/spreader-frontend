@@ -3,9 +3,8 @@ import { Table } from "../../shared/iu/Table/Table";
 import { useSelector, useDispatch } from "react-redux";
 import { getTasksByUser } from "./../../app/features/tasks/tasksSlice";
 import { useParams } from "react-router-dom";
-import s from "./MyTasksTable.module.scss";
-import Preloader from "../../shared/iu/Preloader/Preloader";
 import { useMyTasks } from "./../../shared/hooks/useMyTasks";
+import { TableLoader } from "../../shared/iu/Loader/TableLoader";
 
 const MyTasksTable = ({ search, filterByState }) => {
   const columns = [
@@ -19,19 +18,18 @@ const MyTasksTable = ({ search, filterByState }) => {
   const { userId } = useParams();
   const { tasks, loading } = useMyTasks(userId);
 
-  tasks
-    .filter((task) =>
+  const filtered = tasks.filter((task) =>
       filterByState === "all" ? task : task.state === filterByState
     )
     .filter((task) => task?.title.toLowerCase().includes(search.toLowerCase()));
 
   if (loading) {
-    return <Preloader />;
+    return <TableLoader />;
   }
 
   return (
     <div>
-      <Table columns={columns} rows={tasks} className={s.MyTasksTable} />
+      <Table columns={columns} rows={filtered} />
     </div>
   );
 };

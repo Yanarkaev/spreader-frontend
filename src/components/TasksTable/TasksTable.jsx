@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Table } from "../../shared/iu/Table/Table";
-import Preloader from "./../../shared/iu/Preloader/Preloader";
 import { useTasks } from "./../../shared/hooks/useTasks";
+import { TableLoader } from "../../shared/iu/Loader/TableLoader";
 
 const TasksTable = ({ search }) => {
   const columns = [
@@ -17,7 +17,7 @@ const TasksTable = ({ search }) => {
   const { tasks, loading } = useTasks();
   const sortTasksValue = useSelector((state) => state.tasks.sortBranch);
 
-  tasks
+  const filtered = tasks
     .filter((task) =>
       sortTasksValue === "all"
         ? task
@@ -26,12 +26,12 @@ const TasksTable = ({ search }) => {
     .filter(({ title }) => title.toLowerCase().includes(search.toLowerCase()));
 
   if (loading) {
-    return <Preloader />;
+    return <TableLoader />;
   }
 
   return (
     <div style={{ marginBottom: "50px" }}>
-      <Table columns={columns} rows={tasks} />
+      <Table columns={columns} rows={filtered} />
     </div>
   );
 };

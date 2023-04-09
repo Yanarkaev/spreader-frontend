@@ -1,29 +1,35 @@
 import React from "react";
 import s from "./TaskDescription.module.scss";
+import { Loader } from "./../../shared/iu/Loader/Loader";
 
-const TaskDescription = ({ task }) => {
+const TaskDescription = ({ task, loading }) => {
   const text = task?.text?.split("/абзац/") || [];
-  console.log(text);
+
   return (
     <div className={s.TaskDescription}>
-      <h1 className={s.title}>{task.title}</h1>
+      <h1 className={s.title}>
+        {loading ? <Loader w="400px" h="40px" /> : task.title}
+      </h1>
       <div className={s.text}>
-        {text.map((par) => {
-          return (
-            <>
-              <p>{par}</p>
-              <br />
-            </>
-          );
-        })}
+        {loading
+          ? new Array(12).fill(0).map((el, i) => {
+              return (
+                <Loader
+                  w="100%"
+                  h="20px"
+                  margin={`${i % 4 === 0 ? "25px 0 0" : "5px 0"}`}
+                />
+              );
+            })
+          : text.map((par) => {
+              return (
+                <>
+                  <p>{par}</p>
+                  <br />
+                </>
+              );
+            })}
       </div>
-      {/* <p className={s.text}>
-        {task.text}
-        Описание: Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Recusandae atque debitis magni optio aliquam non quasi iure ad
-        aspernatur! Quis quasi perferendis animi obcaecati omnis eveniet nostrum
-        dolorum ipsa vitae.
-      </p> */}
     </div>
   );
 };

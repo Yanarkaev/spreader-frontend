@@ -2,8 +2,9 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getPadTime } from "../../shared/helpers/getPadTime";
+import { Loader } from "../../shared/iu/Loader/Loader";
 
-const TaskTimer = ({ task, timerStarted, className }) => {
+const TaskTimer = ({ task, loading, timerStarted, className }) => {
   const { taskId } = useParams();
   const timer = JSON.parse(localStorage.getItem(taskId));
   const [timeLeft, setTimeLeft] = useState(
@@ -53,9 +54,11 @@ const TaskTimer = ({ task, timerStarted, className }) => {
     }
   }, [timeLeft]);
 
+  const timerText = `${minutes}:${seconds}`
+
   return (
     <div className={className}>
-      {/* {minutes}:{seconds} */}
+      {loading ? <Loader w="110px" h="40px"/> : timerText}
     </div>
   );
 };
