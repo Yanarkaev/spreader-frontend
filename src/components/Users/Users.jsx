@@ -14,8 +14,7 @@ const Users = () => {
   const tasks = useSelector((state) => state.tasks.tasks);
   const dispatch = useDispatch();
 
-  const [open, setOpen] = useState(false);
-
+  console.log(tasks);
   useEffect(() => {
     dispatch(getUsers());
     dispatch(getTasks());
@@ -35,7 +34,7 @@ const Users = () => {
       {users.map((user) => {
         return (
           <div key={user._id}>
-            <User user={user} />
+            <User user={user} tasks={tasks}/>
           </div>
         );
       })}
