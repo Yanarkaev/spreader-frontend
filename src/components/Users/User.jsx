@@ -7,15 +7,10 @@ import styles from "./users.module.scss";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-const User = ({ user }) => {
-  const tasks = useSelector((state) => state.tasks.tasks);
-  const dispatch = useDispatch();
-
+const User = ({ user, tasks }) => {
+  // const tasks = useSelector((state) => state.tasks.tasks);
   const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    dispatch(getTasks());
-  }, [dispatch]);
+  console.log(tasks);
 
   return (
     <>
@@ -33,7 +28,7 @@ const User = ({ user }) => {
               if (task.userId === user._id) {
                 return (
                   <Link
-                    to={`/spreader/dashboard/${task._id}`}
+                    to={`/spreader/task/${task._id}`}
                     className={styles.task}
                     key={task._id}
                   >
@@ -41,7 +36,8 @@ const User = ({ user }) => {
                   </Link>
                 );
               }
-            })}
+            })
+          }
         </div>
       </div>
     </>
