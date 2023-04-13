@@ -8,7 +8,7 @@ import s from "./TaskHeader.module.scss";
 // import { TaskHeaderLoader } from "../../shared/iu/Loaders/TaskHeaderLoader";
 // import Skeleton from "react-loading-skeleton";
 
-const TaskHeader = ({ task, loading }) => {
+const TaskHeader = ({ task, loading, role }) => {
   const [timerStarted, setTimerStarted] = useState(false);
 
   return (
@@ -28,7 +28,7 @@ const TaskHeader = ({ task, loading }) => {
         className={`${s.timer} ${timerStarted ? s.timerStarted : ""}`}
       />
 
-      {!loading && (
+      {!loading && role !== "ADMIN" && (
         <Button
           variant={timerStarted && "danger"}
           onClick={() => setTimerStarted(!timerStarted)}

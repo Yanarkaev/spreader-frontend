@@ -8,9 +8,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 
 const User = ({ user, tasks }) => {
-  // const tasks = useSelector((state) => state.tasks.tasks);
   const [open, setOpen] = useState(false);
-  console.log(tasks);
 
   return (
     <>
@@ -36,8 +34,7 @@ const User = ({ user, tasks }) => {
                   </Link>
                 );
               }
-            })
-          }
+            })}
         </div>
       </div>
     </>
