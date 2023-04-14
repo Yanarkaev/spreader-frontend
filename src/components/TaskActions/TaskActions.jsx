@@ -6,7 +6,8 @@ import { takeToWork, closeTask } from "../../app/features/tasks/tasksSlice";
 import s from "./TaskActions.module.scss";
 import { Loader } from "../../shared/iu/Loader/Loader";
 
-const TaskActions = ({ task, loading }) => {
+const TaskActions = ({ loading }) => {
+  const task = useSelector((state) => state.tasks.task)
   const state = task.state;
   const { taskId } = useParams();
   const dispatch = useDispatch();
@@ -26,18 +27,17 @@ const TaskActions = ({ task, loading }) => {
   };
 
   useEffect(() => {
-    if (task) {
+    if (task?.branchId) {
       setTaskBranch(task?.branchId?._id);
     }
-  }, [task]);
+  }, [dispatch, task]);
 
   if (loading) {
     return <Loader w="150px" h="40px" br="5px" margin="40px auto 0" />;
   }
 
-  console.log(taskBranch);
 
-  // if (payload?.branchId === taskBranch) {
+  if (payload?.branchId === taskBranch) {
     return (
       <div className={s.TaskActions}>
         {(state === "new" && (
@@ -55,7 +55,7 @@ const TaskActions = ({ task, loading }) => {
           ))}
       </div>
     );
-  // }
+  }
 };
 
 export default TaskActions;
