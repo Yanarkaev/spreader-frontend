@@ -7,8 +7,7 @@ import s from "./TaskActions.module.scss";
 import { Loader } from "../../shared/iu/Loader/Loader";
 
 const TaskActions = ({ loading }) => {
-  const task = useSelector((state) => state.tasks.task)
-  const state = task.state;
+  const task = useSelector((state) => state.tasks.task);
   const { taskId } = useParams();
   const dispatch = useDispatch();
   const payload = useSelector((state) => state.auth.payload);
@@ -30,27 +29,26 @@ const TaskActions = ({ loading }) => {
     if (task?.branchId) {
       setTaskBranch(task?.branchId?._id);
     }
-  }, [dispatch, task]);
+  }, [task?.branchId]);
 
   if (loading) {
-    return <Loader w="150px" h="40px" br="5px" margin="40px auto 0" />;
+    return <Loader w="150px" h="40px" br="5px" margin="auto auto 10px" />;
   }
 
-
-  if (payload?.branchId === taskBranch) {
+  if (payload?.branchId === taskBranch || taskBranch === undefined) {
     return (
       <div className={s.TaskActions}>
-        {(state === "new" && (
+        {(task.state === "new" && (
           <Button variant="success" onClick={handleTakeToWork}>
             Взять в работу
           </Button>
         )) ||
-          (state === "inWork" && (
+          (task.state === "inWork" && (
             <Button variant="danger" onClick={handleClose}>
               Звершить задачу
             </Button>
           )) ||
-          (state === "closed" && (
+          (task.state === "closed" && (
             <Button onClick={() => navigate(-1)}>Завершено</Button>
           ))}
       </div>
