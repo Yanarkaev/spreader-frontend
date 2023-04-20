@@ -55,19 +55,19 @@ export const getTasksByUser = createAsyncThunk(
   }
 );
 
-export const addMessage = createAsyncThunk(
-  "taskMessage/patch",
+export const editNotes = createAsyncThunk(
+  "taskNotes/patch",
 
   async ({ taskId, text }, thunkAPI) => {
     try {
       await fetch(`/spreader/tasks/${taskId}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: text }),
+        body: JSON.stringify({ notes: text }),
       });
       return text;
-    } catch (err) {
-      return thunkAPI.rejectWithValue(err);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );
@@ -207,8 +207,8 @@ export const tasksSlice = createSlice({
       })
 
       //==
-      .addCase(addMessage.fulfilled, (state, action) => {
-        state.task.message.push(action.payload);
+      .addCase(editNotes.fulfilled, (state, action) => {
+        state.task.notes = action.payload;
       })
 
       //==

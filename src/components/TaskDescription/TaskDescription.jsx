@@ -18,6 +18,7 @@ const TaskDescription = ({ task, loading }) => {
                   w="100%"
                   h="20px"
                   margin={`${i % 4 === 0 ? "25px 0 0" : "5px 0"}`}
+                  key={i}
                 />
               );
             })
