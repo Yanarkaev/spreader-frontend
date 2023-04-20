@@ -1,8 +1,4 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
-import { getUsers } from "./../../app/features/users/usersSlice";
-import { getTasks } from "./../../app/features/tasks/tasksSlice";
 import styles from "./users.module.scss";
 import { Link } from "react-router-dom";
 import { useState } from "react";
@@ -23,8 +19,8 @@ const User = ({ user, tasks }) => {
         <div className={styles.tasksWrapper}>
           {open &&
             tasks.map((task) => {
-              if (task.userId === user._id) {
-                return (
+              return (
+                task.userId === user._id && (
                   <Link
                     to={`/spreader/task/${task._id}`}
                     className={styles.task}
@@ -32,8 +28,8 @@ const User = ({ user, tasks }) => {
                   >
                     <div className={styles.taskTitle}>{task.title}</div>
                   </Link>
-                );
-              }
+                )
+              );
             })}
         </div>
       </div>

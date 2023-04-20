@@ -15,8 +15,7 @@ function Dashboard() {
       <DashboardHeader search={search} setSearch={setSearch} />
       <div className={s.tools}>
         <Sort />
-        {<AddTask />}
-        {/* {payload?.role === "ADMIN" && <AddTask />} */}
+        {payload?.role === "ADMIN" && <AddTask />}
       </div>
       <TasksTable search={search} />
     </div>

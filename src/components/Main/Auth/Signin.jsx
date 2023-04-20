@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./auth.module.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { setError, signin } from "../../../app/features/auth/authSlice";
+import { setErrorMessage, signin } from "../../../app/features/auth/authSlice";
 
 const Signin = () => {
   const error = useSelector((state) => state.auth.error);
@@ -19,7 +19,7 @@ const Signin = () => {
     }
   };
 
-  const [message, setMessage] = useState(error);
+  // const [message, setMessage] = useState(error);
 
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
@@ -34,11 +34,11 @@ const Signin = () => {
 
   const handleLogin = (e) => {
     setLogin(e.target.value);
-    dispatch(setError());
+    dispatch(setErrorMessage());
   };
   const hadnlePassword = (e) => {
     setPassword(e.target.value);
-    dispatch(setError());
+    dispatch(setErrorMessage());
   };
 
   const handleBlur = () => {

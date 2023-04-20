@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, Textarea } from "../../shared/iu";
 import { useDispatch } from "react-redux";
 import { editNotes } from "./../../app/features/tasks/tasksSlice";

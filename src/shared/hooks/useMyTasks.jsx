@@ -8,7 +8,7 @@ export const useMyTasks = (userId) => {
 
     useEffect(() => {
         dispatch(getTasksByUser(userId))
-    }, [dispatch])
+    }, [dispatch]) // eslint-disable-line react-hooks/exhaustive-deps 
     
     return {tasks, loading};
 };

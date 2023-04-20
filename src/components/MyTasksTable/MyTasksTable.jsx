@@ -1,7 +1,4 @@
-import React, { useEffect } from "react";
 import { Table } from "../../shared/iu/Table/Table";
-import { useSelector, useDispatch } from "react-redux";
-import { getTasksByUser } from "./../../app/features/tasks/tasksSlice";
 import { useParams } from "react-router-dom";
 import { useMyTasks } from "./../../shared/hooks/useMyTasks";
 import { TableLoader } from "../../shared/iu/Loader/TableLoader";

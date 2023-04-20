@@ -1,5 +1,5 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { resetState, setError, setLoading } from "../stateSetters";
 
 const initialState = {
   tasks: [],
@@ -130,6 +130,7 @@ export const addTask = createAsyncThunk(
   }
 );
 
+
 export const tasksSlice = createSlice({
   name: "tasks",
   initialState,
@@ -140,84 +141,69 @@ export const tasksSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(getTasks.pending, (state, action) => {
-        state.loading = true;
-        state.error = null;
-      })
+
+      // получение всех задач
+      .addCase(getTasks.pending, setLoading)
+      .addCase(getTasks.rejected, setError)
       .addCase(getTasks.fulfilled, (state, action) => {
-        state.loading = false;
         state.tasks = action.payload;
+        resetState(state);
       })
-      .addCase(getTasks.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload;
-      })
-      // ==
-      .addCase(getNewTasks.pending, (state, action) => {
-        state.loading = true;
-        state.error = null;
-      })
+
+      // получение новых задач
+      .addCase(getNewTasks.pending, setLoading)
+      .addCase(getNewTasks.rejected, setError)
       .addCase(getNewTasks.fulfilled, (state, action) => {
-        state.loading = false;
         state.tasks = action.payload;
+        resetState(state);
       })
-      .addCase(getNewTasks.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload;
-      })
-      // ==
-      .addCase(addTask.pending, (state, action) => {
-        state.loading = true;
-        state.error = null;
-      })
+
+      // добавление задачи
+      .addCase(addTask.pending, setError)
+      .addCase(addTask.rejected, setError)
       .addCase(addTask.fulfilled, (state, action) => {
-        state.loading = false;
         state.tasks.push(action.payload);
-        console.log(action.payload);
+        resetState(state);
       })
-      .addCase(addTask.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload;
-      })
-      // ==
+
+      // получение одной задачи
+      .addCase(getTaskById.pending, setLoading)
+      .addCase(getTaskById.rejected, setError)
       .addCase(getTaskById.fulfilled, (state, action) => {
         state.task = action.payload;
-        state.loading = false;
+        resetState(state);
       })
-      .addCase(getTaskById.pending, (state, action) => {
-        state.loading = true;
-        state.error = null;
-      })
-      .addCase(getTaskById.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload;
-      })
-      // ==
+
+      // получение задачи работника
+      .addCase(getTasksByUser.pending, setLoading)
+      .addCase(getTasksByUser.rejected, setError)
       .addCase(getTasksByUser.fulfilled, (state, action) => {
         state.tasks = action.payload;
-        state.loading = false;
-      })
-      .addCase(getTasksByUser.pending, (state, action) => {
-        state.loading = true;
-        state.error = null;
-      })
-      .addCase(getTasksByUser.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload;
+        resetState(state);
       })
 
-      //==
+      // добавление заметки
+      .addCase(editNotes.pending, setLoading)
+      .addCase(editNotes.rejected, setError)
       .addCase(editNotes.fulfilled, (state, action) => {
         state.task.notes = action.payload;
+        resetState(state);
       })
 
-      //==
+      // взятие задачи в работу
+      .addCase(takeToWork.pending, setLoading)
+      .addCase(takeToWork.rejected, setError)
       .addCase(takeToWork.fulfilled, (state, action) => {
         state.task = action.payload;
+        resetState(state);
       })
-      //==
+
+      // выполнение задачи
+      .addCase(closeTask.pending, setLoading)
+      .addCase(closeTask.rejected, setError)
       .addCase(closeTask.fulfilled, (state, action) => {
         state.task = action.payload;
+        resetState(state);
       });
   },
 });

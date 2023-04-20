@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getTaskById, getTasksByUser } from "../../app/features/tasks/tasksSlice";
+import { getTaskById } from "../../app/features/tasks/tasksSlice";
 
 export const useOneTask = () => {
   const { taskId } = useParams();
@@ -11,7 +11,7 @@ export const useOneTask = () => {
 
   useEffect(() => {
     dispatch(getTaskById(taskId));
-  }, [dispatch]);
+  }, [dispatch]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return { task, loading };
 };

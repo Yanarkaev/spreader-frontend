@@ -4,8 +4,6 @@ import { useEffect } from "react";
 import { getUsers } from "./../../app/features/users/usersSlice";
 import { getTasks } from "./../../app/features/tasks/tasksSlice";
 import styles from "./users.module.scss";
-import { Link } from "react-router-dom";
-import { useState } from "react";
 import User from "./User";
 
 const Users = () => {
