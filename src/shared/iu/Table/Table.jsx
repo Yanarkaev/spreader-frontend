@@ -1,6 +1,7 @@
 import React from "react";
 import s from "./Table.module.scss";
 import { useNavigate } from "react-router-dom";
+import { getValidTimestamps } from "./../../helpers/getValidTimestamps";
 
 export const Table = ({ columns, rows, className }) => {
   const navigate = useNavigate();
@@ -24,13 +25,17 @@ export const Table = ({ columns, rows, className }) => {
               onClick={() => navigate(`/spreader/task/${item._id}`)}
             >
               <td>{index + 1}</td>
-              {columns.map(({ value }) => {
-                return (
-                  <td key={value}>
-                    {item[value]?.name ? item[value]?.name : item[value]}
-                  </td>
-                );
-              })}
+              {columns.map(({ value }) => (
+                <td key={value}>
+                  {value === "branchId"
+                    ? item[value]?.name
+                      ? item[value]?.name
+                      : "Все"
+                    : value === "createdAt"
+                    ? getValidTimestamps(item["createdAt"])
+                    : item[value]}
+                </td>
+              ))}
             </tr>
           ))}
         </tbody>

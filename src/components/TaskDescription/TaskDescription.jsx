@@ -22,13 +22,8 @@ const TaskDescription = ({ task, loading }) => {
                 />
               );
             })
-          : text.map((par) => {
-              return (
-                <>
-                  <p>{par}</p>
-                  <br />
-                </>
-              );
+          : text.map((par, i) => {
+              return <p key={par + i}>{par}</p>;
             })}
       </div>
     </div>

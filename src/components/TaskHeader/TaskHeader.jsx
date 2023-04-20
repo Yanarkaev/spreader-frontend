@@ -4,7 +4,7 @@ import { Loader } from "../../shared/iu/Loader/Loader";
 import TaskTimer from "../TaskTimer/TaskTimer";
 import s from "./TaskHeader.module.scss";
 
-const TaskHeader = ({ task, loading, role }) => {
+export const TaskHeader = ({ task, loading, role }) => {
   const [timerStarted, setTimerStarted] = useState(false);
 
   return (
@@ -35,5 +35,3 @@ const TaskHeader = ({ task, loading, role }) => {
     </div>
   );
 };
-
-export default TaskHeader;

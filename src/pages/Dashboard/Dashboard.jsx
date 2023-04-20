@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import AddTask from "../../components/Addtask/AddTask";
 import s from "./Dashboard.module.scss";
-import Sort from "../../components/Sort/Sort";
+import {Sort} from "../../components/Sort/Sort";
 import TasksTable from "../../components/TasksTable/TasksTable";
 import DashboardHeader from "./../../components/DashboardHeader/DashboardHeader";
 import { useSelector } from "react-redux";
