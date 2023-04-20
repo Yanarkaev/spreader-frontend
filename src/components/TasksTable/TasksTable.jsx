@@ -10,12 +10,12 @@ const TasksTable = ({ search }) => {
     { value: "time", displayValue: "Время" },
     { value: "points", displayValue: "Баллы" },
     { value: "createdAt", displayValue: "Дата" },
-    { value: "state", displayValue: "Статус" },
+    // { value: "state", displayValue: "Статус" },
   ];
 
   const { tasks, loading } = useTasks();
   const sortTasksValue = useSelector((state) => state.tasks.sortBranch);
-
+console.log(tasks);
   const filtered = tasks
     .filter((task) =>
       sortTasksValue === "all"

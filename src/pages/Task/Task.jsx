@@ -1,5 +1,5 @@
 import TaskDescription from "../../components/TaskDescription/TaskDescription";
-import TaskHeader from "../../components/TaskHeader/TaskHeader";
+import {TaskHeader} from "../../components/TaskHeader/TaskHeader";
 import TaskActions from "../../components/TaskActions/TaskActions";
 import { useOneTask } from "./../../shared/hooks/useOneTask";
 import s from "./Task.module.scss";

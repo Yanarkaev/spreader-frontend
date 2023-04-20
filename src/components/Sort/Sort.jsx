@@ -7,7 +7,7 @@ import s from "./Sort.module.scss";
 import { useEffect } from "react";
 import { getBranches } from "../../app/features/branches/branchesSlice";
 
-const Sort = () => {
+export const Sort = React.memo(() => {
   const dispatch = useDispatch();
 
   const [openSort, setOpenSort] = useState(false);
@@ -77,6 +77,4 @@ const Sort = () => {
       )}
     </div>
   );
-};
-
-export default Sort;
+});
