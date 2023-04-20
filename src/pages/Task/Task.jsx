@@ -1,5 +1,4 @@
 import TaskDescription from "../../components/TaskDescription/TaskDescription";
-import { useSelector } from "react-redux";
 import TaskHeader from "../../components/TaskHeader/TaskHeader";
 import TaskActions from "../../components/TaskActions/TaskActions";
 import { useOneTask } from "./../../shared/hooks/useOneTask";
