@@ -28,7 +28,7 @@ const TaskTimer = ({ task, loading, timerStarted, className }) => {
         })
       );
     }
-  }, [task]);
+  }, [task]);  // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     if (timerStarted) {
@@ -43,7 +43,7 @@ const TaskTimer = ({ task, loading, timerStarted, className }) => {
         clearInterval(interval);
       };
     }
-  }, [timerStarted]);
+  }, [timerStarted]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     if (timeLeft && timerStarted) {
@@ -52,7 +52,7 @@ const TaskTimer = ({ task, loading, timerStarted, className }) => {
         JSON.stringify({ minutes, seconds, started: timerStarted })
       );
     }
-  }, [timeLeft]);
+  }, [timeLeft]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const timerText = `${minutes}:${seconds}`
 

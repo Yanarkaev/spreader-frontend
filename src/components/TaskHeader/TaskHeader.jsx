@@ -1,12 +1,8 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
 import { Button } from "../../shared/iu";
 import { Loader } from "../../shared/iu/Loader/Loader";
 import TaskTimer from "../TaskTimer/TaskTimer";
 import s from "./TaskHeader.module.scss";
-// import Preloader from './../../shared/iu/Preloader/Preloader';
-// import { TaskHeaderLoader } from "../../shared/iu/Loaders/TaskHeaderLoader";
-// import Skeleton from "react-loading-skeleton";
 
 const TaskHeader = ({ task, loading, role }) => {
   const [timerStarted, setTimerStarted] = useState(false);

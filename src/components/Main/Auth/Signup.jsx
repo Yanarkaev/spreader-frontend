@@ -3,14 +3,14 @@ import { Link } from "react-router-dom";
 import styles from "./auth.module.scss";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setError, signin, signup } from "./../../../app/features/auth/authSlice";
+import { setErrorMessage, signup } from "./../../../app/features/auth/authSlice";
 import { getBranches } from "./../../../app/features/branches/branchesSlice";
 
 const Signup = () => {
   const branches = useSelector((state) => state.branches.branches);
   const error = useSelector((state) => state.auth.error);
   const loading = useSelector((state) => state.auth.loading);
-  const signedUp = useSelector(state => state.auth.signedUp)
+  // const signedUp = useSelector(state => state.auth.signedUp)
   const dispatch = useDispatch();
 
   const [login, setLogin] = useState("");
@@ -44,17 +44,17 @@ const Signup = () => {
 
   const hadnleLogin = (e) => {
     setLogin(e.target.value);
-    dispatch(setError());
+    dispatch(setErrorMessage());
   };
 
   const hadnlePassword = (e) => {
     setPassword(e.target.value);
-    dispatch(setError());
+    dispatch(setErrorMessage());
   };
 
   const handleBranch = (e) => {
     setBranch(e.target.value);
-    dispatch(setError());
+    dispatch(setErrorMessage());
   };
 
   return (

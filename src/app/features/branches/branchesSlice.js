@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { createSlice } from "@reduxjs/toolkit";
+import { resetState, setError, setLoading } from "../stateSetters";
 const initialState = {
   branches: [],
 };
@@ -22,18 +23,13 @@ export const branchesSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(getBranches.pending, (state, action) => {
-        state.loading = true;
-        state.error = null;
-      })
+      .addCase(getBranches.pending, setLoading)
+      .addCase(getBranches.rejected, setError)
       .addCase(getBranches.fulfilled, (state, action) => {
-        state.loading = false;
         state.branches = action.payload;
+        resetState(state)
       })
-      .addCase(getBranches.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload;
-      });
+    
   },
 });
 

@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { resetState, setLoading, setError } from "../stateSetters";
 
 const initialState = {
   loading: false,
@@ -8,7 +9,7 @@ const initialState = {
   signedUp: false,
   signedIn: false,
   users: [],
-  branch: null
+  branch: null,
 };
 
 export const signup = createAsyncThunk(
@@ -78,7 +79,7 @@ export const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    setError: (state, action) => {
+    setErrorMessage: (state, action) => {
       state.error = null;
     },
 
@@ -107,51 +108,37 @@ export const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(signup.pending, (state, action) => {
-        state.loading = true;
-        state.error = null;
-      })
+
+      // регистрация
+      .addCase(signup.pending, setLoading)
+      .addCase(signup.rejected, )
       .addCase(signup.fulfilled, (state, action) => {
-        state.loading = false;
         state.signedUp = true;
-        state.branch = action.payload
+        state.branch = action.payload;
+        resetState(state);
       })
-      .addCase(signup.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload;
-      })
-      //===
-      .addCase(signin.pending, (state, action) => {
-        state.loading = true;
-        state.error = null;
+
+      // вход
+      .addCase(signin.pending, setLoading)
+      .addCase(signin.rejected, (state, action) => {
+        state.token = null;
+        setError(state, action);
       })
       .addCase(signin.fulfilled, (state, action) => {
         state.token = action.payload;
-        state.loading = false;
         state.signedIn = true;
-        state.error = null;
+        resetState(state);
       })
-      .addCase(signin.rejected, (state, action) => {
-        console.log(state);
-        state.error = action.payload;
-        state.token = null;
-        state.loading = false;
-      })
-      // ===
-      .addCase(getUsers.pending, (state, action) => {
-        state.loading = true;
-        state.error = null;
-      })
+
+      // получение работников
+      .addCase(getUsers.pending, setLoading)
+      .addCase(getUsers.rejected, setError)
       .addCase(getUsers.fulfilled, (state, action) => {
-        state.loading = false;
         state.users = action.payload;
-      })
-      .addCase(getUsers.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload;
+        resetState(state);
       });
   },
 });
 
-export const { setError, decodePayload, logOut } = authSlice.actions;
+export const { setErrorMessage, decodePayload, logOut } = authSlice.actions;
 export default authSlice.reducer;
