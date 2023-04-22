@@ -4,7 +4,6 @@ import { useEffect } from "react";
 import { getUsers } from "./../../app/features/users/usersSlice";
 import { getTasks } from "./../../app/features/tasks/tasksSlice";
 import styles from "./users.module.scss";
-import User from "./User";
 import { WorkerCard } from "../WorkerCard/WorkerCard";
 
 const Users = () => {
@@ -13,11 +12,12 @@ const Users = () => {
   const tasks = useSelector((state) => state.tasks.tasks);
   const dispatch = useDispatch();
 
-  console.log(tasks);
   useEffect(() => {
     dispatch(getUsers());
     dispatch(getTasks());
   }, [dispatch]);
+
+  console.log(users);
 
   if (loading) {
     return <span className="loader"></span>;
@@ -26,7 +26,7 @@ const Users = () => {
   return (
     <div className={styles.wrapper}>
       {users.map((user) => {
-        return <WorkerCard user={user} tasks={tasks}/>;
+        return <WorkerCard key={user._id} worker={user} tasks={tasks} loading={loading}/>;
       })}
     </div>
   );

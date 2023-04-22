@@ -1,0 +1,25 @@
+.WorkerDefinition {
+  display: flex;
+  align-items: center;
+  min-width: 300px;
+  width: fit-content;
+  padding: 10px;
+  margin: 10px auto;
+}
+
+.img {
+  background-color: rgb(229, 229, 229);
+  height: 100px;
+  width: 100px;
+  border-radius: 5px;
+  background-image: url("../../assets/Admin/emptyProfileImg.png");
+  background-position: center;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  margin-right: 20px;
+}
+
+.branch {
+  margin-top: 5px;
+  color: #109cf1;
+}
