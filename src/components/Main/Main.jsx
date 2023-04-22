@@ -4,7 +4,6 @@ import Signin from "./Auth/Signin";
 import { Route, Routes, Navigate } from "react-router-dom";
 import styles from "./main.module.scss";
 import Dashboard from "../../pages/Dashboard/Dashboard";
-// import Task from "../Task/Task";
 import Users from "../Users/Users";
 import { useSelector } from "react-redux";
 import MyTasks from "../../pages/MyTasks/MyTasks";

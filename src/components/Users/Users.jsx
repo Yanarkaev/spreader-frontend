@@ -5,6 +5,7 @@ import { getUsers } from "./../../app/features/users/usersSlice";
 import { getTasks } from "./../../app/features/tasks/tasksSlice";
 import styles from "./users.module.scss";
 import User from "./User";
+import { WorkerCard } from "../WorkerCard/WorkerCard";
 
 const Users = () => {
   const users = useSelector((state) => state.auth.users);
@@ -24,17 +25,8 @@ const Users = () => {
 
   return (
     <div className={styles.wrapper}>
-      <header className={styles.header}>
-        <div className={styles.headerInner}>
-          <h1>Администрирование</h1>
-        </div>
-      </header>
       {users.map((user) => {
-        return (
-          <div key={user._id}>
-            <User user={user} tasks={tasks}/>
-          </div>
-        );
+        return <WorkerCard user={user} tasks={tasks}/>;
       })}
     </div>
   );
