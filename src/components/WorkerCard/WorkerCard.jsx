@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import s from "./WorkerCard.module.scss";
+import { getValidTasksCounterWord } from "./../../shared/helpers/getValidTasksCounterWord";
 
 export const WorkerCard = ({ user, tasks }) => {
   const [workerTasks, setWorkerTasks] = useState({
@@ -29,7 +30,10 @@ export const WorkerCard = ({ user, tasks }) => {
       </div>
 
       <div className={s.tasksCount}>
-        <div className={s.allTasks}>{workerTasks.allTasks.length} задач</div>
+        <div className={s.allTasks}>
+          {workerTasks.allTasks.length}{" "}
+          {getValidTasksCounterWord(workerTasks.allTasks.length)}{" "}
+        </div>
         <div className={s.inWork} title="В работе">
           <span></span>
           {workerTasks.inWork.length}
