@@ -2,6 +2,11 @@
   width: 100%;
   margin: 0 auto;
   font-weight: 600;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-self: baseline;
+  gap: 10px;
 
   .userInfoWrapper {
     width: 100%;
