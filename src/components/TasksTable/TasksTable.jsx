@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { Table } from "../../shared/iu/Table/Table";
-import { useTasks } from "./../../shared/hooks/useTasks";
+import { useNewTasks } from "../../shared/hooks/useNewTasks";
 import { TableLoader } from "../../shared/iu/Loader/TableLoader";
 
 const TasksTable = ({ search }) => {
@@ -13,7 +13,7 @@ const TasksTable = ({ search }) => {
     // { value: "state", displayValue: "Статус" },
   ];
 
-  const { tasks, loading } = useTasks();
+  const { tasks, loading } = useNewTasks();
   const sortTasksValue = useSelector((state) => state.tasks.sortBranch);
 console.log(tasks);
   const filtered = tasks
