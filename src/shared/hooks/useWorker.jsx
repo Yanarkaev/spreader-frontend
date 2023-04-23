@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { getWorker } from "../../app/features/users/usersSlice";
 
 export const useWorker = (userId) => {
-  const payload = useSelector((state) => state.auth.payload);
   const dispatch = useDispatch();
   const { worker, loading } = useSelector((state) => state.users);
 

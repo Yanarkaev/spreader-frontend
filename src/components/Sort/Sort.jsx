@@ -6,8 +6,9 @@ import { useSelector } from "react-redux";
 import s from "./Sort.module.scss";
 import { useEffect } from "react";
 import { getBranches } from "../../app/features/branches/branchesSlice";
+import cn from 'classnames';
 
-export const Sort = React.memo(() => {
+export const Sort = React.memo(({className}) => {
   const dispatch = useDispatch();
 
   const [openSort, setOpenSort] = useState(false);
@@ -42,7 +43,7 @@ export const Sort = React.memo(() => {
   }, [setOpenSort]);
 
   return (
-    <div className={s.Sort} ref={ref}>
+    <div className={cn(s.Sort, className)} ref={ref}>
       <div className={s.sortInput} onClick={() => setOpenSort(!openSort)}>
         <div>
           Фильтр:

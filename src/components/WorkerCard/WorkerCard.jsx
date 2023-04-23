@@ -47,11 +47,17 @@ export const WorkerCard = ({ worker, tasks, loading }) => {
             {workerTasks.allTasks.length + " "}
             {getValidTasksCounterWord(workerTasks.allTasks.length)}
           </div>
-          <div className={s.inWork} title="В работе">
+          <div
+            className={s.inWork}
+            title={`В работе ${workerTasks.inWork.length}`}
+          >
             <span></span>
             {workerTasks.inWork.length}
           </div>
-          <div className={s.closed} title="Выполнено">
+          <div
+            className={s.closed}
+            title={`Выполнено ${workerTasks.closed.length}`}
+          >
             <span></span>
             {workerTasks.closed.length}
           </div>
