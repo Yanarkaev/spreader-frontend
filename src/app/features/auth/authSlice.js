@@ -66,14 +66,14 @@ export const signin = createAsyncThunk(
 
 // get users
 
-export const getUsers = createAsyncThunk("users/fetch", async (_, thunkAPI) => {
-  try {
-    const res = await fetch("/spreader/users");
-    return res.json();
-  } catch (error) {
-    return thunkAPI.rejectWithValue(error);
-  }
-});
+// export const getUsers = createAsyncThunk("users/fetch", async (_, thunkAPI) => {
+//   try {
+//     const res = await fetch("/spreader/users");
+//     return res.json();
+//   } catch (error) {
+//     return thunkAPI.rejectWithValue(error);
+//   }
+// });
 
 export const authSlice = createSlice({
   name: "auth",
@@ -131,12 +131,12 @@ export const authSlice = createSlice({
       })
 
       // получение работников
-      .addCase(getUsers.pending, setLoading)
-      .addCase(getUsers.rejected, setError)
-      .addCase(getUsers.fulfilled, (state, action) => {
-        state.users = action.payload;
-        resetState(state);
-      });
+      // .addCase(getUsers.pending, setLoading)
+      // .addCase(getUsers.rejected, setError)
+      // .addCase(getUsers.fulfilled, (state, action) => {
+      //   state.users = action.payload;
+      //   resetState(state);
+      // });
   },
 });
 
