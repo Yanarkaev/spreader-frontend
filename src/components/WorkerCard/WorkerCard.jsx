@@ -3,7 +3,7 @@ import s from "./WorkerCard.module.scss";
 import { getValidTasksCounterWord } from "./../../shared/helpers/getValidTasksCounterWord";
 import { useNavigate } from "react-router-dom";
 
-export const WorkerCard = ({ worker, tasks, loading }) => {
+export const WorkerCard = ({ worker, tasks }) => {
   const [workerTasks, setWorkerTasks] = useState({
     inWork: 0,
     closed: 0,
@@ -26,10 +26,6 @@ export const WorkerCard = ({ worker, tasks, loading }) => {
     }
   }, [tasks, worker?._id]);
 
-  //   if (loading) {
-  //     return <div>132</div>;
-  //   }
-
   return (
     <div
       className={s.WorkerCard}
@@ -40,29 +36,27 @@ export const WorkerCard = ({ worker, tasks, loading }) => {
         <span className={s.name}>{worker?.login}</span>
         <span className={s.branch}>{worker?.branchId?.name}</span>
       </div>
-
-      {tasks?.length && (
-        <div className={s.tasksCount}>
-          <div className={s.allTasks}>
-            {workerTasks.allTasks.length + " "}
-            {getValidTasksCounterWord(workerTasks.allTasks.length)}
-          </div>
-          <div
-            className={s.inWork}
-            title={`В работе ${workerTasks.inWork.length}`}
-          >
-            <span></span>
-            {workerTasks.inWork.length}
-          </div>
-          <div
-            className={s.closed}
-            title={`Выполнено ${workerTasks.closed.length}`}
-          >
-            <span></span>
-            {workerTasks.closed.length}
-          </div>
+      
+      <div className={s.tasksCount}>
+        <div className={s.allTasks}>
+          {workerTasks.allTasks.length + " "}
+          {getValidTasksCounterWord(workerTasks.allTasks.length)}
         </div>
-      )}
+        <div
+          className={s.inWork}
+          title={`В работе ${workerTasks.inWork.length}`}
+        >
+          <span></span>
+          {workerTasks.inWork.length}
+        </div>
+        <div
+          className={s.closed}
+          title={`Выполнено ${workerTasks.closed.length}`}
+        >
+          <span></span>
+          {workerTasks.closed.length}
+        </div>
+      </div>
     </div>
   );
 };
