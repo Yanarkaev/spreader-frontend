@@ -1,5 +1,5 @@
 import { WorkerCard } from "../WorkerCard/WorkerCard";
-import { useWorkersList } from "./../../shared/hooks/useWorkersList";
+import { useWorkersList } from "../../shared/hooks/useWorkersList";
 import s from "./WorkersList.module.scss";
 import { useSelector } from "react-redux";
 import { Loader } from "../../shared/iu/Loader/Loader";

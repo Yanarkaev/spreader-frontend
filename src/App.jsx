@@ -1,9 +1,9 @@
-import styles from "./app.module.scss";
-import Main from "./components/Main/Main"
+import Main from "./components/Main/Main";
+import "./shared/styles/index.scss";
 
 function App() {
   return (
-    <div className={styles.app}>
+    <div className="app">
       <Main />
     </div>
   );

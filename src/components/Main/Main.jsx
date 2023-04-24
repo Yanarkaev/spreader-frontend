@@ -2,7 +2,7 @@ import React from "react";
 import Signup from "./Auth/Signup";
 import Signin from "./Auth/Signin";
 import { Route, Routes, Navigate } from "react-router-dom";
-import styles from "./main.module.scss";
+import  "./main.scss";
 import Dashboard from "../../pages/Dashboard/Dashboard";
 import { useSelector } from "react-redux";
 import MyTasks from "../../pages/MyTasks/MyTasks";
@@ -10,6 +10,7 @@ import Reports from "../Reports/Reports";
 import { Sidebar } from "../../shared/iu";
 import Task from "../../pages/Task/Task";
 import { Monitoring } from './../../pages/Monitoring/Monitoring';
+
 
 const Main = () => {
   const token = useSelector((state) => state.auth.token);
@@ -28,7 +29,7 @@ const Main = () => {
 
   if (token) {
     return (
-      <div className={styles.Main}>
+      <div className="Main">
         <Sidebar />
         <Routes>
           <Route
