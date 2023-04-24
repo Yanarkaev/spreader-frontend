@@ -1,13 +1,14 @@
+
 .Dashboard {
   width: 100%;
   margin: 0 auto;
   background: #f5f6f8;
-  
-  .tools{
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-    width: 95%;
-    margin: 20px auto;
-  }
+}
+
+.tools {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  width: 95%;
+  margin: 20px auto;
 }
