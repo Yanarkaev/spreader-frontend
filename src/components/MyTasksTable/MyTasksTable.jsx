@@ -25,7 +25,7 @@ const MyTasksTable = ({ search, filterByState }) => {
   }
 
   return (
-    <div>
+    <div style={{ marginTop: "20px" }}>
       <Table columns={columns} rows={filtered} />
     </div>
   );

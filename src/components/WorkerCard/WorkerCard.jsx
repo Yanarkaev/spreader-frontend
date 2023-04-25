@@ -36,7 +36,7 @@ export const WorkerCard = ({ worker, tasks }) => {
         <span className={s.name}>{worker?.login}</span>
         <span className={s.branch}>{worker?.branchId?.name}</span>
       </div>
-      
+
       <div className={s.tasksCount}>
         <div className={s.allTasks}>
           {workerTasks.allTasks.length + " "}

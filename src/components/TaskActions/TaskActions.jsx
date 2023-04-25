@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import { Button } from "../../shared/iu";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,7 +10,6 @@ const TaskActions = ({ loading }) => {
   const { taskId } = useParams();
   const dispatch = useDispatch();
   const payload = useSelector((state) => state.auth.payload);
-  const [taskBranch, setTaskBranch] = useState();
 
   const navigate = useNavigate();
 
@@ -25,35 +23,27 @@ const TaskActions = ({ loading }) => {
     dispatch(closeTask({ taskId }));
   };
 
-  useEffect(() => {
-    if (task?.branchId) {
-      setTaskBranch(task?.branchId?._id);
-    }
-  }, [task?.branchId]);
-
   if (loading) {
     return <Loader w="150px" h="40px" br="5px" margin="auto auto 10px" />;
   }
 
-  if (payload?.branchId === taskBranch || taskBranch === undefined) {
-    return (
-      <div className={s.TaskActions}>
-        {(task.state === "new" && (
-          <Button variant="success" onClick={handleTakeToWork}>
-            Взять в работу
+  return (
+    <div className={s.TaskActions}>
+      {(task.state === "new" && (
+        <Button variant="success" onClick={handleTakeToWork}>
+          Взять в работу
+        </Button>
+      )) ||
+        (task.state === "inWork" && (
+          <Button variant="danger" onClick={handleClose}>
+            Звершить задачу
           </Button>
         )) ||
-          (task.state === "inWork" && (
-            <Button variant="danger" onClick={handleClose}>
-              Звершить задачу
-            </Button>
-          )) ||
-          (task.state === "closed" && (
-            <Button onClick={() => navigate(-1)}>Завершено</Button>
-          ))}
-      </div>
-    );
-  }
+        (task.state === "closed" && (
+          <Button onClick={() => navigate(-1)}>Завершено</Button>
+        ))}
+    </div>
+  );
 };
 
 export default TaskActions;

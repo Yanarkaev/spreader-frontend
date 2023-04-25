@@ -1,60 +1,44 @@
 .container {
   width: 100%;
+  background: #f5f6f8;
+  margin: 10px auto;
+  padding: 10px;
+}
 
-  .header {
-    background-color: #ffffff;
-    padding: 10px 30px;
+.main {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 20px 10px;
+}
 
-    .headerInner {
-      display: flex;
-      align-items: center;
-      position: relative;
-      margin: 0 auto;
-      width: fit-content;
+.chartsContainer {
+  width: 350px;
+}
 
-      h1{
-        color: #109cf1;
-      }
+.Doughnut {
+  text-align: center;
+  box-shadow: 1px 1px 10px 1px rgba(141, 141, 141, 0.203);
+  margin: 0 auto;
+  width: 100%;
+  padding: 20px 10px;
+  // border-radius: 5px;
+}
 
-      .reportsIcon {
-        width: 40px;
-        margin: 0 0 0 20px;
-      }
-    }
-  }
+.branch {
+  font-size: 20px;
+  color: #109cf1;
+  width: 100%;
+  display: block;
+  font-weight: 700;
+}
 
-  .main {
-    background-color: #ffffff;
-    display: flex;
-    flex-wrap: wrap;
-    margin: 10px auto;
-    .chartsContainer {
-      margin: 10px auto;
-      width: 30%;
+.tasksCount{
+  border-bottom: 1px solid rgba(186, 186, 186, 0.756);
+  padding: 10px 0;
+}
 
-      .Doughnut {
-        text-align: center;
-        cursor: pointer;
-        box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.203);
-        margin: 0 auto;
-        width: 100%;
-        padding: 20px 10px;
-        border-radius: 5px;
-
-        span {
-          font-size: 18px;
-          color: #109cf1;
-          width: 100%;
-          display: block;
-          border-bottom: 1px solid rgba(186, 186, 186, 0.756);
-          padding: 0 0 20px 0;
-          margin-bottom: 5px;
-        }
-
-        &:hover {
-          box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.352);
-        }
-      }
-    }
-  }
+.filter{
+  margin: 20px 0 0 20px;
 }

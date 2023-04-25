@@ -2,10 +2,13 @@ import React from "react";
 import s from "./Table.module.scss";
 import { useNavigate } from "react-router-dom";
 import { getValidTimestamps } from "./../../helpers/getValidTimestamps";
+import { Empty } from "../Empty/Empty";
 
 export const Table = ({ columns, rows, className }) => {
   const navigate = useNavigate();
-
+  if(!rows.length){
+    return <Empty>Задач не найдено</Empty>
+  }
   return (
     <div className={`${s.Table} ${className}`}>
       <table className={s.Table}>
