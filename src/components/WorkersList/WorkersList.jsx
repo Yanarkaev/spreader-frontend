@@ -3,6 +3,7 @@ import { useWorkersList } from "../../shared/hooks/useWorkersList";
 import s from "./WorkersList.module.scss";
 import { useSelector } from "react-redux";
 import { Loader } from "../../shared/iu/Loader/Loader";
+import { Empty } from "../../shared/iu";
 
 export const WorkersList = ({ searchValue }) => {
   const { users, tasks, workersLoading, tasksLoading } = useWorkersList();
@@ -16,8 +17,10 @@ export const WorkersList = ({ searchValue }) => {
     })
     .filter((el) => el.login.toLowerCase().includes(searchValue.toLowerCase()));
 
-  console.log(filteredWorkers);
-
+  if (!filteredWorkers.length) {
+    return <Empty>Работников не найдено</Empty>;
+  }
+  
   return (
     <div className={s.WorkersList}>
       {workersLoading || tasksLoading

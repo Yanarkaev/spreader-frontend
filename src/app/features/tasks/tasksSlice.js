@@ -130,7 +130,6 @@ export const addTask = createAsyncThunk(
   }
 );
 
-
 export const tasksSlice = createSlice({
   name: "tasks",
   initialState,
@@ -159,10 +158,12 @@ export const tasksSlice = createSlice({
       })
 
       // добавление задачи
-      .addCase(addTask.pending, setError)
+      .addCase(addTask.pending, setLoading)
       .addCase(addTask.rejected, setError)
       .addCase(addTask.fulfilled, (state, action) => {
-        state.tasks.push(action.payload);
+        if (action.payload.state === "new") {
+          state.tasks.push(action.payload);
+        }
         resetState(state);
       })
 

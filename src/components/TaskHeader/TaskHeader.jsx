@@ -3,9 +3,11 @@ import { Button } from "../../shared/iu";
 import { Loader } from "../../shared/iu/Loader/Loader";
 import TaskTimer from "../TaskTimer/TaskTimer";
 import s from "./TaskHeader.module.scss";
+import { useSelector } from "react-redux";
 
 export const TaskHeader = ({ task, loading, role }) => {
   const [timerStarted, setTimerStarted] = useState(false);
+  const payload = useSelector((state) => state.auth.payload);
 
   return (
     <div className={s.TaskHeader}>
@@ -24,14 +26,15 @@ export const TaskHeader = ({ task, loading, role }) => {
         className={`${s.timer} ${timerStarted ? s.timerStarted : ""}`}
       />
 
-      {!loading && role !== "ADMIN" && (
-        <Button
-          variant={timerStarted && "danger"}
-          onClick={() => setTimerStarted(!timerStarted)}
-        >
-          {timerStarted ? "Остановить" : "Начать"}
-        </Button>
-      )}
+      {payload?.role === "USER" &&
+        (payload?.id === task?.userId?._id || task?.branchId === undefined) && (
+          <Button
+            variant={timerStarted && "danger"}
+            onClick={() => setTimerStarted(!timerStarted)}
+          >
+            {timerStarted ? "Остановить" : "Начать"}
+          </Button>
+        )}
     </div>
   );
 };

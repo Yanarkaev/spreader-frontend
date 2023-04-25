@@ -1,6 +1,6 @@
 import React from "react";
-import { TasksHeader } from "../../shared/iu/TasksHeader/TasksHeader";
 import s from "./MyTasksHeader.module.scss";
+import { SearchBar } from "../../shared/iu";
 
 const MyTasksHeader = ({
   search,
@@ -8,11 +8,6 @@ const MyTasksHeader = ({
   filterByState,
   setFilterByState,
 }) => {
-  const handleSearch = (e) => {
-    if (e.target.value[0] !== " ") {
-      setSearch(e.target.value);
-    }
-  };
 
   const filterButtons = [
     { value: "all", displayValue: "Все" },
@@ -22,7 +17,7 @@ const MyTasksHeader = ({
 
   return (
     <header className={s.MyTasksHeader}>
-      <TasksHeader search={search} onChange={handleSearch}>
+      <SearchBar placeholder="Поиск по задачам" value={search} onChange={(e) => setSearch(e.target.value)}>
         <div className={s.sortButtons}>
           {filterButtons.map(({ value, displayValue }) => {
             return (
@@ -36,7 +31,7 @@ const MyTasksHeader = ({
             );
           })}
         </div>
-      </TasksHeader>
+      </SearchBar>
     </header>
   );
 };

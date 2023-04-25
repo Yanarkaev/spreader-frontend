@@ -83,6 +83,8 @@ export const authSlice = createSlice({
       state.error = null;
     },
 
+    // decodePayload: (state, acti)
+
     decodePayload: (state, action) => {
       if (!localStorage.getItem("token")) {
         return true;

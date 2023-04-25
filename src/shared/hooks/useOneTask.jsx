@@ -11,7 +11,7 @@ export const useOneTask = () => {
 
   useEffect(() => {
     dispatch(getTaskById(taskId));
-  }, [dispatch]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [dispatch, task.state]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return { task, loading };
 };
