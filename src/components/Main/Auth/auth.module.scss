@@ -32,22 +32,22 @@
       color: rgb(155, 0, 0);
     }
 
-    input {
-      width: 100%;
-      border: 0;
-      outline-color: #109cf1;
-      background-color: #ffffff;
-      margin-bottom: 10px;
-      font-size: 1.5em;
-      padding: 15px;
-      transition: 0.2s;
-      border-radius: 3px;
-      font-weight: 500;
+    // input {
+    //   width: 100%;
+    //   border: 0;
+    //   outline-color: #109cf1;
+    //   background-color: #ffffff;
+    //   margin-bottom: 10px;
+    //   font-size: 1.5em;
+    //   padding: 15px;
+    //   transition: 0.2s;
+    //   border-radius: 3px;
+    //   font-weight: 500;
 
-      &:last-child {
-        margin-bottom: 0;
-      }
-    }
+    //   &:last-child {
+    //     margin-bottom: 0;
+    //   }
+    // }
 
     button {
       width: fit-content;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getBranches } from "../../app/features/branches/branchesSlice";
@@ -39,11 +39,36 @@ function Reports() {
     };
   });
 
+  const [data, setData] = useState();
+  const kewWord = "amd";
+  const getData = async () => {
+    const req = await fetch(
+      "https://api.stackexchange.com/2.3/questions?order=desc&sort=activity&site=stackoverflow"
+    );
+    const res = await req.json();
+    setData(res.items.map((el) => ({ tags: el.tags, titles: el.title })));
+  };
+
+  console.log(data);
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  // console.log(data.map)
+
   return (
     <div className={s.container}>
       <div>
         <Sort className={s.filter} />
       </div>
+      {/* {data?.map((el) => (
+        <div>
+          {el.map((item) => (
+            <span>{item} </span>
+          ))}
+        </div>
+      ))} */}
       <main className={s.main}>
         {res.map((item, index) => {
           return (
