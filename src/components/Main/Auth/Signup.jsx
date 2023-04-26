@@ -5,12 +5,13 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setErrorMessage, signup } from "./../../../app/features/auth/authSlice";
 import { getBranches } from "./../../../app/features/branches/branchesSlice";
+import { Input } from './../../../shared/iu/Input/Input';
+import { Button } from './../../../shared/iu/Button/Button';
 
 const Signup = () => {
   const branches = useSelector((state) => state.branches.branches);
   const error = useSelector((state) => state.auth.error);
   const loading = useSelector((state) => state.auth.loading);
-  // const signedUp = useSelector(state => state.auth.signedUp)
   const dispatch = useDispatch();
 
   const [login, setLogin] = useState("");
@@ -62,13 +63,13 @@ const Signup = () => {
       <form action="" onSubmit={handleSignup}>
       {error && <div className={`${styles.status} ${styles.error}`}>{error}</div>}
       {loading && <div className={`${styles.status} ${styles.loading}`}>loading</div>}
-        <input
+        <Input
           type="text"
           placeholder="Логин"
           value={login}
           onChange={hadnleLogin}
         />
-        <input
+        <Input
           type="password"
           placeholder="Пароль"
           value={password}
@@ -88,12 +89,12 @@ const Signup = () => {
           </select>
         </p>
 
-        <button
+        <Button
           disabled={isEmpty || loading || error}
           className={`${isEmpty || loading || error ? styles.disabled : ""}`}
         >
           Зарегистрироваться
-        </button>
+        </Button>
         <div className={styles.authQues}>
           <span>
             Есть аккаунт? <Link to="/spreader/signin">Войти</Link>

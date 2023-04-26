@@ -23,12 +23,12 @@ export const Sort = React.memo(({className}) => {
     setOpenSort(!openSort);
   };
 
-  const ref = useRef(null);
-
+  
   useEffect(() => {
     dispatch(getBranches());
   }, [dispatch]);
 
+  const ref = useRef(null);
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (ref.current && !ref.current.contains(event.target)) {
