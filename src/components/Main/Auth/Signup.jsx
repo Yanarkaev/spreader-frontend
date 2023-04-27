@@ -14,6 +14,11 @@ const Signup = () => {
   const loading = useSelector((state) => state.auth.loading);
   const dispatch = useDispatch();
 
+  const [data, setData] = useState({
+    login: '',
+    password: '',
+    branch: '',
+  })
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   const [branch, setBranch] = useState("");
