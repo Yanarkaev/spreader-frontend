@@ -19,9 +19,9 @@ const Signup = () => {
     password: '',
     branch: '',
   })
-  const [login, setLogin] = useState("");
-  const [password, setPassword] = useState("");
-  const [branch, setBranch] = useState("");
+  // const [login, setLogin] = useState("");
+  // const [password, setPassword] = useState("");
+  // const [branch, setBranch] = useState("");
   const [isEmpty, setIsEmpty] = useState(true);
 
   useEffect(() => {
