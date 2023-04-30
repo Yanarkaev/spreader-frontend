@@ -1,23 +1,25 @@
 import React from "react";
 import s from "./Select.module.scss";
+import cn from 'classnames';
 
 export const Select = ({
   value,
   array,
   initialValue,
-  body,
+  displayValue,
   selectValue,
-  uniqueValue,
   className,
   ...props
+  // uniqueValue,
 }) => {
   return (
-    <select value={value} {...props} className={`${s.Select} ${className}`}>
+    <select value={value} className={cn(s.Select, className)} {...props}>
       {initialValue && <option>{initialValue}</option>}
-      {array.map((item) => {
+
+      {array?.map((item) => {
         return (
-          <option value={item[selectValue]} key={item[uniqueValue]}>
-            {item[body]}
+          <option value={item[selectValue]} key={item["_id"]}>
+            {item[displayValue]}
           </option>
         );
       })}

@@ -101,10 +101,10 @@ const TaskInputs = ({ setOpenModal }) => {
             <span>Пользователь</span>
             <Select
               value={data.user}
-              body="login"
+              displayValue="login"
               name="userId"
               selectValue="_id"
-              uniqueValue="_id"
+              // uniqueValue="_id"
               onChange={handleData}
               array={users}
               initialValue="Все"
