@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import styles from "./auth.module.scss";
+import styles from "./Auth.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { setErrorMessage, signin } from "../../../app/features/auth/authSlice";
 import { Input } from "../../../shared/iu/Input/Input";
