@@ -120,17 +120,42 @@
 // }
 
 .Form {
-  max-width: 600px;
-  margin: 0 auto;
-  text-align: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 500px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-sizing: content-box;
 }
 
 .inputsWrapper{
-  margin-top: 50px;
+  margin-top: 20px;
 }
 
 .input {
   font-size: 20px;
   width: 100%;
   margin-bottom: 10px;
+}
+
+.submit{
+  margin-top: 10px;
+  width: 100%;
+}
+
+.redirect {
+  margin-top: 30px;
+  
+  button {
+    font-size: 13px;
+    padding: 5px 20px;
+  }
 }

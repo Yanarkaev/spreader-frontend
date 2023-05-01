@@ -1,5 +1,5 @@
 import React from "react";
-import Signin from "./Auth/Signin";
+import Signin, { SignIn } from "./Auth/Signin";
 import { Route, Routes, Navigate } from "react-router-dom";
 import "./main.scss";
 import Dashboard from "../../pages/Dashboard/Dashboard";
@@ -18,9 +18,9 @@ const Main = () => {
     return (
       <div>
         <Routes>
-          <Route path="spreader/signin" element={<Signin />} />
-          <Route path="spreader/signup" element={<SignUp />} />
-          <Route path="*" element={<Navigate to="spreader/signin" replace />} />
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="*" element={<Navigate to="/signin" replace />} />
         </Routes>
       </div>
     );

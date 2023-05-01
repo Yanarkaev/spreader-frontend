@@ -123,11 +123,13 @@ import { Button, Select, Input } from "../../../shared/iu";
 import { useDispatch, useSelector } from "react-redux";
 import { getBranches } from "../../../app/features/branches/branchesSlice";
 import s from "./Auth.module.scss";
+import { Link } from "react-router-dom";
+import cn from 'classnames';
 
 const form = [
-  { name: "login", type: "text", placeholder: "Логин" },
   { name: "name", type: "text", placeholder: "Имя" },
   { name: "surname", type: "text", placeholder: "Фамилия" },
+  { name: "login", type: "text", placeholder: "Логин" },
   { name: "password", type: "password", placeholder: "Пароль" },
 ];
 
@@ -166,6 +168,7 @@ export const SignUp = () => {
               placeholder={el.placeholder}
               onChange={handleData}
               className={s.input}
+              variant="underlined"
             />
           </Fragment>
         ))}
@@ -177,11 +180,16 @@ export const SignUp = () => {
           displayValue="name"
           selectValue="_id"
           onChange={handleData}
-          className={s.input}
+          className={cn(s.input, s.select)}
+          variant="underlined"
         />
       </div>
 
-      <Button>Зарегистрироваться</Button>
+      <Button className={s.submit} variant="success">Зарегистрироваться</Button>
+
+      <Link className={s.redirect} to="/signin">
+        <Button>Есть аккаунт?</Button>
+      </Link>
     </form>
   );
 };
