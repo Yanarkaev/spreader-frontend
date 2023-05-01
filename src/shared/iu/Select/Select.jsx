@@ -8,12 +8,13 @@ export const Select = ({
   initialValue,
   displayValue,
   selectValue,
+  variant,
   className,
   ...props
   // uniqueValue,
 }) => {
   return (
-    <select value={value} className={cn(s.Select, className)} {...props}>
+    <select value={value} className={cn(s.Select, s[variant], className)} {...props}>
       {initialValue && <option>{initialValue}</option>}
 
       {array?.map((item) => {
