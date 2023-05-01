@@ -5,9 +5,9 @@ import { useNavigate } from "react-router-dom";
 
 export const WorkerCard = ({ worker, tasks }) => {
   const [workerTasks, setWorkerTasks] = useState({
-    inWork: 0,
-    closed: 0,
-    allTasks: 0,
+    inWork: [],
+    closed: [],
+    allTasks: [],
   });
 
   const navigate = useNavigate();
@@ -33,7 +33,7 @@ export const WorkerCard = ({ worker, tasks }) => {
     >
       <div className={s.info}>
         <div className={s.img}></div>
-        <span className={s.name}>{worker?.login}</span>
+        <span className={s.name}>{worker?.name} {worker?.surname}</span>
         <span className={s.branch}>{worker?.branchId?.name}</span>
       </div>
 

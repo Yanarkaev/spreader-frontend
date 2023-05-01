@@ -24,7 +24,7 @@ export const WorkersList = ({ searchValue }) => {
   return (
     <div className={s.WorkersList}>
       {workersLoading || tasksLoading
-        ? new Array(10).fill(1).map((el) => <Loader w="230px" h="325px" />)
+        ? new Array(10).fill(1).map((el, i) => <Loader key={i} w="230px" h="325px" />)
         : filteredWorkers.map((user) => {
             return <WorkerCard key={user._id} worker={user} tasks={tasks} />;
           })}

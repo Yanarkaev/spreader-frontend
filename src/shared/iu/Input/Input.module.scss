@@ -2,7 +2,7 @@
   width: 100%;
   padding: 15px 10px;
   border: none;
-  outline: 0;
+  // outline: 0;
   transition: 0.2s;
   font-weight: 400;
 }
@@ -10,13 +10,14 @@
 .outlined {
   border: 1px solid #109cf1;
   border-radius: 3px;
-  outline-color: #109cf1;
   border-radius: 4px;
+  outline-color: #109cf1;
 }
 
 .underlined {
   background-color: transparent;
   border-bottom: 2px solid #000;
+  outline: 0;
 
   &:focus {
     border-bottom: 2px solid #109cf1;
