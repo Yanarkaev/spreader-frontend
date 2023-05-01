@@ -14,14 +14,14 @@ const initialState = {
 
 export const signup = createAsyncThunk(
   "auth/signup",
-  async ({ login, password, branchId }, thunkAPI) => {
+  async (authData, thunkAPI) => {
     try {
       const res = await fetch("/spreader/registration", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ login, password, branchId }),
+        body: JSON.stringify(authData),
       });
 
       const data = await res.json();
@@ -64,26 +64,13 @@ export const signin = createAsyncThunk(
   }
 );
 
-// get users
-
-// export const getUsers = createAsyncThunk("users/fetch", async (_, thunkAPI) => {
-//   try {
-//     const res = await fetch("/spreader/users");
-//     return res.json();
-//   } catch (error) {
-//     return thunkAPI.rejectWithValue(error);
-//   }
-// });
-
 export const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    setErrorMessage: (state, action) => {
+    setErrorMessage: (state) => {
       state.error = null;
     },
-
-    // decodePayload: (state, acti)
 
     decodePayload: (state, action) => {
       if (!localStorage.getItem("token")) {
@@ -113,7 +100,10 @@ export const authSlice = createSlice({
 
       // регистрация
       .addCase(signup.pending, setLoading)
-      .addCase(signup.rejected, )
+      .addCase(signup.rejected, (state, action) => {
+        state.token = null;
+        setError(state, action);
+      })
       .addCase(signup.fulfilled, (state, action) => {
         state.signedUp = true;
         state.branch = action.payload;
@@ -130,15 +120,15 @@ export const authSlice = createSlice({
         state.token = action.payload;
         state.signedIn = true;
         resetState(state);
-      })
+      });
 
-      // получение работников
-      // .addCase(getUsers.pending, setLoading)
-      // .addCase(getUsers.rejected, setError)
-      // .addCase(getUsers.fulfilled, (state, action) => {
-      //   state.users = action.payload;
-      //   resetState(state);
-      // });
+    // получение работников
+    // .addCase(getUsers.pending, setLoading)
+    // .addCase(getUsers.rejected, setError)
+    // .addCase(getUsers.fulfilled, (state, action) => {
+    //   state.users = action.payload;
+    //   resetState(state);
+    // });
   },
 });
 

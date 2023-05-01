@@ -1,15 +1,15 @@
 import React from "react";
-import Signin, { SignIn } from "./Auth/Signin";
-import { Route, Routes, Navigate } from "react-router-dom";
-import "./main.scss";
+import { SignIn } from "./Auth/Signin";
+import { SignUp } from "./Auth/Signup";
 import Dashboard from "../../pages/Dashboard/Dashboard";
-import { useSelector } from "react-redux";
 import MyTasks from "../../pages/MyTasks/MyTasks";
-import Reports from "../Reports/Reports";
-import { Sidebar } from "../../shared/iu";
 import Task from "../../pages/Task/Task";
 import { Monitoring } from "./../../pages/Monitoring/Monitoring";
-import { SignUp } from "./Auth/Signup";
+import Reports from "../Reports/Reports";
+import { Sidebar } from "../../shared/iu";
+import { Route, Routes, Navigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import "./main.scss";
 
 const Main = () => {
   const token = useSelector((state) => state.auth.token);
