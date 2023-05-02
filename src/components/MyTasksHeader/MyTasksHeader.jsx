@@ -2,7 +2,7 @@ import React from "react";
 import s from "./MyTasksHeader.module.scss";
 import { SearchBar } from "../../shared/iu";
 
-const MyTasksHeader = ({
+export const MyTasksHeader = ({
   search,
   setSearch,
   filterByState,
@@ -35,5 +35,3 @@ const MyTasksHeader = ({
     </header>
   );
 };
-
-export default MyTasksHeader;

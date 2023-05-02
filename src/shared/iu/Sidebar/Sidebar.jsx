@@ -18,22 +18,22 @@ export const Sidebar = () => {
   const sidebarData = [
     {
       icon: "dashboard",
-      route: "/spreader/dashboard",
+      route: "/dashboard",
       text: "Все задачи",
     },
     {
       icon: "tasks",
-      route: "/spreader/tasks/" + payload?.id,
+      route: "/tasks/" + payload?.id,
       text: "Мои задачи",
     },
     {
       icon: "contacts",
-      route: "/spreader/admin",
+      route: "/monitoring",
       text: "Мониторинг",
     },
     {
       icon: "deals",
-      route: "/spreader/reports",
+      route: "/reports",
       text: "Отчеты",
     },
   ].filter((_, index) => (role === "ADMIN" ? index !== 1 : index !== 2));

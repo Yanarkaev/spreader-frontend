@@ -1,10 +1,10 @@
-import Main from "./components/Main/Main";
+import { Routing } from "./pages/Routing/Routing";
 import "./shared/styles/index.scss";
 
 function App() {
   return (
     <div className="app">
-      <Main />
+      <Routing />
     </div>
   );
 }

@@ -7,6 +7,7 @@ import s from "./WorkerDefinition.module.scss";
 export const WorkerDefinition = () => {
   const { userId } = useParams();
   const { worker, loading } = useWorker(userId);
+  console.log(userId);
 
   return (
     <div className={s.WorkerDefinition}>
@@ -16,8 +17,8 @@ export const WorkerDefinition = () => {
         <>
           <div className={s.img}></div>
           <div className={s.info}>
-            <div className={s.login}>{worker.login}</div>
-            <div className={s.branch}>{worker.branchId?.name}</div>
+            <div className={s.login}>{worker?.login}</div>
+            <div className={s.branch}>{worker?.branchId?.name}</div>
           </div>
         </>
       )}

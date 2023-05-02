@@ -6,9 +6,9 @@ import { useSelector } from "react-redux";
 import s from "./Sort.module.scss";
 import { useEffect } from "react";
 import { getBranches } from "../../app/features/branches/branchesSlice";
-import cn from 'classnames';
+import cn from "classnames";
 
-export const Sort = React.memo(({className}) => {
+export const Sort = React.memo(({ className }) => {
   const dispatch = useDispatch();
 
   const [openSort, setOpenSort] = useState(false);
@@ -23,7 +23,6 @@ export const Sort = React.memo(({className}) => {
     setOpenSort(!openSort);
   };
 
-  
   useEffect(() => {
     dispatch(getBranches());
   }, [dispatch]);

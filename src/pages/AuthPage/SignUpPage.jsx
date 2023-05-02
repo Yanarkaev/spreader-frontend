@@ -1,15 +1,15 @@
 import { Fragment, useEffect, useState } from "react";
-import { Button, Select, Input } from "../../../shared/iu";
+import { Button, Select, Input } from "../../shared/iu";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getBranches } from "../../../app/features/branches/branchesSlice";
+import { getBranches } from "../../app/features/branches/branchesSlice";
 import {
   setErrorMessage,
   signin,
   signup,
-} from "../../../app/features/auth/authSlice";
+} from "../../app/features/auth/authSlice";
 import cn from "classnames";
-import s from "./Auth.module.scss";
+import s from "./AuthPage.module.scss";
 
 const form = [
   { name: "name", type: "text", placeholder: "Имя" },
@@ -18,7 +18,7 @@ const form = [
   { name: "password", type: "password", placeholder: "Пароль" },
 ];
 
-export const SignUp = () => {
+export const SignUpPage = () => {
   const branches = useSelector((state) => state.branches.branches);
   const signedUp = useSelector((state) => state.auth.signedUp);
   const error = useSelector((state) => state.auth.error);

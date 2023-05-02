@@ -5,7 +5,7 @@ import { editNotes } from "./../../app/features/tasks/tasksSlice";
 import { Loader } from "../../shared/iu/Loader/Loader";
 import s from "./TaskNotes.module.scss";
 
-const TaskNotes = ({ task, loading }) => {
+export const TaskNotes = ({ task, loading }) => {
   const dispatch = useDispatch();
   const [noteText, setNoteText] = useState("");
 
@@ -38,5 +38,3 @@ const TaskNotes = ({ task, loading }) => {
     </div>
   );
 };
-
-export default TaskNotes;

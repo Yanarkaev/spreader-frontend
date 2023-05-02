@@ -4,7 +4,7 @@ import { addTask } from "../../app/features/tasks/tasksSlice";
 import { Button, Input, Select } from "../../shared/iu";
 import s from "./AddTaskModal.module.scss";
 
-const TaskInputs = ({ setOpenModal }) => {
+export const AddTaskModal = ({ setOpenModal }) => {
   const dispatch = useDispatch();
 
   const [data, setData] = useState({
@@ -63,13 +63,14 @@ const TaskInputs = ({ setOpenModal }) => {
           <span>Выберите отдел</span>
           <Select
             value={data.branchId}
-            body="name"
+            displayValue="name"
             name="branchId"
             selectValue="_id"
-            uniqueValue="_id"
+            // uniqueValue="_id"
             onChange={handleData}
             array={branches}
             initialValue="Все"
+            variant="outlined"
           />
         </div>
 
@@ -108,6 +109,7 @@ const TaskInputs = ({ setOpenModal }) => {
               onChange={handleData}
               array={users}
               initialValue="Все"
+              variant="outlined"
             />
           </div>
         )}
@@ -130,4 +132,3 @@ const TaskInputs = ({ setOpenModal }) => {
   );
 };
 
-export default TaskInputs;

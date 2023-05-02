@@ -1,17 +1,17 @@
 import { Fragment, useState } from "react";
-import { Button, Input } from "../../../shared/iu";
+import { Button, Input } from "../../shared/iu";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { setErrorMessage, signin } from "../../../app/features/auth/authSlice";
+import { setErrorMessage, signin } from "../../app/features/auth/authSlice";
 import cn from "classnames";
-import s from "./Auth.module.scss";
+import s from "./AuthPage.module.scss";
 
 const form = [
   { name: "login", type: "text", placeholder: "Логин" },
   { name: "password", type: "password", placeholder: "Пароль" },
 ];
 
-export const SignIn = () => {
+export const SignInPage = () => {
   const error = useSelector((state) => state.auth.error);
   const dispatch = useDispatch();
 

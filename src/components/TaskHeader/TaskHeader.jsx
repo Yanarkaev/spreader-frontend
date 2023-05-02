@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button } from "../../shared/iu";
 import { Loader } from "../../shared/iu/Loader/Loader";
-import TaskTimer from "../TaskTimer/TaskTimer";
+import {TaskTimer} from "../";
 import s from "./TaskHeader.module.scss";
 import { useSelector } from "react-redux";
 

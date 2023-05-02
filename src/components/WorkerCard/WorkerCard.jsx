@@ -29,7 +29,7 @@ export const WorkerCard = ({ worker, tasks }) => {
   return (
     <div
       className={s.WorkerCard}
-      onClick={() => navigate("/spreader/tasks/" + worker?._id)}
+      onClick={() => navigate("/tasks/" + worker?._id)}
     >
       <div className={s.info}>
         <div className={s.img}></div>

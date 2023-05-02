@@ -3,16 +3,15 @@ import { Table } from "../../shared/iu/Table/Table";
 import { useNewTasks } from "../../shared/hooks/useNewTasks";
 import { TableLoader } from "../../shared/iu/Loader/TableLoader";
 
-const TasksTable = ({ search }) => {
-  
-  const columns = [
-    { value: "title", displayValue: "Название" },
-    { value: "branchId", displayValue: "Отдел" },
-    { value: "time", displayValue: "Время" },
-    { value: "points", displayValue: "Баллы" },
-    { value: "createdAt", displayValue: "Дата" },
-  ];
+const columns = [
+  { value: "title", displayValue: "Название" },
+  { value: "branchId", displayValue: "Отдел" },
+  { value: "time", displayValue: "Время" },
+  { value: "points", displayValue: "Баллы" },
+  { value: "createdAt", displayValue: "Дата" },
+];
 
+export const TasksTable = ({ search }) => {
   const { tasks, loading } = useNewTasks();
   const sortTasksValue = useSelector((state) => state.tasks.sortBranch);
 
@@ -34,5 +33,3 @@ const TasksTable = ({ search }) => {
     </div>
   );
 };
-
-export default TasksTable;
