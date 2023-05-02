@@ -25,7 +25,7 @@ export const Table = ({ columns, rows, className }) => {
             <tr
               key={item._id}
               className={`${s.tRow} ${s[item.state] || ""}`}
-              onClick={() => navigate(`/spreader/task/${item._id}`)}
+              onClick={() => navigate(`/tasks/task/${item._id}`)}
             >
               <td>{index + 1}</td>
               {columns.map(({ value }) => (

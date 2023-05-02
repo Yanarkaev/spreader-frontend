@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import AddTask from "../../components/Addtask/AddTask";
-import s from "./Dashboard.module.scss";
+import { AddTask, TasksTable } from "../../components";
 import { Sort } from "../../components/Sort/Sort";
-import TasksTable from "../../components/TasksTable/TasksTable";
 import { useSelector } from "react-redux";
 import { SearchBar } from "../../shared/iu";
+import s from "./DashboardPage.module.scss";
 
-function Dashboard() {
+export const DashboardPage = () => {
   const [search, setSearch] = useState("");
   const payload = useSelector((state) => state.auth.payload);
 
@@ -25,5 +24,3 @@ function Dashboard() {
     </div>
   );
 }
-
-export default Dashboard;

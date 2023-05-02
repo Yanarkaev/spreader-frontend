@@ -1,12 +1,12 @@
 import React, { useEffect, useRef } from "react";
 import s from "./AddTask.module.scss";
-import AddTaskModal from "../AddTaskModal/AddTaskModal";
+import { AddTaskModal } from "../";
 import { Button } from "../../shared/iu";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getUsers } from "../../app/features/users/usersSlice";
 
-function AddTask() {
+export const AddTask = () => {
   const [openModal, setOpenModal] = useState(false);
   const dispatch = useDispatch();
 
@@ -34,6 +34,4 @@ function AddTask() {
       {openModal && <AddTaskModal setOpenModal={setOpenModal} />}
     </div>
   );
-}
-
-export default AddTask;
+};

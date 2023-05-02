@@ -5,7 +5,7 @@ import { takeToWork, closeTask } from "../../app/features/tasks/tasksSlice";
 import s from "./TaskActions.module.scss";
 import { Loader } from "../../shared/iu/Loader/Loader";
 
-const TaskActions = ({ loading }) => {
+export const TaskActions = ({ loading }) => {
   const task = useSelector((state) => state.tasks.task);
   const { taskId } = useParams();
   const dispatch = useDispatch();
@@ -45,5 +45,3 @@ const TaskActions = ({ loading }) => {
     </div>
   );
 };
-
-export default TaskActions;

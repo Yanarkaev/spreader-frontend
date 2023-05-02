@@ -2,7 +2,7 @@ import React from "react";
 import s from "./TaskDescription.module.scss";
 import { Loader } from "./../../shared/iu/Loader/Loader";
 
-const TaskDescription = ({ task, loading }) => {
+export const TaskDescription = ({ task, loading }) => {
   const text = task?.text?.split("/абзац/") || [];
 
   return (
@@ -29,5 +29,3 @@ const TaskDescription = ({ task, loading }) => {
     </div>
   );
 };
-
-export default TaskDescription;

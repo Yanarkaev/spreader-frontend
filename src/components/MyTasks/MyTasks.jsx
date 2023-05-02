@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import MyTasksHeader from "../../components/MyTasksHeader/MyTasksHeader";
 import MyTasksTable from "../../components/MyTasksTable/MyTasksTable";
 
-const MyTasks = () => {
+export const MyTasks = () => {
   const [search, setSearch] = useState("");
   const [filterByState, setFilterByState] = useState("all");
 
@@ -19,4 +19,4 @@ const MyTasks = () => {
   );
 };
 
-export default MyTasks;
+

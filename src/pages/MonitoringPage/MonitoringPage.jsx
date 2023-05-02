@@ -3,9 +3,9 @@ import { useState } from "react";
 import { Sort } from "../../components/Sort/Sort";
 import { WorkersList } from "../../components/WorkersList/WorkersList";
 import { SearchBar } from "../../shared/iu";
-import s from "./Monitoring.module.scss";
+import s from "./MonitoringPage.module.scss";
 
-export const Monitoring = () => {
+export const MonitoringPage = () => {
   const [searchValue, setSearchValue] = useState("");
   return (
     <div className={s.Monitoring}>

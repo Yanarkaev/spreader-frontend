@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import s from "./MyTasks.module.scss";
-import MyTasksHeader from "../../components/MyTasksHeader/MyTasksHeader";
-import MyTasksTable from "../../components/MyTasksTable/MyTasksTable";
+import { MyTasksHeader, MyTasksTable } from "../../components";
 import { useSelector } from "react-redux";
 import { WorkerDefinition } from "../../components/WorkerDefinition/WorkerDefinition";
+import s from "./MyTasksPage.module.scss";
 
-const MyTasks = () => {
+export const MyTasksPage = () => {
   const [search, setSearch] = useState("");
   const [filterByState, setFilterByState] = useState("all");
   const payload = useSelector((state) => state.auth.payload);
@@ -23,5 +22,3 @@ const MyTasks = () => {
     </div>
   );
 };
-
-export default MyTasks;
