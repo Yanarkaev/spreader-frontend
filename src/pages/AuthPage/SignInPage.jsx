@@ -1,5 +1,5 @@
 import { Fragment, useState } from "react";
-import { Button, Input } from "../../shared/iu";
+import { Button, CircleLoader, Input } from "../../shared/iu";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { setErrorMessage, signin } from "../../app/features/auth/authSlice";
@@ -13,6 +13,7 @@ const form = [
 
 export const SignInPage = () => {
   const error = useSelector((state) => state.auth.error);
+  const loading = useSelector((state) => state.auth.loading);
   const dispatch = useDispatch();
 
   const [data, setData] = useState({
@@ -62,7 +63,7 @@ export const SignInPage = () => {
         className={s.submit}
         variant="success"
       >
-        Войти
+        {loading ? <CircleLoader /> : "Войти"}
       </Button>
 
       <Link className={s.redirect} to={"/signup"}>

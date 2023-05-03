@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useState } from "react";
-import { Button, Select, Input } from "../../shared/iu";
+import { Button, Select, Input, CircleLoader } from "../../shared/iu";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getBranches } from "../../app/features/branches/branchesSlice";
@@ -22,6 +22,7 @@ export const SignUpPage = () => {
   const branches = useSelector((state) => state.branches.branches);
   const signedUp = useSelector((state) => state.auth.signedUp);
   const error = useSelector((state) => state.auth.error);
+  const loading = useSelector((state) => state.auth.loading);
   const dispatch = useDispatch();
 
   const [data, setData] = useState({
@@ -42,7 +43,7 @@ export const SignUpPage = () => {
       setData({ ...data, branchId: branches[0]._id });
     }
     console.log(branches);
-  }, [branches]); // eslint-disable-line react-hooks/exhaustive-deps 
+  }, [branches]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleData = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
@@ -58,7 +59,7 @@ export const SignUpPage = () => {
     if (signedUp) {
       dispatch(signin({ login: data.login, password: data.password }));
     }
-  }, [signedUp]); // eslint-disable-line react-hooks/exhaustive-deps 
+  }, [signedUp]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const isValid =
     data.name && data.surname && data.login && data.password && data.branchId;
@@ -102,7 +103,7 @@ export const SignUpPage = () => {
         className={s.submit}
         variant="success"
       >
-        Зарегистрироваться
+        {loading ? <CircleLoader /> : "Зарегистрироваться"}
       </Button>
 
       <Link className={s.redirect} to="/signin">
