@@ -59,7 +59,7 @@ export const AddTaskModal = ({ setOpenModal }) => {
       </div>
 
       <div className={s.flex}>
-        <div className={s.department}>
+        <div className={s.flexItem}>
           <span>Выберите отдел</span>
           <Select
             value={data.branchId}
@@ -74,7 +74,7 @@ export const AddTaskModal = ({ setOpenModal }) => {
           />
         </div>
 
-        <div className={s.time}>
+        <div className={s.flexItem}>
           <span>Время исполнения</span>
           <Input
             placeholder="Время..."
@@ -85,7 +85,7 @@ export const AddTaskModal = ({ setOpenModal }) => {
             min="5"
           />
         </div>
-        <div className={s.time}>
+        <div className={s.flexItem}>
           <span>Баллы</span>
           <Input
             placeholder="Баллы... "
@@ -98,7 +98,7 @@ export const AddTaskModal = ({ setOpenModal }) => {
         </div>
 
         {data.branchId !== "Все" && (
-          <div className={s.user}>
+          <div className={s.flexItem}>
             <span>Пользователь</span>
             <Select
               value={data.user}
