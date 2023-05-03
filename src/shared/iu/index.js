@@ -5,3 +5,4 @@ export { Sidebar } from "./Sidebar/Sidebar";
 export { SearchBar } from "./SearchBar/SearchBar";
 export { Textarea } from "./Textarea/Textarea";
 export { Empty } from "./Empty/Empty";
+export { CircleLoader } from "./CircleLoader/CircleLoader";
