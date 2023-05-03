@@ -5,13 +5,14 @@ import { Link, useLocation } from "react-router-dom";
 import { Icon } from "../Icon/Icon";
 import s from "./Sidebar.module.scss";
 
-export const Sidebar = () => {
+export const Sidebar = React.memo(() => {
   const dispatch = useDispatch();
   const token = useSelector((state) => state.auth.token);
   const payload = useSelector((state) => state.auth.payload);
   const location = useLocation().pathname;
 
-  const username = payload?.login?.split(" ")[0] || " ";
+  const name = payload?.name;
+  const surname = payload?.surname;
   const role = payload?.role;
   const branch = payload?.branch;
 
@@ -52,11 +53,18 @@ export const Sidebar = () => {
     <div className={s.Sidebar}>
       <div className={s.inner}>
         <div className={s.profile}>
-          <div className={s.avatar}>{username[0].toUpperCase()}</div>
-          <div className={s.login}>{username}</div>
-          <div className={s.branchName}>
-            <span>Отдел: </span> <span>{branch}</span>
+          <div className={s.avatar}>
+            {name && name[0].toUpperCase()}
+            {name && surname[0].toUpperCase()}
           </div>
+          <div className={s.login}>
+            {name} {surname}
+          </div>
+          {branch && (
+            <div className={s.branchName}>
+              <span>Отдел: </span> <span>{branch}</span>
+            </div>
+          )}
         </div>
 
         <div className={s.sidebarItemsWrapper}>
@@ -81,4 +89,4 @@ export const Sidebar = () => {
       </div>
     </div>
   );
-};
+});
