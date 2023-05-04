@@ -3,22 +3,21 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  // height: 60px;
   font-size: 20px;
-  background-color: rgb(238, 238, 238);
+  background-color: var(--color-light-gray);
+}
 
-  .timer {
-    font-size: 30px;
-    padding: 0 10px;
-    position: absolute;
-    left: 50%;
-    translate: -50%;
-    transition: .2s;
-    color: rgb(0, 151, 0);
+.timer {
+  font-weight: 600;
+  font-size: 30px;
+  padding: 0 10px;
+  position: absolute;
+  left: 50%;
+  translate: -50%;
+  transition: 0.2s;
+  color: var(--color-success);
+}
 
-  }
-
-  .timerStarted {
-    color: rgb(255, 81, 81);
-  }
+.timerStarted {
+  color: var(--color-danger);
 }

@@ -1,10 +1,10 @@
 .AddTaskModal {
-  background-color: #fff;
+  background-color: var(--color-white);
   z-index: 10;
   top: -100%;
   left: 50%;
   transform: translate(-50%);
-  box-shadow: 0px 0px 20px 0px rgba(75, 70, 70, 0.263);
+  box-shadow: 0px 0px 20px 0px var(--color-gray);
   border-radius: 10px;
   animation-duration: 0.2s;
   animation-name: slidein;
@@ -23,32 +23,28 @@
     text-align: center;
     margin-bottom: 10px;
   }
+}
 
-  .text {
-    textarea {
-      max-width: 100%;
-      min-width: 100%;
-      min-height: 200px;
-      max-height: 250px;
-      width: 100%;
-      height: 250px;
-      padding: 8px 10px;
-      border: 1px solid #109cf1;
-      border-radius: 3px;
-      outline-color: #109cf1;
-    }
-  }
-  .btns {
-    margin: 30px 0 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.btns {
+  margin: 30px 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-    .closeModal{
-      margin-top: 10px;
-      font-size: 12px;
-      padding: 7px 15px;
-    }
+.closeModal {
+  margin-top: 10px;
+  font-size: 12px;
+  padding: 7px 15px;
+}
+
+.text {
+  textarea {
+    max-width: 100%;
+    min-width: 100%;
+    min-height: 200px;
+    max-height: 250px;
+    width: 100%;
   }
 }
 
@@ -58,15 +54,15 @@
   margin-top: 50px;
   flex-wrap: wrap;
   gap: 10px;
-  // align-items: center;
 }
 
-.flexItem{
-  span{
+.flexItem {
+  span {
     font-size: 12px;
     margin-bottom: 5px;
   }
-  input, select{
+  input,
+  select {
     padding: 10px;
     height: 40px;
   }
@@ -86,15 +82,14 @@ input::-webkit-input-placeholder {
   }
 }
 
-@media screen and (max-width:800px) {
-  .flex{
+@media screen and (max-width: 800px) {
+  .flex {
     flex-direction: column;
     align-items: center;
     gap: 0;
   }
 
-  .flexItem:not(:last-of-type){
+  .flexItem:not(:last-of-type) {
     margin-bottom: 40px;
   }
 }
-

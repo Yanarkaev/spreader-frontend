@@ -1,10 +1,25 @@
-$accent: #109cf1;
-$warning: #ffb946;
-$danger: #f7685b;
-$succes: #2ed47a;
-$black: #192a3e;
-$gray: #90a0b7;
-$light-gray: #c2cfe0;
-$dark-blue: #334d6e;
-$page-bg: #f5f6f8;
-$table-gray: #707683;
+:root {
+  --color-primary: #109cf1;
+  --color-primary-hover: #0c81c9;
+
+  --color-warning: #ffb946;
+  --color-warning-hover: #ffb946;
+  --color-warning-table: #ffe4b9;
+  --color-warning-table-hover: #f8d8a2;
+
+  --color-danger: #f12e10;
+  --color-danger-hover: #cb260d;
+
+  --color-success: #2ed47a;
+  --color-success-hover: #2cc06f;
+  --color-success-table: #bdffdb;
+  --color-success-table-hover: #9cfcc8;
+
+  --color-black: #192a3e;
+  --color-white: #fff;
+  --color-gray: #d4d4d4;
+  --color-light-gray: #e8e8e8;
+  --color-dark-blue: #334d6e;
+  --color-page-bg: #f5f6f8;
+  --color-table-gray: #707683;
+}

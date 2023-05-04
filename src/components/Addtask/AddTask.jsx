@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from "react";
-import s from "./AddTask.module.scss";
 import { AddTaskModal } from "../";
 import { Button } from "../../shared/iu";
 import { useState } from "react";
@@ -29,7 +28,7 @@ export const AddTask = () => {
   }, [dispatch]);
 
   return (
-    <div className={s.AddTask} ref={ref}>
+    <div ref={ref}>
       <Button onClick={() => setOpenModal(!openModal)}>Добавить задачу</Button>
       {openModal && <AddTaskModal setOpenModal={setOpenModal} />}
     </div>

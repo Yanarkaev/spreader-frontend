@@ -1,6 +1,6 @@
 .container {
   width: 100%;
-  background: #f5f6f8;
+  background: var(--color-page-bg);
   margin: 10px auto;
   padding: 10px;
 }
@@ -13,32 +13,33 @@
   padding: 20px 10px;
 }
 
+.filter{
+  margin: 20px 0 0 20px;
+}
+
 .chartsContainer {
   width: 350px;
 }
 
 .Doughnut {
   text-align: center;
-  box-shadow: 1px 1px 10px 1px rgba(141, 141, 141, 0.203);
+  box-shadow: 0 0 10px 0 var(--color-gray);
   margin: 0 auto;
   width: 100%;
   padding: 20px 10px;
-  // border-radius: 5px;
+  border-radius: 5px;
+  background-color: var(--color-white);
 }
 
 .branch {
   font-size: 20px;
-  color: #109cf1;
+  color: var(--color-primary);
   width: 100%;
   display: block;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .tasksCount{
-  border-bottom: 1px solid rgba(186, 186, 186, 0.756);
+  border-bottom: 2px solid var(--color-gray);
   padding: 10px 0;
-}
-
-.filter{
-  margin: 20px 0 0 20px;
 }
