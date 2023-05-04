@@ -8,7 +8,7 @@
 }
 
 .img {
-  background-color: rgb(229, 229, 229);
+  background-color: var(--color-light-gray);
   height: 100px;
   width: 100px;
   border-radius: 5px;
@@ -21,10 +21,11 @@
 
 .branch {
   margin-top: 5px;
-  color: #109cf1;
+  color: var(--color-primary);
+  font-weight: 600;
 }
 
-.username{
+.username {
   font-size: 20px;
   font-weight: 500;
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import s from "./MyTasksHeader.module.scss";
-import { SearchBar } from "../../shared/iu";
+import { Button, SearchBar } from "../../shared/iu";
+import cn from 'classnames';
 
 export const MyTasksHeader = ({
   search,
@@ -21,13 +22,13 @@ export const MyTasksHeader = ({
         <div className={s.sortButtons}>
           {filterButtons.map(({ value, displayValue }) => {
             return (
-              <button
+              <Button
                 key={value}
                 onClick={() => setFilterByState(value)}
-                className={filterByState === value ? s.active : ""}
+                className={cn(s.button, filterByState === value ? s.active : "")}
               >
                 {displayValue}
-              </button>
+              </Button>
             );
           })}
         </div>

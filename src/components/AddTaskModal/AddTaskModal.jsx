@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addTask } from "../../app/features/tasks/tasksSlice";
-import { Button, Input, Select } from "../../shared/iu";
+import { Button, Input, Select, Textarea } from "../../shared/iu";
 import s from "./AddTaskModal.module.scss";
 
 export const AddTaskModal = ({ setOpenModal }) => {
@@ -48,7 +48,7 @@ export const AddTaskModal = ({ setOpenModal }) => {
       </div>
 
       <div className={s.text}>
-        <textarea
+        <Textarea
           placeholder="Опишите задачу..."
           name="text"
           cols="30"

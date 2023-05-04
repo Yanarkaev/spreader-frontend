@@ -5,27 +5,33 @@
   align-items: center;
   min-width: 325px;
   margin-left: 30px;
+}
 
-  .active {
-    background-color: #0066a6;
-    color: #fff;
+.button {
+  padding: 10px 20px;
+  border: 0;
+  cursor: pointer;
+  transition: 0.2s;
+  border-radius: 2px;
+  background-color: var(--color-light-gray);
+  color: rgb(33, 33, 33);
+  box-shadow: none;
+
+  &:hover {
+    background-color: var(--color-gray);
   }
 
-  button {
-    padding: 10px 20px;
-    border: 0;
-    cursor: pointer;
-    transition: 0.2s;
-    border-radius: 2px;
-    background-color: #f0f0f0;
-    color: rgb(33, 33, 33);
+  &:last-child {
+    margin-right: 0;
+  }
+}
 
-    &:hover {
-      box-shadow: inset 0 0 10px 100px rgba(0, 0, 0, 0.154);
-    }
+.active {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  font-weight: 600;
 
-    &:last-child {
-      margin-right: 0;
-    }
+  &:hover {
+    background-color: var(--color-primary-hover);
   }
 }

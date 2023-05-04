@@ -1,5 +1,5 @@
 .Sidebar {
-  background-color: #fff;
+  background-color: var(--color-white);
   padding: 20px 10px;
   width: 65px;
   transition: 0.3s;
@@ -37,14 +37,14 @@
 .profile {
   width: fit-content;
   padding-bottom: 5px;
-  border-bottom: 2px solid #000;
+  border-bottom: 2px solid var(--color-black);
 }
 
 .avatar {
   width: 40px;
   height: 40px;
-  background-color: #109cf1;
-  color: #fff;
+  background-color: var(--color-primary);
+  color: var(--color-white);
   font-size: 20px;
   display: flex;
   align-items: center;
@@ -54,7 +54,7 @@
 
 .branchName,
 .login {
-  min-width: max-content ;
+  min-width: max-content;
   opacity: 0;
   transition: 0.2s;
   font-size: 14px;
@@ -80,10 +80,10 @@
   cursor: pointer;
 
   &:hover {
-    color: #109cf1;
+    color: var(--color-primary);
 
     .icon {
-      stroke: #109cf1;
+      stroke: var(--color-primary);
     }
   }
 
@@ -96,10 +96,11 @@
 }
 
 .active {
-  color: #109cf1;
+  color: var(--color-primary);
+  font-weight: 600;
 
   .icon {
-    stroke: #109cf1;
+    stroke: var(--color-primary);
   }
 }
 
@@ -112,10 +113,10 @@
   bottom: 100px;
 
   &:hover {
-    color: #f12e10;
+    color: var(--color-danger);
 
     .icon {
-      stroke: #f12e10;
+      stroke: var(--color-danger);
     }
   }
 }
