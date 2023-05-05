@@ -1,13 +1,29 @@
 import React, { useState } from "react";
 import { Button } from "../../shared/iu";
 import { Loader } from "../../shared/iu/Loader/Loader";
-import {TaskTimer} from "../";
+import { TaskTimer } from "../";
 import s from "./TaskHeader.module.scss";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
+import { changeTime } from "../../app/features/tasks/tasksSlice";
 
 export const TaskHeader = ({ task, loading, role }) => {
-  const [timerStarted, setTimerStarted] = useState(false);
+  const dispatch = useDispatch();
+  const { taskId } = useParams();
+  const timer = JSON.parse(localStorage.getItem(taskId));
+  const startedTime = Math.floor(Date.now() / 60000);
+
+  const [isStarted, setIsStarted] = useState(timer?.started);
   const payload = useSelector((state) => state.auth.payload);
+
+  console.log(task);
+
+  useEffect(() => {
+    // if (timer && !timer.startedTime && startedTime) {
+      dispatch(changeTime({ taskId, time: startedTime }));
+    // }
+  }, [dispatch]);
 
   return (
     <div className={s.TaskHeader}>
@@ -22,17 +38,19 @@ export const TaskHeader = ({ task, loading, role }) => {
       <TaskTimer
         task={task}
         loading={loading}
-        timerStarted={timerStarted}
-        className={`${s.timer} ${timerStarted ? s.timerStarted : ""}`}
+        isStarted={isStarted}
+        startedTime={startedTime}
+        timer={timer}
+        className={`${s.timer} ${isStarted ? s.timerStarted : ""}`}
       />
 
       {payload?.role === "USER" &&
         (payload?.id === task?.userId?._id || task?.branchId === undefined) && (
           <Button
-            variant={timerStarted && "danger"}
-            onClick={() => setTimerStarted(!timerStarted)}
+            variant={isStarted && "danger"}
+            onClick={() => setIsStarted(!isStarted)}
           >
-            {timerStarted ? "Остановить" : "Начать"}
+            {isStarted ? "Остановить" : "Начать"}
           </Button>
         )}
     </div>

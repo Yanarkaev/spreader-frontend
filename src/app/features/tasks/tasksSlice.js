@@ -103,6 +103,22 @@ export const closeTask = createAsyncThunk(
   }
 );
 
+export const changeTime = createAsyncThunk(
+  "task/changeTime",
+  async ({ taskId, time }, thunkAPI) => {
+    try {
+      const res = await fetch(`/spreader/tasks/time/${taskId}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ time }),
+      });
+      return res.json();
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
 export const addTask = createAsyncThunk(
   "tasks/add",
   async ({ title, text, userId, branchId, points, time }, thunkAPI) => {
@@ -188,6 +204,13 @@ export const tasksSlice = createSlice({
       .addCase(editNotes.rejected, setError)
       .addCase(editNotes.fulfilled, (state, action) => {
         state.task.notes = action.payload;
+        resetState(state);
+      })
+
+      .addCase(changeTime.pending, setLoading)
+      .addCase(changeTime.rejected, setError)
+      .addCase(changeTime.fulfilled, (state, action) => {
+        state.task.time = action.payload;
         resetState(state);
       })
 
