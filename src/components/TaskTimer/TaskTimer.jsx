@@ -3,10 +3,19 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getPadTime } from "../../shared/helpers/getPadTime";
 import { Loader } from "../../shared/iu/Loader/Loader";
+import { useDispatch } from "react-redux";
+import { changeTime } from "../../app/features/tasks/tasksSlice";
 
-export const TaskTimer = ({ task, loading, timerStarted, className }) => {
+export const TaskTimer = ({
+  task,
+  loading,
+  timer,
+  isStarted,
+  startedTime,
+  className,
+}) => {
+  const dispatch = useDispatch();
   const { taskId } = useParams();
-  const timer = JSON.parse(localStorage.getItem(taskId));
   const [timeLeft, setTimeLeft] = useState(
     timer ? Number(timer?.minutes * 60) + +timer?.seconds : 0
   );
@@ -18,20 +27,20 @@ export const TaskTimer = ({ task, loading, timerStarted, className }) => {
     if (timer === null) {
       setTimeLeft(+task.time * 60);
     }
-    if (timerStarted) {
+    if (isStarted) {
       localStorage.setItem(
         taskId,
         JSON.stringify({
           minutes: task.time,
           seconds: 0,
-          started: timerStarted,
+          started: isStarted,
         })
       );
     }
-  }, [task]);  // eslint-disable-line react-hooks/exhaustive-deps
+  }, [task]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
-    if (timerStarted) {
+    if (isStarted) {
       let interval;
       if (timeLeft > 0) {
         interval = setInterval(() => {
@@ -43,22 +52,39 @@ export const TaskTimer = ({ task, loading, timerStarted, className }) => {
         clearInterval(interval);
       };
     }
-  }, [timerStarted]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [isStarted]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
-    if (timeLeft && timerStarted) {
+    if (timeLeft && isStarted) {
       localStorage.setItem(
         taskId,
-        JSON.stringify({ minutes, seconds, started: timerStarted })
+        JSON.stringify({
+          minutes,
+          seconds,
+          started: isStarted,
+        })
       );
     }
-  }, [timeLeft]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [timeLeft, isStarted]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const timerText = `${minutes}:${seconds}`
+  useEffect(() => {
+    if (timer) {
+      localStorage.setItem(
+        taskId,
+        JSON.stringify({ ...timer, started: isStarted })
+      );
+    }
+  }, [isStarted]);
+
+  // useEffect(() => {
+  //   dispatch(changeTime({taskId, }))
+  // }, [dispatch])
+
+  const timerText = `${minutes}:${seconds}`;
 
   return (
     <div className={className}>
-      {loading ? <Loader w="110px" h="40px"/> : timerText}
+      {loading ? <Loader w="110px" h="40px" /> : timerText}
     </div>
   );
 };
