@@ -16,28 +16,48 @@ export const TaskTimer = ({
 }) => {
   const dispatch = useDispatch();
   const { taskId } = useParams();
-  const [timeLeft, setTimeLeft] = useState(
-    timer ? Number(timer?.minutes * 60) + +timer?.seconds : 0
-  );
+  // const [timeLeft, setTimeLeft] = useState(
+  //   timer ? Number(timer?.minutes * 60) + +timer?.seconds : 0
+  // );
 
-  let minutes = getPadTime(Math.floor(timeLeft / 60));
-  let seconds = getPadTime(timeLeft - minutes * 60);
+  const [timeLeft, setTimeLeft] = useState(0);
+
+  let minutes = timeLeft && getPadTime(Math.floor(timeLeft / 60));
+  let seconds = timeLeft && getPadTime(timeLeft - minutes * 60);
 
   useEffect(() => {
-    if (timer === null) {
-      setTimeLeft(+task.time * 60);
-    }
-    if (isStarted) {
+    setTimeLeft(task.time);
+  }, [task]);
+
+  useEffect(() => {
+    // if (timer?.started) {
       localStorage.setItem(
         taskId,
         JSON.stringify({
-          minutes: task.time,
-          seconds: 0,
-          started: isStarted,
+          ...timer,
+          startedTime: Math.floor(Date.now() / 1000),
         })
       );
-    }
-  }, [task]); // eslint-disable-line react-hooks/exhaustive-deps
+    // }
+  }, [isStarted]);
+
+  // console.log(timer?.startedTime);
+
+  // useEffect(() => {
+  //   if (timer === null) {
+  //     setTimeLeft(+task.time * 60);
+  //   }
+  //   if (isStarted) {
+  //     localStorage.setItem(
+  //       taskId,
+  //       JSON.stringify({
+  //         minutes: task.time,
+  //         seconds: 0,
+  //         started: isStarted,
+  //       })
+  //     );
+  //   }
+  // }, [task]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     if (isStarted) {
@@ -48,39 +68,37 @@ export const TaskTimer = ({
         }, 1000);
       }
 
-      return () => {
-        clearInterval(interval);
-      };
+      return () => clearInterval(interval);
     }
-  }, [isStarted]); // eslint-disable-line react-hooks/exhaustive-deps
+  }); // eslint-disable-line react-hooks/exhaustive-deps
 
-  useEffect(() => {
-    if (timeLeft && isStarted) {
-      localStorage.setItem(
-        taskId,
-        JSON.stringify({
-          minutes,
-          seconds,
-          started: isStarted,
-        })
-      );
-    }
-  }, [timeLeft, isStarted]); // eslint-disable-line react-hooks/exhaustive-deps
+  // useEffect(() => {
+  //   if (timeLeft && isStarted) {
+  //     localStorage.setItem(
+  //       taskId,
+  //       JSON.stringify({
+  //         minutes,
+  //         seconds,
+  //         started: isStarted,
+  //       })
+  //     );
+  //   }
+  // }, [timeLeft, isStarted]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  useEffect(() => {
-    if (timer) {
-      localStorage.setItem(
-        taskId,
-        JSON.stringify({ ...timer, started: isStarted })
-      );
-    }
-  }, [isStarted]);
+  // useEffect(() => {
+  //   if (timer) {
+  //     localStorage.setItem(
+  //       taskId,
+  //       JSON.stringify({ ...timer, started: isStarted })
+  //     );
+  //   }
+  // }, [isStarted]);
 
   // useEffect(() => {
   //   dispatch(changeTime({taskId, }))
   // }, [dispatch])
 
-  const timerText = `${minutes}:${seconds}`;
+  const timerText = timeLeft && `${minutes}:${seconds}`;
 
   return (
     <div className={className}>

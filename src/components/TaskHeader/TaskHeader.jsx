@@ -17,13 +17,32 @@ export const TaskHeader = ({ task, loading, role }) => {
   const [isStarted, setIsStarted] = useState(timer?.started);
   const payload = useSelector((state) => state.auth.payload);
 
-  console.log(task);
-
   useEffect(() => {
     // if (timer && !timer.startedTime && startedTime) {
-      dispatch(changeTime({ taskId, time: startedTime }));
+    // dispatch(changeTime({ taskId, time: startedTime }));
     // }
   }, [dispatch]);
+
+  useEffect(() => {
+    // if (isStarted) {
+    localStorage.setItem(
+      taskId,
+      JSON.stringify({ ...timer, started: isStarted })
+    );
+    // }
+  }, [isStarted]);
+
+  // useEffect(() => {
+  //   if (isStarted) {
+  //     localStorage.setItem(
+  //       taskId,
+  //       JSON.stringify({
+  //         started: isStarted,
+  //         startedTime: Math.floor(Date.now() / 1000),
+  //       })
+  //     );
+  //   }
+  // }, [isStarted]);
 
   return (
     <div className={s.TaskHeader}>
