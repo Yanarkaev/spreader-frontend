@@ -20,26 +20,44 @@ export const TaskTimer = ({
   //   timer ? Number(timer?.minutes * 60) + +timer?.seconds : 0
   // );
 
-  const [timeLeft, setTimeLeft] = useState(0);
+  const [timeLeft, setTimeLeft] = useState();
 
   let minutes = timeLeft && getPadTime(Math.floor(timeLeft / 60));
   let seconds = timeLeft && getPadTime(timeLeft - minutes * 60);
 
   useEffect(() => {
-    setTimeLeft(task.time);
+    if (task.time) {
+      setTimeLeft(task.time * 60);
+    }
   }, [task]);
 
   useEffect(() => {
     // if (timer?.started) {
-      localStorage.setItem(
-        taskId,
-        JSON.stringify({
-          ...timer,
-          startedTime: Math.floor(Date.now() / 1000),
-        })
-      );
+    localStorage.setItem(
+      taskId,
+      JSON.stringify({
+        started: isStarted,
+        startedTime: isStarted
+          ? Math.floor(Date.now() / 1000) + timeLeft
+          : null,
+      })
+    );
+    // }
+    // console.log(timeLeft);
+
+    // if (isStarted) {
+    //   localStorage.setItem(
+    //     taskId,
+    //     JSON.stringify({
+    //       started: isStarted,
+    //       // startedTime: Math.floor(Date.now() / 1000),
+    //     })
+    //   );
     // }
   }, [isStarted]);
+
+  console.log(timer?.startedTime);
+  // console.log(Math.floor(timer?.startedTime - Date.now() / 1000));
 
   // console.log(timer?.startedTime);
 
