@@ -17,7 +17,7 @@ export const AddTaskModal = ({ setOpenModal }) => {
   });
 
   const branches = useSelector((state) => state.branches.branches);
-  const users = useSelector((state) => state.users.users).filter(
+  const workersList = useSelector((state) => state.users.workersList).filter(
     (user) => user?.branchId?._id === data.branchId
   );
 
@@ -107,7 +107,7 @@ export const AddTaskModal = ({ setOpenModal }) => {
               selectValue="_id"
               // uniqueValue="_id"
               onChange={handleData}
-              array={users}
+              array={workersList}
               initialValue="Все"
               variant="outlined"
             />
@@ -131,4 +131,3 @@ export const AddTaskModal = ({ setOpenModal }) => {
     </div>
   );
 };
-

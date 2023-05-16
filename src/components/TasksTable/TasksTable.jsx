@@ -21,7 +21,7 @@ export const TasksTable = ({ search }) => {
         ? task
         : task.branchId?._id === sortTasksValue._id
     )
-    .filter(({ title }) => title.toLowerCase().includes(search.toLowerCase()));
+    ?.filter(({ title }) => title.toLowerCase().includes(search.toLowerCase()));
 
   if (loading) {
     return <TableLoader />;

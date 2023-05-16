@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { resetState, setError, setLoading } from "../stateSetters";
+import { TaskService } from "../../../shared/services/task.service";
 
 const initialState = {
   tasks: [],
@@ -12,8 +13,8 @@ const initialState = {
 
 export const getTasks = createAsyncThunk("tasks/fetch", async (_, thunkAPI) => {
   try {
-    const res = await fetch("/spreader/tasks");
-    return res.json();
+    const { data } = await TaskService.getAll();
+    return data;
   } catch (error) {
     thunkAPI.rejectWithValue(error);
   }
@@ -23,8 +24,8 @@ export const getNewTasks = createAsyncThunk(
   "tasks/getNew",
   async (_, thunkAPI) => {
     try {
-      const res = await fetch("/spreader/tasks/new");
-      return res.json();
+      const { data } = await TaskService.getNew();
+      return data;
     } catch (error) {
       thunkAPI.rejectWithValue(error);
     }
@@ -35,8 +36,8 @@ export const getTaskById = createAsyncThunk(
   "tasks/getById",
   async (id, thunkAPI) => {
     try {
-      const res = await fetch(`/spreader/tasks/${id}`);
-      return res.json();
+      const { data } = await TaskService.getById(id);
+      return data;
     } catch (error) {
       thunkAPI.rejectWithValue(error);
     }
@@ -47,8 +48,8 @@ export const getTasksByUser = createAsyncThunk(
   "tasks/getByUser",
   async (id, thunkAPI) => {
     try {
-      const res = await fetch("/spreader/tasks/user/" + id);
-      return res.json();
+      const { data } = await TaskService.getByUser(id);
+      return data;
     } catch (error) {
       thunkAPI.rejectWithValue(error);
     }
@@ -60,12 +61,8 @@ export const editNotes = createAsyncThunk(
 
   async ({ taskId, text }, thunkAPI) => {
     try {
-      await fetch(`/spreader/tasks/${taskId}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ notes: text }),
-      });
-      return text;
+      const { data } = await TaskService.editNotes({ taskId, text });
+      return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
@@ -76,12 +73,12 @@ export const takeToWork = createAsyncThunk(
   "inwork/patch",
   async ({ taskId, userId, branchId }, thunkAPI) => {
     try {
-      const res = await fetch(`/spreader/tasks/take/${taskId}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ userId: userId, branchId: branchId }),
+      const { data } = await TaskService.takeToWork({
+        taskId,
+        userId,
+        branchId,
       });
-      return res.json();
+      return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
@@ -92,11 +89,8 @@ export const closeTask = createAsyncThunk(
   "close/patch",
   async ({ taskId }, thunkAPI) => {
     try {
-      const res = await fetch(`/spreader/tasks/close/${taskId}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-      });
-      return res.json();
+      const { data } = await TaskService.closeTask(taskId);
+      return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
@@ -107,12 +101,8 @@ export const changeTime = createAsyncThunk(
   "task/changeTime",
   async ({ taskId, time }, thunkAPI) => {
     try {
-      const res = await fetch(`/spreader/tasks/time/${taskId}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ time }),
-      });
-      return res.json();
+      const { data } = await TaskService.timeUpdate({ taskId, time });
+      return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
@@ -121,25 +111,10 @@ export const changeTime = createAsyncThunk(
 
 export const addTask = createAsyncThunk(
   "tasks/add",
-  async ({ title, text, userId, branchId, points, time }, thunkAPI) => {
+  async (taskData, thunkAPI) => {
     try {
-      const res = await fetch("/spreader/tasks", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          title: title,
-          text: text,
-          userId: userId === "Все" ? undefined : userId,
-          branchId: branchId === "Все" ? undefined : branchId,
-          points: points,
-          time: time,
-          state: userId !== "Все" ? "inWork" : "new",
-        }),
-      });
-
-      return res.json();
+      const { data } = await TaskService.addTask(taskData);
+      return data;
     } catch (error) {
       thunkAPI.rejectWithValue(error);
     }
