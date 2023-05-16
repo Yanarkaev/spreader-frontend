@@ -1,6 +1,6 @@
 // import { Suspense } from "react";
 // import { lazy } from "react";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { Layout } from "./Layout";
 
 // const SignUp = lazy(() => import("../Auth/Signup"));
@@ -44,6 +44,9 @@ export const PRIVATEROUTESLIST = [
 
 export const Routing = () => {
   const token = useSelector((state) => state.auth.token);
+  const location = useLocation().pathname.replace("/", '')
+
+  console.log(!!location);
   if (!token) {
     return (
       <Routes>
@@ -59,12 +62,12 @@ export const Routing = () => {
       <>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route path="*" element={<Navigate to={-1} replace />} />
+            <Route path="*" element={<Navigate to="/dashboard" replace />} />
             <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/tasks/:userId" element={<MyTasksPage />} />
             <Route path="/tasks/task/:taskId" element={<TaskPage />} />
-            <Route path="/monitoring" element={<MonitoringPage />} />
             <Route path="/reports" element={<ReportsPage />} />
+            <Route path="/monitoring" element={<MonitoringPage />} />
           </Route>
         </Routes>
       </>

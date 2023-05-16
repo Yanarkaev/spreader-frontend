@@ -1,6 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { createSlice } from "@reduxjs/toolkit";
 import { resetState, setError, setLoading } from "../stateSetters";
+import { BranchService } from "../../../shared/services/branch.service";
+
 const initialState = {
   branches: [],
 };
@@ -9,8 +11,8 @@ export const getBranches = createAsyncThunk(
   "branches/fetch",
   async (_, thunkAPI) => {
     try {
-      const res = await fetch("/spreader/branch");
-      return res.json();
+      const { data } = await BranchService.getAll();
+      return data;
     } catch (error) {
       thunkAPI.rejectWithValue(error);
     }
@@ -27,9 +29,8 @@ export const branchesSlice = createSlice({
       .addCase(getBranches.rejected, setError)
       .addCase(getBranches.fulfilled, (state, action) => {
         state.branches = action.payload;
-        resetState(state)
-      })
-    
+        resetState(state);
+      });
   },
 });
 

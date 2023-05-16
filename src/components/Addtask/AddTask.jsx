@@ -3,7 +3,7 @@ import { AddTaskModal } from "../";
 import { Button } from "../../shared/iu";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { getUsers } from "../../app/features/users/usersSlice";
+import { getUsers, getWorkersList } from "../../app/features/users/usersSlice";
 
 export const AddTask = () => {
   const [openModal, setOpenModal] = useState(false);
@@ -24,7 +24,7 @@ export const AddTask = () => {
   }, [setOpenModal]);
 
   useEffect(() => {
-    dispatch(getUsers());
+    dispatch(getWorkersList());
   }, [dispatch]);
 
   return (

@@ -1,30 +1,35 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { createSlice } from "@reduxjs/toolkit";
 import { resetState, setError, setLoading } from "./../stateSetters";
+import { UserService } from "../../../shared/services/user.service";
+
 const initialState = {
-  users: [],
+  workersList: [],
   worker: {},
   loading: false,
   error: null,
 };
 
-export const getUsers = createAsyncThunk("users/fetch", async (_, thunAPI) => {
-  try {
-    const res = await fetch("/spreader/users");
-    return res.json();
-  } catch (error) {
-    thunAPI.rejectWithValue(error);
+export const getWorkersList = createAsyncThunk(
+  "users/fetch",
+  async (_, thunkAPI) => {
+    try {
+      const { data } = await UserService.getAll();
+      return data;
+    } catch (error) {
+      thunkAPI.rejectWithValue(error);
+    }
   }
-});
+);
 
 export const getWorker = createAsyncThunk(
-  "user/fetch",
-  async (userId, thunAPI) => {
+  "worker/fetch",
+  async (userId, thunkAPI) => {
     try {
-      const res = await fetch("/spreader/users/" + userId);
-      return res.json();
+      const { data } = await UserService.getWorker(userId);
+      return data;
     } catch (error) {
-      thunAPI.rejectWithValue(error);
+      thunkAPI.rejectWithValue(error);
     }
   }
 );
@@ -32,18 +37,13 @@ export const getWorker = createAsyncThunk(
 export const usersSlice = createSlice({
   name: "users",
   initialState,
-  reducers: {
-    // getCurrentUser: (state, action) => {
-    //   console.log(action.payload);
-    //   state.user = state.users.find((el) => el._id === action.payload);
-    // },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(getUsers.pending, setLoading)
-      .addCase(getUsers.rejected, setError)
-      .addCase(getUsers.fulfilled, (state, action) => {
-        state.users = action.payload;
+      .addCase(getWorkersList.pending, setLoading)
+      .addCase(getWorkersList.rejected, setError)
+      .addCase(getWorkersList.fulfilled, (state, action) => {
+        state.workersList = action.payload;
         resetState(state);
       })
       .addCase(getWorker.pending, setLoading)

@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { resetState, setLoading, setError } from "../stateSetters";
+import { UserService } from "../../../shared/services/user.service";
 
 const initialState = {
   loading: false,
@@ -9,28 +10,19 @@ const initialState = {
   signedUp: false,
   signedIn: false,
   users: [],
-  branch: null,
 };
 
 export const signup = createAsyncThunk(
   "auth/signup",
   async (authData, thunkAPI) => {
     try {
-      const res = await fetch("/spreader/registration", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(authData),
-      });
-
-      const data = await res.json();
+      const { data } = await UserService.signUp(authData);
 
       if (data.error) {
         return thunkAPI.rejectWithValue(data.error);
       }
 
-      return thunkAPI.fulfillWithValue(data);
+      return data;
     } catch (error) {
       thunkAPI.rejectWithValue(error);
     }
@@ -39,17 +31,9 @@ export const signup = createAsyncThunk(
 
 export const signin = createAsyncThunk(
   "auth/signIn",
-  async ({ login, password }, thunkAPI) => {
+  async (authData, thunkAPI) => {
     try {
-      const res = await fetch("/spreader/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ login, password }),
-      });
-
-      const data = await res.json();
+      const { data } = await UserService.signIn(authData);
 
       if (data.error) {
         return thunkAPI.rejectWithValue(data.error);
@@ -57,7 +41,7 @@ export const signin = createAsyncThunk(
 
       localStorage.setItem("token", data);
 
-      return thunkAPI.fulfillWithValue(data);
+      return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
@@ -72,7 +56,7 @@ export const authSlice = createSlice({
       state.error = null;
     },
 
-    decodePayload: (state, action) => {
+    decodePayload: (state) => {
       if (!localStorage.getItem("token")) {
         return true;
       }
@@ -97,7 +81,6 @@ export const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-
       // регистрация
       .addCase(signup.pending, setLoading)
       .addCase(signup.rejected, (state, action) => {
@@ -106,7 +89,6 @@ export const authSlice = createSlice({
       })
       .addCase(signup.fulfilled, (state, action) => {
         state.signedUp = true;
-        state.branch = action.payload;
         resetState(state);
       })
 
@@ -121,14 +103,6 @@ export const authSlice = createSlice({
         state.signedIn = true;
         resetState(state);
       });
-
-    // получение работников
-    // .addCase(getUsers.pending, setLoading)
-    // .addCase(getUsers.rejected, setError)
-    // .addCase(getUsers.fulfilled, (state, action) => {
-    //   state.users = action.payload;
-    //   resetState(state);
-    // });
   },
 });
 
