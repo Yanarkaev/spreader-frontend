@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { decodePayload, logOut } from "../../../app/features/auth/authSlice";
 import { Link, useLocation } from "react-router-dom";
 import { Icon } from "../Icon/Icon";
-import s from "./sidebar.module.scss";
+import s from "./Sidebar.module.scss";
 import cn from "classnames";
 
 export const Sidebar = React.memo(() => {
