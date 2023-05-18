@@ -5,5 +5,7 @@ export const BranchService = {
 
   getAll: () => apiInstance.get(BranchService.BASE_URL),
 
-  addBranch: () => apiInstance.post(BranchService.BASE_URL, {}),
+  addBranch: (name) => apiInstance.post(BranchService.BASE_URL, { name }),
+
+  deleteBranch: (id) => apiInstance.delete(BranchService.BASE_URL + id),
 };

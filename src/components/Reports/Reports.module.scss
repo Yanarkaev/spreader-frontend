@@ -9,11 +9,12 @@
   display: flex;
   justify-content: center;
   gap: 20px;
+  align-items: stretch;
   flex-wrap: wrap;
   padding: 20px 10px;
 }
 
-.filter{
+.filter {
   margin: 20px 0 0 20px;
 }
 
@@ -21,14 +22,28 @@
   width: 350px;
 }
 
-.Doughnut {
+.chart {
+  min-height: 350px;
+  padding: 10px 0;
+  position: relative;
+}
+
+.doughnut {
   text-align: center;
   box-shadow: 0 0 10px 0 var(--color-gray);
-  margin: 0 auto;
+  // margin: 0 auto;
   width: 100%;
   padding: 20px 10px;
   border-radius: 5px;
   background-color: var(--color-white);
+}
+
+.empty {
+  // height: 208px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
 }
 
 .branch {
@@ -39,7 +54,7 @@
   font-weight: 600;
 }
 
-.tasksCount{
+.tasksCount {
   border-bottom: 2px solid var(--color-gray);
   padding: 10px 0;
 }

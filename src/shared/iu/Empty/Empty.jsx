@@ -1,6 +1,7 @@
 import React from "react";
 import s from "./Empty.module.scss";
+import cn from "classnames";
 
-export const Empty = ({ children }) => {
-  return <div className={s.Empty}>{children}</div>;
+export const Empty = ({ className, children }) => {
+  return <div className={cn(s.Empty, className)}>{children}</div>;
 };

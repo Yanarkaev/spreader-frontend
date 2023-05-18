@@ -27,6 +27,7 @@ import { MyTasksPage } from "../MyTasksPage/MyTasksPage";
 import { TaskPage } from "./../TaskPage/TaskPage";
 import { ReportsPage } from "../ReportsPage/ReportsPage";
 import { useSelector } from "react-redux";
+import { AdminPage } from './../AdminPage/AdminPage';
 
 export const PUBLICROUTESLIST = [
   { key: "signup", path: "/signup", Page: SignUpPage },
@@ -46,7 +47,6 @@ export const Routing = () => {
   const token = useSelector((state) => state.auth.token);
   const location = useLocation().pathname.replace("/", '')
 
-  console.log(!!location);
   if (!token) {
     return (
       <Routes>
@@ -68,6 +68,7 @@ export const Routing = () => {
             <Route path="/tasks/task/:taskId" element={<TaskPage />} />
             <Route path="/reports" element={<ReportsPage />} />
             <Route path="/monitoring" element={<MonitoringPage />} />
+            <Route path="/admin" element={<AdminPage />} />
           </Route>
         </Routes>
       </>

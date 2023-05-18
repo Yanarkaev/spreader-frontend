@@ -18,11 +18,8 @@ function DoughnutChart({ item }) {
       },
     ],
   };
-  return (
-    <div>
-      <Pie data={data}/>
-    </div>
-  );
+
+  return <Pie data={data} />;
 }
 
 export default DoughnutChart;

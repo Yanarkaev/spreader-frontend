@@ -30,7 +30,6 @@ export const SignInPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(signin(data));
-    console.log(data);
   };
 
   const isValid = data.login && data.password;
