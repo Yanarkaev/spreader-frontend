@@ -6,6 +6,7 @@ import { getTasks } from "../../app/features/tasks/tasksSlice";
 import DoughnutChart from "./Doughnut";
 import s from "./Reports.module.scss";
 import { Sort } from "../Sort/Sort";
+import { Empty } from "../../shared/iu";
 
 export const Reports = () => {
   const dispatch = useDispatch();
@@ -18,7 +19,7 @@ export const Reports = () => {
 
   const departments = useSelector((state) => state.branches.branches).filter(
     (el) => (sortValue === "all" ? el : el?._id === sortValue._id)
-  ); //Название и айди отдела
+  ); // Название и айди отдела
 
   const tasks = useSelector((state) => state.tasks.tasks); // айди отдела и статус задачи "new" "inWork" "closed"
 
@@ -40,22 +41,26 @@ export const Reports = () => {
 
   return (
     <div className={s.container}>
-      <div>
-        <Sort className={s.filter} />
-      </div>
-      <main className={s.main}>
+      <Sort className={s.filter} />
+      <div className={s.main}>
         {res.map((item, index) => {
           return (
             <div className={s.chartsContainer} key={index}>
-              <div className={s.Doughnut}>
+              <div className={s.doughnut}>
                 <span className={s.branch}>{item.name}</span>
                 <div className={s.tasksCount}>Всего задач: {item.all}</div>
-                <DoughnutChart item={item} />
+                <div className={s.chart}>
+                  {item.all ? (
+                    <DoughnutChart item={item} />
+                  ) : (
+                    <Empty className={s.empty}>задач нет</Empty>
+                  )}
+                </div>
               </div>
             </div>
           );
         })}
-      </main>
+      </div>
     </div>
   );
-}
+};

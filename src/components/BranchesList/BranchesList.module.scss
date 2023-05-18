@@ -1,0 +1,31 @@
+.BranchesList {
+  margin: 10px auto;
+  max-width: 600px;
+  position: relative;
+}
+
+.branch {
+  background-color: var(--color-gray);
+  margin-bottom: 10px;
+  border-radius: 4px;
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.deleteBtn {
+  margin-left: 10px;
+}
+
+.error {
+  margin-top: 10px;
+  position: absolute;
+  text-align: center;
+  left: 50%;
+  width: 100%;
+  translate: -50%;
+  color: var(--color-danger);
+  font-weight: 600;
+  font-size: 14px;
+}

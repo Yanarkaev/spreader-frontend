@@ -85,6 +85,10 @@
     .icon {
       stroke: var(--color-primary);
     }
+
+    .fillIcon {
+      fill: var(--color-primary);
+    }
   }
 
   span {
@@ -101,6 +105,10 @@
 
   .icon {
     stroke: var(--color-primary);
+  }
+
+  .fillIcon {
+    fill: var(--color-primary);
   }
 }
 

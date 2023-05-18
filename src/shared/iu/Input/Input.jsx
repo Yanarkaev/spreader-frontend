@@ -6,11 +6,13 @@ export const Input = ({
   variant = "outlined",
   placeholder,
   className,
+  onChange,
   ...props
 }) => {
   return (
       <input
         value={value}
+        onChange={onChange}
         className={`${s.Input} ${s[variant]} ${className}`}
         placeholder={placeholder}
         {...props}
