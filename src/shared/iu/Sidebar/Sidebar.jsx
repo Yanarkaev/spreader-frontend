@@ -62,7 +62,7 @@ export const Sidebar = React.memo(() => {
         <div className={s.profile}>
           <div className={s.avatar}>
             {name && name[0].toUpperCase()}
-            {name && surname[0].toUpperCase()}
+            {surname && surname[0].toUpperCase()}
           </div>
           <div className={s.login}>
             {name} {surname}
