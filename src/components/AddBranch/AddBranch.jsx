@@ -31,7 +31,7 @@ export const AddBranch = () => {
   return (
     <form onSubmit={handleSubmit} className={s.AddBranch}>
       <Input value={name} onChange={handleChange} />
-      <Button className={s.button} variant="primary">
+      <Button disabled={!name.trim()} className={s.button} variant="primary">
         Добавить
       </Button>
     </form>
