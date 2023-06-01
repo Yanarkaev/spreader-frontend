@@ -53,7 +53,7 @@ export const Reports = () => {
                   {item.all ? (
                     <DoughnutChart item={item} />
                   ) : (
-                    <Empty className={s.empty}>задач нет</Empty>
+                    <Empty>задач нет</Empty>
                   )}
                 </div>
               </div>
