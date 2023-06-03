@@ -12,25 +12,13 @@ export const AddTask = () => {
   const ref = useRef(null);
 
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (ref.current && !ref.current.contains(event.target)) {
-        setOpenModal(false);
-      }
-    };
-    document.addEventListener("click", handleClickOutside, true);
-    return () => {
-      document.removeEventListener("click", handleClickOutside, true);
-    };
-  }, [setOpenModal]);
-
-  useEffect(() => {
     dispatch(getWorkersList());
   }, [dispatch]);
 
   return (
     <div ref={ref}>
       <Button onClick={() => setOpenModal(!openModal)}>Добавить задачу</Button>
-      {openModal && <AddTaskModal setOpenModal={setOpenModal} />}
+      <AddTaskModal openModal={openModal} setOpenModal={setOpenModal} />
     </div>
   );
 };
