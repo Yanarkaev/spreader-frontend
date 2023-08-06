@@ -22,7 +22,7 @@ export const WorkersList = ({ searchValue }) => {
     );
 
   if (!filteredWorkers.length) {
-    return <Empty>Работников не найдено</Empty>;
+    return <Empty>Не найдено</Empty>;
   }
 
   return (

@@ -76,9 +76,9 @@ export const branchesSlice = createSlice({
       .addCase(deleteBranch.pending, setLoading)
       .addCase(deleteBranch.rejected, setError)
       .addCase(deleteBranch.fulfilled, (state, action) => {
-        state.branches = state.branches.filter(
-          (item) => item._id !== action.payload._id
-        );
+        state.branches = state.branches.filter((item) => {
+          return item._id !== action.payload
+        });
         resetState(state);
       });
   },
