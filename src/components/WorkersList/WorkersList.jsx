@@ -9,17 +9,11 @@ export const WorkersList = ({ searchValue }) => {
   const { workersList, tasks, workersLoading, tasksLoading } = useWorkersList();
   const sortBranch = useSelector((state) => state.tasks.sortBranch);
 
-  const filteredWorkers = workersList
-    .filter((worker) => {
-      return sortBranch === "all"
-        ? worker
-        : worker.branchId?._id === sortBranch._id;
-    })
-    .filter(
-      (el) =>
-        el.name.toLowerCase().includes(searchValue.toLowerCase()) ||
-        el.surname.toLowerCase().includes(searchValue.toLowerCase())
-    );
+  const filteredWorkers = workersList.filter(worker => 
+    sortBranch === "all" || (worker.branchId?._id === sortBranch._id)
+  ).filter(el => 
+    (el.name + el.surname).toLowerCase().includes(searchValue.toLowerCase())
+  );
 
   if (!filteredWorkers.length) {
     return <Empty>Не найдено</Empty>;
