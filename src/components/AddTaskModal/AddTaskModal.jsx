@@ -18,15 +18,16 @@ export const AddTaskModal = ({ openModal, setOpenModal }) => {
   });
 
   const branches = useSelector((state) => state.branches.branches);
-  
+
   const workersList = useSelector((state) => state.users.workersList).filter(
     (user) => user?.branchId?._id === data.branchId
   );
 
+  const requiredFields = ["title", "text", "time", "points"];
+
   const inputsFilled =
-    data.branchId === "Все"
-      ? data.title && data.text && data.time && data.points
-      : data.title && data.text && data.time && data.points && data.userId;
+    requiredFields.every(field => data[field]) &&
+    (data.branchId === "Все" ? !!data.userId : true);
 
   const handleAddTask = () => {
     dispatch(addTask(data));
