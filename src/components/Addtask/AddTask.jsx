@@ -1,9 +1,9 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { AddTaskModal } from "../";
 import { Button } from "../../shared/iu";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { getUsers, getWorkersList } from "../../app/features/users/usersSlice";
+import { getWorkersList } from "../../app/features/users/usersSlice";
 
 export const AddTask = () => {
   const [openModal, setOpenModal] = useState(false);
