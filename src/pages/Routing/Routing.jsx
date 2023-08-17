@@ -45,7 +45,7 @@ export const PRIVATEROUTESLIST = [
 
 export const Routing = () => {
   const token = useSelector((state) => state.auth.token);
-  const location = useLocation().pathname.replace("/", '')
+  // const location = useLocation().pathname.replace("/", '')
 
   if (!token) {
     return (
