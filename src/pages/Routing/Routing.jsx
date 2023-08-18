@@ -1,6 +1,6 @@
 // import { Suspense } from "react";
 // import { lazy } from "react";
-import { Navigate, Route, Routes, useLocation } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import { Layout } from "./Layout";
 
 // const SignUp = lazy(() => import("../Auth/Signup"));
