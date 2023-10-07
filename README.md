@@ -28,6 +28,7 @@
 - Redux-toolkit;
 - Charts.js
 - SCSS
+- axios
 
 ## Запуск проекта
 
