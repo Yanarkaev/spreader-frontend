@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import MyTasksHeader from "../../components/MyTasksHeader/MyTasksHeader";
 import MyTasksTable from "../../components/MyTasksTable/MyTasksTable";
 
